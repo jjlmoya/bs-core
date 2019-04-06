@@ -21,8 +21,10 @@ if (!in_array('bs-core/plugin.php', apply_filters('active_plugins', get_option('
 		if ($pagenow == "plugins.php") {
 			?>
 			<div id="updated" class="error notice is-dismissible">
-				<p> Puede que algunos plugins vean afectados su comportamiento y estilo debido a que no se ha instalado
-					la dependencia con el Plugin "BS-CORE" disponible gratuitamente en https://bonseo.es/plugins</p>
+				<p>
+					Puede que algunos plugins vean afectados su comportamiento y estilo debido a que no se ha instalado
+					la dependencia con el Plugin "BS-CORE" disponible gratuitamente en https://bonseo.es/plugins
+				</p>
 			</div>
 			<?php
 		}
@@ -33,7 +35,7 @@ if (!in_array('bs-core/plugin.php', apply_filters('active_plugins', get_option('
 
 function bs_core_scripts()
 {
-	$timestamp = '2019031822';
+	$timestamp = '2019033118';
 	wp_enqueue_style('bs-core-style', plugins_url('assets/style.css', __FILE__), array(), $timestamp);
 	wp_enqueue_script('bs-core-script', plugins_url('assets/index.js', __FILE__), array(), $timestamp, true);
 }
