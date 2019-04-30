@@ -9,3 +9,6 @@ import './block/customer-opinions';
 import './block/last-articles-zig-zag';
 import './block/list-vertical';
 import './block/plain-card';
+import './block/slider-article';
+import './block/slim-articles';
+import './block/title-brand';

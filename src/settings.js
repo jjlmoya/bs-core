@@ -17,5 +17,8 @@ export const Icons = {
 	pencil: 'edit',
 	list: 'editor-ol',
 	vertical: 'image-flip-vertical',
-	pages: 'admin-page'
+	pages: 'admin-page',
+	slides: 'slides',
+	feed: 'feedback',
+	tag: 'nametag'
 };

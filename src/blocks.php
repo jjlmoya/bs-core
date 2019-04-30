@@ -38,3 +38,7 @@ require_once plugin_dir_path(__FILE__) . '../blocks/bs-content-simple.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-customer-opinions.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-last-articles-zig-zag.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-list-vertical.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-plain-card.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-slider-article.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-slim-articles.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-title-brand.php';
