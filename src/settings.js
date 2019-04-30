@@ -5,6 +5,19 @@ export const CoreKeywords = [
 	__('CORE')
 ];
 
+export const Brands = [
+	{label: 'Aviator', value: 'aviator'},
+	{label: 'Diable', value: 'diable'},
+	{label: 'Forest', value: 'forest'},
+	{label: 'Graylord', value: 'graylord'},
+	{label: 'Kino', value: 'kino'},
+	{label: 'Lime Sports', value: 'lime-sports'},
+	{label: 'Lollipop', value: 'lollipop'},
+	{label: 'Mint', value: 'mint'},
+	{label: 'Paradise Orange', value: 'paradise-orange'},
+	{label: 'Reverse Sky', value: 'reverse-sky'},
+	{label: 'Sky', value: 'sky'}
+];
 export const Icons = {
 	quote: 'editor-quote',
 	world: 'admin-site',
