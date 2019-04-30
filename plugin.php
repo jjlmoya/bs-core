@@ -35,7 +35,7 @@ if (!in_array('bs-core/plugin.php', apply_filters('active_plugins', get_option('
 
 function bs_core_scripts()
 {
-	$timestamp = '2019042721';
+	$timestamp = '2019043011';
 	wp_enqueue_style('bs-core-style', plugins_url('assets/style.css', __FILE__), array(), $timestamp);
 	wp_enqueue_script('bs-core-script', plugins_url('assets/index.js', __FILE__), array(), $timestamp, true);
 }
@@ -43,6 +43,8 @@ function bs_core_scripts()
 add_action('wp_enqueue_scripts', 'bs_core_scripts');
 
 require_once plugin_dir_path(__FILE__) . '/model/brand.php';
-require_once plugin_dir_path(__FILE__) . 'services/index.php';
+require_once plugin_dir_path(__FILE__) . '/services/index.php';
+require_once plugin_dir_path(__FILE__) . '/src/blocks.php';
+
 
 
