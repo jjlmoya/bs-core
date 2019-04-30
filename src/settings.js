@@ -11,5 +11,11 @@ export const Icons = {
 	writer: 'welcome-write-blog',
 	pile: 'images-alt',
 	down: 'arrow-down-alt2',
-	minus: 'minus'
+	minus: 'minus',
+	circles: 'image-filter',
+	content: 'media-document',
+	pencil: 'edit',
+	list: 'editor-ol',
+	vertical: 'image-flip-vertical',
+	pages: 'admin-page'
 };

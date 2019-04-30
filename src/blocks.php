@@ -23,6 +23,7 @@ if (!function_exists('bs_create_block_category')) {
 			)
 		);
 	}
+
 	add_filter('block_categories', 'bs_create_block_category', 10, 2);
 }
 add_action('enqueue_block_editor_assets', 'bs_core_blocks_editor_assets');
@@ -32,3 +33,8 @@ require_once plugin_dir_path(__FILE__) . '../blocks/bs-articles-avatar.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-articles-condensed.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-authors-extract.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-banner-basic.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-banner-data.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-content-simple.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-customer-opinions.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-last-articles-zig-zag.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-list-vertical.php';

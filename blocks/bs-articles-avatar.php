@@ -96,4 +96,3 @@ function render_bs_articles_avatar($attributes)
 	';
 }
 
-add_action('enqueue_block_editor_assets', 'bs_articles_avatar_editor_assets');
