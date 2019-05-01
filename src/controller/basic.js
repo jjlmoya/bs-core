@@ -24,6 +24,17 @@ export let BasicContent = function (className, attributes, setAttributes) {
 	/>);
 };
 
+
+export let BasicSeoDescription = function (className, attributes, setAttributes) {
+	return (<TextControl
+		className={`${className}__description`}
+		label={__('Descripción Seo')}
+		value={attributes.description}
+		onChange={description => setAttributes({description})}
+	/>);
+};
+
+
 export let BasicClaim = function (className, attributes, setAttributes) {
 	return (<TextControl
 		className={`${className}__claim`}
