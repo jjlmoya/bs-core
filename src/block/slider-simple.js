@@ -4,7 +4,7 @@ const {withSelect} = wp.data;
 const BlockTitle = __('Slider Simple');
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicTitle, BasicMaxEntries, BasicCta} from "../controller/basic";
+import {BasicMaxEntries, BasicCta} from "../controller/basic";
 import {BrandSelection, PostTypeSelection} from '../controller/selects';
 import {PostTypes} from '../api/data';
 

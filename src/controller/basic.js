@@ -38,9 +38,18 @@ export let BasicSeoDescription = function (className, attributes, setAttributes)
 export let BasicClaim = function (className, attributes, setAttributes) {
 	return (<TextControl
 		className={`${className}__claim`}
-		label={__('Subtitulo')}
+		label={__('Slogan')}
 		value={attributes.claim}
 		onChange={claim => setAttributes({claim})}
+	/>);
+};
+
+export let BasicSubtitle = function (className, attributes, setAttributes) {
+	return (<TextControl
+		className={`${className}__subtitle`}
+		label={__('Subtítulo')}
+		value={attributes.subtitle}
+		onChange={subtitle => setAttributes({subtitle})}
 	/>);
 };
 

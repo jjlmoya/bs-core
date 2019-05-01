@@ -9,3 +9,8 @@ export let PostTypes = function (select) {
 	return getPostTypes();
 };
 
+export let PostByType = function (select, type) {
+	const {getEntityRecords} = select('core');
+	const query = {per_page: -1};
+	return getEntityRecords('postType', type, query);
+};

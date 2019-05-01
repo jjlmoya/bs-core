@@ -43,3 +43,6 @@ require_once plugin_dir_path(__FILE__) . '../blocks/bs-slider-article.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-slim-articles.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-title-brand.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-slider-simple.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-head-circle.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-product-float.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-anchor-links.php';

@@ -40,7 +40,7 @@ export let PostTypeSelection = function (className, attributes, setAttributes, t
 				value: type.slug
 			}
 		})}
-		onChange={type => setAttributes({type})} />);
+		onChange={type => setAttributes({type})}/>);
 };
 
 export let HeadingSelection = function (className, attributes, setAttributes) {
@@ -71,4 +71,20 @@ export let HeadingSelection = function (className, attributes, setAttributes) {
 		value={attributes.heading}
 		options={getOptions()}
 		onChange={heading => setAttributes({heading})}/>);
+};
+
+
+export let PostSelection = function (className, attributes, setAttributes, posts) {
+	return (<SelectControl
+		label="Selecciona la Entrada:"
+		className={`${className}__post`}
+		value={attributes.post}
+		options={posts.map((post) => {
+			return {
+				label: post.title.raw,
+				value: post.id
+			}
+		})}
+		onChange={post => setAttributes({post})}
+	/>);
 };

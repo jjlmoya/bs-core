@@ -34,6 +34,7 @@ export const Icons = {
 	pages: 'admin-page',
 	slides: 'slides',
 	feed: 'feedback',
-	tag: 'nametag'
+	tag: 'nametag',
+	mark: 'pressthis'
 };
 export const EditorClass = 'og-block-edit';

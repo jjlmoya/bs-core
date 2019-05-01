@@ -13,3 +13,6 @@ import './block/slider-article';
 import './block/slim-articles';
 import './block/title-brand';
 import './block/slider-simple';
+import './block/head-circle';
+import './block/product-float';
+import './block/anchor-links';
