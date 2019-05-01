@@ -70,14 +70,12 @@ function render_bs_slider_simple($attributes)
 {
 	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
 	$max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 6;
-	$category = isset($attributes['category']) ? $attributes['category'] : '';
 	$cta = isset($attributes['cta']) ? $attributes['cta'] : '';
 	$type = isset($attributes['type']) ? $attributes['type'] : '';
 	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
 	$args = array(
 		'post_type' => $type,
 		'post_status' => 'publish',
-		'category' => $category,
 		'posts_per_page' => $max_entries
 	);
 
