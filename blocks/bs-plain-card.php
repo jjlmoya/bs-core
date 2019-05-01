@@ -15,6 +15,9 @@ register_block_type('bonseo/' . $block,
 			),
 			'className' => array(
 				'type' => 'string',
+			),
+			'brand' => array(
+				'type' => 'string',
 			)
 
 		),
@@ -51,6 +54,7 @@ function render_bs_plain_card($attributes)
 {
 	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
 	$entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
+	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
 	$type = isset($attributes['type']) ? $attributes['type'] : 'posts';
 	$args = array(
 		'post_type' => $type,
@@ -62,7 +66,7 @@ function render_bs_plain_card($attributes)
 		return "";
 	}
 	return '
-		<div class="og-block-samples l-flex l-flex--wrap a-pad l-flex--justify-center ' . $class . ' ">
+		<div class="og-block-samples l-flex l-flex--wrap a-pad l-flex--justify-center ' . $class . ' ' . $brand . '">
 			' . render_bs_plain_card_entries($posts) . '
         </div>';
 }

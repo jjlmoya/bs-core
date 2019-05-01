@@ -19,6 +19,9 @@ register_block_type('bonseo/' . $block,
 			),
 			'className' => array(
 				'type' => 'string',
+			),
+			'brand' => array(
+				'type' => 'string',
 			)
 
 		),
@@ -68,6 +71,7 @@ function render_bs_authors_extract($attributes)
 	$entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 0;
 	$title = isset($attributes['title']) ? $attributes['title'] : 'Nuestros Colaboradores:';
 	$type = isset($attributes['type']) ? $attributes['type'] : 'bs-service';
+	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
 	$args = array(
 		'post_type' => $type,
 		'post_status' => 'publish',
@@ -78,7 +82,7 @@ function render_bs_authors_extract($attributes)
 		return "";
 	}
 	return '
-	<section class="og-block-authors a-pad-40 ' . $class . '">
+	<section class="og-block-authors a-pad-40 ' . $class . ' ' . $brand . '">
 	<h2 class="a-text a-text--xl">' . $title . '</h2>
 		<div class="l-flex l-flex--justify-center l-flex--wrap a-pad--y">
 		' . render_bs_authors_extract_entries($authors) . '

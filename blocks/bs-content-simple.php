@@ -18,6 +18,9 @@ register_block_type('bonseo/' . $block,
 			'className' => array(
 				'type' => 'string',
 			),
+			'brand' => array(
+				'type' => 'string',
+			)
 		),
 		'render_callback' => 'render_bs_content_simple',
 	)
@@ -34,8 +37,9 @@ function render_bs_content_simple($attributes)
 	$content = isset($attributes['content']) ? $attributes["content"] : '';
 	$headSize= isset($attributes['heading']) ? $attributes['heading'] : 'h1';
 	$heading = isset($attributes['title']) ? render_bs_content_simple_header($headSize, $title) : '';
+	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
 	return '
-	<div class="og-content-plain a-pad-20 ' . $class . '">
+	<div class="og-content-plain a-pad-20 ' . $class . ' ' . $brand . '">
     	' . $heading . '
     	' . $content . '
     </div>';

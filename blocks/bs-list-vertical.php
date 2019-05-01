@@ -17,6 +17,9 @@ register_block_type('bonseo/' . $block,
 			),
 			'className' => array(
 				'type' => 'string',
+			),
+			'brand' => array(
+				'type' => 'string',
 			)
 
 		),
@@ -59,6 +62,7 @@ function render_bs_list_vertical($attributes)
 	$title = isset($attributes['title']) ? $attributes['title'] : '';
 	$entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
 	$type = isset($attributes['type']) ? $attributes['type'] : 'posts';
+	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
 	$args = array(
 		'post_type' => $type,
 		'post_status' => 'publish',
@@ -72,7 +76,7 @@ function render_bs_list_vertical($attributes)
 		<section class="og-list-title-vertical
 			   l-flex l-grid-column--full
 			   l-position
-			   a-bg ' . $class . ' ">
+			   a-bg ' . $class . ' ' . $brand . '">
 		   <h1 class="a-text  a-text--xl  og-list-title-vertical__title a-text--secondary">
 			  ' . $title . '
 		   </h1>

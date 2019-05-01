@@ -27,6 +27,9 @@ register_block_type('bonseo/' . $block,
 			),
 			'className' => array(
 				'type' => 'string',
+			),
+			'brand' => array(
+				'type' => 'string',
 			)
 
 		),
@@ -68,13 +71,14 @@ function render_bs_banner_data($attributes)
 		),
 	);
 	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
+	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
 
 
 	return '
 		<section class="og-banner-data 
 						l-flex l-flex--justify-space-around l-grid-column--full
 						a-bg--gradient--light a-bg--animated a-pad-40 l-flex--wrap
-						a-mi a-mi--left bs_viewport ' . $class . '">
+						a-mi a-mi--left bs_viewport ' . $class . ' ' . $brand . '">
 		' . render_bs_banner_data_entry($counterArray) . '
 		</section>';
 }

@@ -1,5 +1,3 @@
-import {BrandSelection} from "../controller/selects";
-
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Content Simple');

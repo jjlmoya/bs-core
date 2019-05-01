@@ -15,6 +15,12 @@ register_block_type('bonseo/' . $block,
 			),
 			'className' => array(
 				'type' => 'string',
+			),
+			'brand' => array(
+				'type' => 'string',
+			),
+			'type' => array(
+				'type' => 'string',
 			)
 		),
 		'render_callback' => 'render_bs_customer_opinions',
@@ -55,25 +61,26 @@ function render_bs_customer_opinions_render($opinions)
 function render_bs_customer_opinions($attributes)
 {
 	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
-	$max_opinions = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
+	$entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
 	$title = isset($attributes['title']) ? $attributes['title'] : '';
+	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
+	$type = isset($attributes['type']) ? $attributes['type'] : 'posts';
 	$args = array(
-		'post_type' => 'opinion',
+		'post_type' => $type,
 		'post_status' => 'publish',
-		'posts_per_page' => $max_opinions
+		'posts_per_page' => $entries
 	);
-	$opinions = new WP_Query($args);
-	if (empty($opinions)) {
+	$posts = new WP_Query($args);
+	if (empty($posts)) {
 		return "";
 	}
-
 	return '
-		<section class="og-block-testimony a-pad-40 ' . $class . '">
+		<section class="og-block-testimony a-pad-40 ' . $class . ' ' . $brand . '">
 			<h2 class="a-text a-text--xl  ">
         		' . $title . '
   		    </h2>
 			<div class="og-block-testimony__group l-flex a-pad l-flex--wrap l-flex--justify-center ">
-				' . render_bs_customer_opinions_render($opinions) . '
+				' . render_bs_customer_opinions_render($posts) . '
 			</div>
 		</section>';
 }

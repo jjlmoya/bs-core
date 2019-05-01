@@ -22,6 +22,9 @@ register_block_type('bonseo/' . $block,
 			),
 			'type' => array(
 				'type' => 'string',
+			),
+			'brand' => array(
+				'type' => 'string',
 			)
 		),
 		'render_callback' => 'render_bs_articles_condensed',
@@ -51,6 +54,7 @@ function render_bs_articles_condensed($attributes)
 	$category = isset($attributes['category']) ? $attributes['category'] : '';
 	$title = isset($attributes['title']) ? $attributes['title'] : '';
 	$type = isset($attributes['type']) ? $attributes['type'] : '';
+	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
 	$args = array(
 		'post_type' => $type,
 		'post_status' => 'publish',

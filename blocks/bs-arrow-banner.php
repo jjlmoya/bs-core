@@ -21,6 +21,9 @@ register_block_type('bonseo/' . $block,
 			),
 			'className' => array(
 				'type' => 'string',
+			),
+			'brand' => array(
+				'type' => 'string',
 			)
 		),
 		'render_callback' => 'render_bs_arrow_banner',
@@ -34,8 +37,9 @@ function render_bs_arrow_banner($attributes)
 	$cta = isset($attributes['cta']) ? $attributes['cta'] : '';
 	$url = isset($attributes['url']) ? $attributes['url'] : '';
 	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
+	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
 	return '
-		<section class="og-banner-arrow ' . $class . ' l-grid-column--full">
+		<section class="og-banner-arrow ' . $class . ' ' . $brand . ' l-grid-column--full">
 			<div class="og-banner-arrow__simple a-pad">
 				<h2 class="a-text a-text--xl a-text--secondary a-text--center">
 					' . $title . '

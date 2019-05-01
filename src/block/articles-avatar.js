@@ -1,6 +1,5 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
-const {SelectControl, TextControl} = wp.components;
 const {withSelect} = wp.data;
 const BlockTitle = __('Avatar Articles');
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
