@@ -12,3 +12,4 @@ import './block/plain-card';
 import './block/slider-article';
 import './block/slim-articles';
 import './block/title-brand';
+import './block/slider-simple';

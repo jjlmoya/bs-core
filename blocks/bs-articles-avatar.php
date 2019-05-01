@@ -41,10 +41,8 @@ function render_bs_articles_avatar_render($posts)
 		$content = isset($excerpt) ? $excerpt : get_the_content();
 		$image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
 		$url = esc_url(get_the_permalink());
-		$brand = get_post_meta(get_the_ID(), 'bs_theme_brand', TRUE);
-		$brand = isset($brand) ? $brand : '';
 		$html .= '
-			<div class="ml-article-avatar l-column--1-2 l-column--mobile--1-1 a-pad l-flex l-flex--align-center ' . $brand . '">
+			<div class="ml-article-avatar l-column--1-2 l-column--mobile--1-1 a-pad l-flex l-flex--align-center">
 				<a href="' . $url . '" class="ml-article-avatar__picture u-pointer">
 					<picture class="">
 						<img class="a-bg--light a-image a-image--avatar a-image--avatar--xl

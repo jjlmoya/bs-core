@@ -74,4 +74,13 @@ export let BasicMaxEntries = function (className, attributes, setAttributes) {
 	/>);
 };
 
+export let BasicCta = function (className, attributes, setAttributes) {
+	return (<TextControl
+		className={`${className}__cta`}
+		label={__('CTA')}
+		value={attributes.cta}
+		onChange={cta => setAttributes({cta})}
+	/>);
+};
+
 
