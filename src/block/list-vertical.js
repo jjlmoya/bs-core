@@ -10,13 +10,13 @@ const {registerBlockType} = wp.blocks;
 const {SelectControl, TextControl} = wp.components;
 const {withSelect} = wp.data;
 const BlockTitle = __('List Vertical');
-import {CoreKeywords, Icons} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup} from '../settings';
 
 
 registerBlockType('bonseo/block-bs-list-vertical', {
 	title: BlockTitle,
 	icon: Icons.vertical,
-	category: 'bonseo-blocks',
+	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: withSelect((select) => {
 		const {getPostTypes} = select('core');

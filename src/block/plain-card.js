@@ -10,12 +10,12 @@ const {registerBlockType} = wp.blocks;
 const {SelectControl, TextControl} = wp.components;
 const {withSelect} = wp.data;
 const BlockTitle = __('Plain Card');
-import {CoreKeywords, Icons} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup} from '../settings';
 
 registerBlockType('bonseo/block-bs-plain-card', {
 	title: BlockTitle,
 	icon: Icons.pages,
-	category: 'bonseo-blocks',
+	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: withSelect((select) => {
 		const {getPostTypes} = select('core');

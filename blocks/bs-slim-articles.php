@@ -33,6 +33,9 @@ register_block_type('bonseo/' . $block,
 			),
 			'type' => array(
 				'type' => 'string',
+			),
+			'brand' => array(
+				'type' => 'string',
 			)
 		),
 		'render_callback' => 'render_bs_articles_slim',
@@ -70,6 +73,7 @@ function render_bs_articles_slim($attributes)
 	$category = isset($attributes['category']) ? $attributes['category'] : '';
 	$title = isset($attributes['title']) ? $attributes['title'] : '';
 	$type = isset($attributes['type']) ? $attributes['type'] : '';
+	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
 	$args = array(
 		'post_type' => $type,
 		'post_status' => 'publish',
@@ -83,7 +87,7 @@ function render_bs_articles_slim($attributes)
 	}
 
 	return '
-	<section class="og-articles--slim a-mi a-mi--left bs_viewport a-pad--y-20 ' . $class . '">
+	<section class="og-articles--slim a-mi a-mi--left bs_viewport a-pad--y-20 ' . $class . ' ' . $brand . '">
 		<h3 class="a-text  l-column--1-1 a-text--center a-text--brand">
 			' . $title . '
 		</h3>    

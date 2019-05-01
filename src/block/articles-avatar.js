@@ -3,12 +3,12 @@ const {registerBlockType} = wp.blocks;
 const {SelectControl, TextControl} = wp.components;
 const {withSelect} = wp.data;
 const BlockTitle = __('Avatar Articles');
-import {CoreKeywords, Icons} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup} from '../settings';
 
 registerBlockType('bonseo/block-bs-articles-avatar', {
 	title: BlockTitle,
 	icon: Icons.writer,
-	category: 'bonseo-blocks',
+	category: CategoryGroup,
 	keywords: CoreKeywords,
 
 	edit: withSelect((select) => {

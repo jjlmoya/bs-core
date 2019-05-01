@@ -3,12 +3,12 @@ const {registerBlockType} = wp.blocks;
 const {SelectControl, TextControl} = wp.components;
 const {withSelect} = wp.data;
 const BlockTitle = __('Authors Extract');
-import {CoreKeywords, Icons} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup} from '../settings';
 
 registerBlockType('bonseo/block-bs-authors-extract', {
 	title: BlockTitle,
 	icon: Icons.quote,
-	category: 'bonseo-blocks',
+	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: withSelect((select) => {
 		const {getPostTypes} = select('core');

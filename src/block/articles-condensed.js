@@ -3,12 +3,12 @@ const {registerBlockType} = wp.blocks;
 const {SelectControl, TextControl} = wp.components;
 const {withSelect} = wp.data;
 const BlockTitle = __('Articles Condensed');
-import {CoreKeywords, Icons} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup} from '../settings';
 
 registerBlockType('bonseo/block-bs-articles-condensed', {
 	title: BlockTitle,
 	icon: Icons.pile,
-	category: 'bonseo-blocks',
+	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: withSelect((select) => {
 		const {getPostTypes} = select('core');

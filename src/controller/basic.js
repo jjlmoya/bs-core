@@ -24,6 +24,15 @@ export let BasicContent = function (className, attributes, setAttributes) {
 	/>);
 };
 
+export let BasicClaim = function (className, attributes, setAttributes) {
+	return (<TextControl
+		className={`${className}__claim`}
+		label={__('Subtitulo')}
+		value={attributes.claim}
+		onChange={claim => setAttributes({claim})}
+	/>);
+};
+
 export let BasicImage = function (className, attributes, setAttributes) {
 	function onImageSelect(imageObject) {
 		setAttributes({
@@ -53,3 +62,16 @@ export let BasicImage = function (className, attributes, setAttributes) {
 		)}
 	/>);
 };
+
+
+export let BasicMaxEntries = function (className, attributes, setAttributes) {
+	return (<TextControl
+		className={`${className}__max-entries`}
+		label={__('Cuántas entradas:')}
+		type="number"
+		value={attributes.max_entries}
+		onChange={max_entries => setAttributes({max_entries})}
+	/>);
+};
+
+

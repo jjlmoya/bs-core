@@ -5,7 +5,9 @@ export const CoreKeywords = [
 	__('CORE')
 ];
 
+export const CategoryGroup = 'bonseo-blocks';
 export const Brands = [
+	{label: 'No theme', value: ''},
 	{label: 'Aviator', value: 'aviator'},
 	{label: 'Diable', value: 'diable'},
 	{label: 'Forest', value: 'forest'},
@@ -35,3 +37,5 @@ export const Icons = {
 	feed: 'feedback',
 	tag: 'nametag'
 };
+
+export const EditorClass = 'og-block-edit';

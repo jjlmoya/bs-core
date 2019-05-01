@@ -10,12 +10,12 @@ const {MediaUpload} = wp.editor;
 const {SelectControl, TextControl} = wp.components;
 const {withSelect} = wp.data;
 const BlockTitle = __('Slider Article');
-import {CoreKeywords, Icons} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup} from '../settings';
 
 registerBlockType('bonseo/block-bs-slider-article', {
 	title: BlockTitle,
 	icon: Icons.slides,
-	category: 'bonseo-blocks',
+	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: withSelect((select) => {
 		const {getPostTypes} = select('core');

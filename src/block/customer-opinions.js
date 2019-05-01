@@ -2,12 +2,12 @@ const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {TextControl} = wp.components;
 const BlockTitle = __('Customer Opinions');
-import {CoreKeywords, Icons} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup} from '../settings';
 
 registerBlockType('bonseo/block-bs-customer-opinions', {
 	title: BlockTitle,
 	icon: Icons.pencil,
-	category: 'bonseo-blocks',
+	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: function ({posts, className, attributes, setAttributes}) {
 		return (

@@ -3,12 +3,12 @@ const {registerBlockType} = wp.blocks;
 const {TextControl, SelectControl} = wp.components;
 const {RichText} = wp.editor;
 const BlockTitle = __('Content Simple');
-import {CoreKeywords, Icons} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup} from '../settings';
 
 registerBlockType('bonseo/block-bs-content-simple', {
 	title: BlockTitle,
 	icon: Icons.content,
-	category: 'bonseo-blocks',
+	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: function ({posts, className, attributes, setAttributes}) {
 		var getOptions = function () {

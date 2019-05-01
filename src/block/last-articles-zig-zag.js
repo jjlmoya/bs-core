@@ -2,12 +2,12 @@ const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {TextControl} = wp.components;
 const BlockTitle = __('Last Articlez Zig Zag');
-import {CoreKeywords, Icons} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup} from '../settings';
 
 registerBlockType('bonseo/block-bs-last-articles-zig-zag', {
 	title: BlockTitle,
 	icon: Icons.list,
-	category: 'bonseo-blocks',
+	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: function ({posts, className, attributes, setAttributes}) {
 		return (
