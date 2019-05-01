@@ -1,18 +1,9 @@
-/**
- * BLOCK: bs-arrow-banner
- *
- * Registering a basic block with Gutenberg.
- * Simple block, renders and saves the same content without any interactivity.
- */
-
-
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Title Brand');
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
 import {BrandSelection} from '../controller/selects';
 import {BasicTitle, BasicContent, BasicImage, BasicClaim} from '../controller/basic';
-
 registerBlockType('bonseo/block-bs-title-brand', {
 	title: BlockTitle,
 	icon: Icons.tag,

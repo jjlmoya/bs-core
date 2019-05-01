@@ -10,7 +10,7 @@ register_block_type('bonseo/' . $block,
 			'content' => array(
 				'type' => 'string',
 			),
-			'max_posts' => array(
+			'max_entries' => array(
 				'type' => 'string',
 			),
 			'cta' => array(
@@ -80,12 +80,11 @@ function render_bs_banner_posts($posts, $cta, $words)
 function render_bs_last_articles_zig_zag($attributes)
 {
 
-	$entries = isset($attributes['max_posts']) ? $attributes['max_posts'] : 5;
+	$entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 5;
 	$title = isset($attributes['content']) ? $attributes['content'] : '';
 	$cta = isset($attributes['cta']) ? $attributes['cta'] : 'Leer';
 	$words = isset($attributes['words']) ? $attributes['words'] : 20;
 	$class = isset($attributes['className']) ? $attributes['className'] : '';
-
 	$posts = wp_get_recent_posts([
 		'numberposts' => $entries,
 		'post_status' => 'publish',

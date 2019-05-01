@@ -42,3 +42,33 @@ export let PostTypeSelection = function (className, attributes, setAttributes, t
 		})}
 		onChange={type => setAttributes({type})} />);
 };
+
+export let HeadingSelection = function (className, attributes, setAttributes) {
+	var getOptions = function () {
+		return [{
+			label: 1,
+			value: 'h1',
+		}, {
+			label: 2,
+			value: 'h2',
+		}, {
+			label: 3,
+			value: 'h3',
+		}, {
+			label: 4,
+			value: 'h4',
+		}, {
+			label: 5,
+			value: 'h5',
+		}, {
+			label: 6,
+			value: 'h6',
+		}]
+	};
+	return (<SelectControl
+		label="Heading"
+		className={`${className}__select`}
+		value={attributes.heading}
+		options={getOptions()}
+		onChange={heading => setAttributes({heading})}/>);
+};

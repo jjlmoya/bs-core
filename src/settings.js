@@ -4,7 +4,6 @@ export const CoreKeywords = [
 	__('BS'),
 	__('CORE')
 ];
-
 export const CategoryGroup = 'bonseo-blocks';
 export const Brands = [
 	{label: 'No theme', value: ''},
@@ -37,5 +36,4 @@ export const Icons = {
 	feed: 'feedback',
 	tag: 'nametag'
 };
-
 export const EditorClass = 'og-block-edit';

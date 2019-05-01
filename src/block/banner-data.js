@@ -2,7 +2,9 @@ const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {TextControl} = wp.components;
 const BlockTitle = __('Banner Data');
-import {CoreKeywords, Icons, CategoryGroup} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
+import {BrandSelection} from '../controller/selects';
+
 registerBlockType('bonseo/block-bs-banner-data', {
 	title: BlockTitle,
 	icon: Icons.circles,
@@ -10,7 +12,7 @@ registerBlockType('bonseo/block-bs-banner-data', {
 	keywords: CoreKeywords,
 	edit: function ({posts, className, attributes, setAttributes}) {
 		return (
-			<div>
+			<div className={EditorClass}>
 				<h2>{BlockTitle}</h2>
 				<TextControl
 					className={`${className}__counter1`}
@@ -54,6 +56,7 @@ registerBlockType('bonseo/block-bs-banner-data', {
 					value={attributes.name3}
 					onChange={name3 => setAttributes({name3})}
 				/>
+				{BrandSelection(className, attributes, setAttributes)}
 			</div>
 		);
 	},

@@ -3,7 +3,10 @@ const {registerBlockType} = wp.blocks;
 const {SelectControl, TextControl} = wp.components;
 const {withSelect} = wp.data;
 const BlockTitle = __('Avatar Articles');
-import {CoreKeywords, Icons, CategoryGroup} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
+import {LoadingComponent} from '../services/ux';
+import {BasicTitle, BasicMaxEntries} from "../controller/basic";
+import {BrandSelection, PostTypeSelection, CategorySelection} from '../controller/selects';
 
 registerBlockType('bonseo/block-bs-articles-avatar', {
 	title: BlockTitle,
@@ -22,7 +25,7 @@ registerBlockType('bonseo/block-bs-articles-avatar', {
 	})(function (props) {
 		const {attributes, className, setAttributes, isSelected} = props;
 		if (!props.categories) {
-			return "Loading...";
+			return LoadingComponent();
 		}
 
 		if (props.categories.length === 0) {
@@ -32,46 +35,13 @@ registerBlockType('bonseo/block-bs-articles-avatar', {
 		var types = [''].concat(props.types);
 
 		return (
-			<div>
+			<div className={EditorClass}>
 				<h2>{BlockTitle}</h2>
-				<TextControl
-					className={`${className}__title`}
-					label={__('Elige título:')}
-					value={attributes.title}
-					onChange={title => setAttributes({title})}
-				/>
-				<TextControl
-					className={`${className}__max-entries`}
-					label={__('Cuántas entradas:')}
-					type="number"
-					value={attributes.max_entries}
-					onChange={max_entries => setAttributes({max_entries})}
-				/>
-				<SelectControl
-					label="categoría"
-					className={`${className}__select`}
-					value={attributes.category}
-					options={categories.map((category) => {
-						return {
-							label: category.name,
-							value: category.id
-						}
-					})}
-					onChange={category => setAttributes({category})}
-				/>
-				<SelectControl
-					label="Tipo de Post"
-					className={`${className}__type`}
-					value={attributes.type}
-					options={types.map((type) => {
-						return {
-							label: type.name,
-							value: type.slug
-						}
-					})}
-					onChange={type => setAttributes({type})}
-				/>
-
+				{BasicTitle(className, attributes, setAttributes)}
+				{BasicMaxEntries(className, attributes, setAttributes)}
+				{CategorySelection(className, attributes, setAttributes, categories)}
+				{PostTypeSelection(className, attributes, setAttributes, types)}
+				{BrandSelection(className, attributes, setAttributes)}
 			</div>
 		);
 	}),

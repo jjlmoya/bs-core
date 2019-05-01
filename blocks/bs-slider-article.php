@@ -9,13 +9,16 @@ register_block_type('bonseo/' . $block,
 			'title' => array(
 				'type' => 'string',
 			),
-			'backgroundImage' => array(
+			'image' => array(
 				'type' => 'string',
 			),
 			'type' => array(
 				'type' => 'string',
 			),
 			'className' => array(
+				'type' => 'string',
+			),
+			'brand' => array(
 				'type' => 'string',
 			),
 		),
@@ -45,9 +48,10 @@ function render_bs_slider_article_post($articles)
 function render_bs_slider_article($attributes)
 {
 	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
-	$image = isset($attributes['backgroundImage']) ? $attributes["backgroundImage"] : '';
+	$image = isset($attributes['image']) ? $attributes["image"] : '';
 	$title = isset($attributes['title']) ? $attributes["title"] : '';
 	$type = isset($attributes['type']) ? $attributes["type"] : 'posts';
+	$brand = isset($attributes['brand']) ? $attributes["brand"] : '';
 	$args = array(
 		'post_type' => $type,
 		'post_status' => 'publish',
@@ -60,7 +64,7 @@ function render_bs_slider_article($attributes)
 	return '
 		<section class="og-slider og-slider--articles
 		 			   l-flex l-flex--direction-column l-grid-column--full 
-		 			    a-bg--image a-bg--image--technology ' . $class . '">
+		 			    a-bg--image a-bg--image--technology ' . $class . ' ' . $brand . '">
 			<h1 class="a-text a-text--xl a-text--secondary a-mar-40 og-slider--articles__text">
 				' . $title . '
 			</h1>    

@@ -1,9 +1,3 @@
-/**
- * BLOCK: bs-articles-avatar
- *
- * Registering a basic block with Gutenberg.
- * Simple block, renders and saves the same content without any interactivity.
- */
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
@@ -11,7 +5,8 @@ const BlockTitle = __('Artículos Slim');
 import {CoreKeywords, Icons, EditorClass} from '../settings';
 import {BrandSelection, CategorySelection, PostTypeSelection} from '../controller/selects';
 import {BasicTitle, BasicMaxEntries} from '../controller/basic';
-import {PostTypes, Categories} from'../api/data';
+import {PostTypes, Categories} from '../api/data';
+import {LoadingComponent} from '../services/ux';
 
 registerBlockType('bonseo/block-bs-articles-slim', {
 	title: BlockTitle,
@@ -28,7 +23,7 @@ registerBlockType('bonseo/block-bs-articles-slim', {
 	})(function (props) {
 		const {attributes, className, setAttributes} = props;
 		if (!props.categories) {
-			return "Loading...";
+			return LoadingComponent();
 		}
 
 		if (props.categories.length === 0) {

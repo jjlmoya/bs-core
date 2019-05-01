@@ -10,7 +10,7 @@ register_block_type('bonseo/' . $block,
 			'title' => array(
 				'type' => 'string',
 			),
-			'max_opinions' => array(
+			'max_entries' => array(
 				'type' => 'string',
 			),
 			'className' => array(
@@ -55,7 +55,7 @@ function render_bs_customer_opinions_render($opinions)
 function render_bs_customer_opinions($attributes)
 {
 	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
-	$max_opinions = isset($attributes['max_opinions']) ? $attributes['max_opinions'] : 3;
+	$max_opinions = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
 	$title = isset($attributes['title']) ? $attributes['title'] : '';
 	$args = array(
 		'post_type' => 'opinion',

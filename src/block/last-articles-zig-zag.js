@@ -2,7 +2,10 @@ const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {TextControl} = wp.components;
 const BlockTitle = __('Last Articlez Zig Zag');
-import {CoreKeywords, Icons, CategoryGroup} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
+import {BasicTitle, BasicMaxEntries} from "../controller/basic";
+import {BrandSelection, PostTypeSelection} from '../controller/selects';
+
 
 registerBlockType('bonseo/block-bs-last-articles-zig-zag', {
 	title: BlockTitle,
@@ -11,21 +14,10 @@ registerBlockType('bonseo/block-bs-last-articles-zig-zag', {
 	keywords: CoreKeywords,
 	edit: function ({posts, className, attributes, setAttributes}) {
 		return (
-			<div>
+			<div className={EditorClass}>
 				<h2>{BlockTitle}</h2>
-				<TextControl
-					className={`${className}__title`}
-					label={__('Encabezado del bloque:')}
-					value={attributes.content}
-					onChange={content => setAttributes({content})}
-				/>
-				<TextControl
-					className={`${className}__number`}
-					type="number"
-					label={__('Entradas a mostrar:')}
-					value={attributes.max_posts}
-					onChange={max_posts => setAttributes({max_posts})}
-				/>
+				{BasicTitle(className, attributes, setAttributes)}
+				{BasicMaxEntries(className, attributes, setAttributes)}
 				<TextControl
 					className={`${className}__cta`}
 					label={__('Boton CTA')}
@@ -39,12 +31,11 @@ registerBlockType('bonseo/block-bs-last-articles-zig-zag', {
 					value={attributes.words}
 					onChange={words => setAttributes({words})}
 				/>
+				{BrandSelection(className, attributes, setAttributes)}
 			</div>
 		);
 	},
 	save: function () {
 		return null;
-	}
-	,
-})
-;
+	},
+});

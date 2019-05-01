@@ -3,7 +3,10 @@ const {registerBlockType} = wp.blocks;
 const {SelectControl, TextControl} = wp.components;
 const {withSelect} = wp.data;
 const BlockTitle = __('Authors Extract');
-import {CoreKeywords, Icons, CategoryGroup} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
+import {LoadingComponent} from '../services/ux';
+import {BasicTitle} from "../controller/basic";
+import {BrandSelection} from '../controller/selects';
 
 registerBlockType('bonseo/block-bs-authors-extract', {
 	title: BlockTitle,
@@ -19,17 +22,12 @@ registerBlockType('bonseo/block-bs-authors-extract', {
 		const {attributes, className, setAttributes} = props;
 		var types = props.types;
 		if (!props.types) {
-			return "Loading...";
+			return LoadingComponent();
 		}
 		return (
-			<div>
+			<div className={EditorClass}>
 				<h2>{BlockTitle}</h2>
-				<TextControl
-					className={`${className}__title`}
-					label={__('Elige título:')}
-					value={attributes.title}
-					onChange={title => setAttributes({title})}
-				/>
+				{BasicTitle(className, attributes, setAttributes)}
 				<TextControl
 					className={`${className}__max_entries`}
 					label={__('Cuántas entradas:')}
@@ -49,6 +47,7 @@ registerBlockType('bonseo/block-bs-authors-extract', {
 					})}
 					onChange={type => setAttributes({type})}
 				/>
+				{BrandSelection(className, attributes, setAttributes)}
 			</div>
 		);
 	}),

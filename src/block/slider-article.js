@@ -1,16 +1,12 @@
-/**
- * BLOCK: bs-last-articles-zig-zag
- *
- * Registering a basic block with Gutenberg.
- * Simple block, renders and saves the same content without any interactivity.
- */
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
-const {MediaUpload} = wp.editor;
-const {SelectControl, TextControl} = wp.components;
 const {withSelect} = wp.data;
 const BlockTitle = __('Slider Article');
-import {CoreKeywords, Icons, CategoryGroup} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
+import {BrandSelection, PostTypeSelection} from '../controller/selects';
+import {BasicTitle, BasicImage} from '../controller/basic';
+import {PostTypes} from '../api/data';
+import {LoadingComponent} from '../services/ux';
 
 registerBlockType('bonseo/block-bs-slider-article', {
 	title: BlockTitle,
@@ -18,65 +14,21 @@ registerBlockType('bonseo/block-bs-slider-article', {
 	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: withSelect((select) => {
-		const {getPostTypes} = select('core');
 		return {
-			types: getPostTypes(),
+			types: PostTypes(select),
 		};
 	})(function (props) {
 		const {attributes, className, setAttributes} = props;
-		var types = props.types;
 		if (!props.types) {
-			return "Loading...";
+			return LoadingComponent();
 		}
-		function onImageSelect(imageObject) {
-			setAttributes({
-				backgroundImage: imageObject.sizes.full.url
-			})
-		};
-		function drawImageButton(open) {
-			var html;
-			if (attributes.backgroundImage) {
-				html = <img src={attributes.backgroundImage}/>;
-			} else {
-				html = "Upload";
-			}
-
-			return (<button onClick={open}>
-				{html}
-			</button>)
-
-		}
-
 		return (
-			<div>
+			<div className={EditorClass}>
 				<h2>{BlockTitle}</h2>
-				<TextControl
-					className={`${className}__title`}
-					label={__('Encabezado del bloque:')}
-					value={attributes.title}
-					onChange={title => setAttributes({title})}
-				/>
-				<SelectControl
-					label="Tipo de Post"
-					className={`${className}__type`}
-					value={attributes.type}
-					options={types.map((type) => {
-						return {
-							label: type.name,
-							value: type.slug
-						}
-					})}
-					onChange={type => setAttributes({type})}
-				/>
-				<MediaUpload
-					onSelect={onImageSelect}
-					type="image"
-					value={attributes.backgroundImage}
-					render={({open}) => (
-						drawImageButton(open)
-					)}
-				/>
-
+				{BasicTitle(className, attributes, setAttributes)}
+				{PostTypeSelection(className, attributes, setAttributes, props.types)}
+				{BasicImage(className, attributes, setAttributes)}
+				{BrandSelection(className, attributes, setAttributes)}
 			</div>
 		);
 	}),

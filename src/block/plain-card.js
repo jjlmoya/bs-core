@@ -1,16 +1,13 @@
-/**
- * BLOCK: bs-plain-card
- *
- * Registering a basic block with Gutenberg.
- * Simple block, renders and saves the same content without any interactivity.
- */
-
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
-const {SelectControl, TextControl} = wp.components;
 const {withSelect} = wp.data;
 const BlockTitle = __('Plain Card');
-import {CoreKeywords, Icons, CategoryGroup} from '../settings';
+import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
+import {LoadingComponent} from '../services/ux';
+import {BasicMaxEntries} from '../controller/basic';
+import {BrandSelection, PostTypeSelection} from '../controller/selects';
+import {PostTypes} from '../api/data';
+
 
 registerBlockType('bonseo/block-bs-plain-card', {
 	title: BlockTitle,
@@ -18,38 +15,21 @@ registerBlockType('bonseo/block-bs-plain-card', {
 	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: withSelect((select) => {
-		const {getPostTypes} = select('core');
 		return {
-			types: getPostTypes(),
+			types: PostTypes(select),
 		};
 	})(function (props) {
 		const {attributes, className, setAttributes} = props;
 		var types = props.types;
 		if (!props.types) {
-			return "Loading...";
+			return LoadingComponent();
 		}
 		return (
-			<div>
+			<div className={EditorClass}>
 				<h2>{BlockTitle}</h2>
-				<TextControl
-					className={`${className}__max_entries`}
-					label={__('Cuántas entradas:')}
-					type="number"
-					value={attributes.max_entries}
-					onChange={max_entries => setAttributes({max_entries})}
-				/>
-				<SelectControl
-					label="Tipo de Post"
-					className={`${className}__type`}
-					value={attributes.type}
-					options={types.map((type) => {
-						return {
-							label: type.name,
-							value: type.slug
-						}
-					})}
-					onChange={type => setAttributes({type})}
-				/>
+				{BasicMaxEntries(className, attributes, setAttributes)}
+				{PostTypeSelection(className, attributes, setAttributes, types)}
+				{BrandSelection(className, attributes, setAttributes)}
 			</div>
 		);
 	}),
