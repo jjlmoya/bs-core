@@ -33,7 +33,7 @@ function render_bs_slider_simple_render_navigation($length)
 	$html = '';
 	$class = 'is-active';
 	for ($i = 0; $i < intval($length); $i++) {
-		$html .= '<a href="#og_slider_position__' . $i . '" s
+		$html .= '<a href="#' . ($i + 1) . '" s
 					class="a-mar--right-5 a-button u-pointer a-button--slider bs_slider_button ' . $class . ' "></a>';
 		$class = '';
 	}
@@ -45,11 +45,12 @@ function render_bs_slider_simple_render_elements($posts, $cta)
 	$html = '';
 	$index = 0;
 	while ($posts->have_posts()) : $posts->the_post();
+		$index++;
 		$title = get_the_title();
 		$image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
 		$url = esc_url(get_the_permalink());
 		$html .= '
-		  <div id="og_slider_position__' . $index . '" class="og-slider--simple__slide l-column--1-1 l-flex l-flex--justify-space-evenly l-flex--align-center l-flex--direction-column l-position bs_slide is-active">
+		  <div id="' . $index . '" class="og-slider--simple__slide l-column--1-1 l-flex l-flex--justify-space-evenly l-flex--align-center l-flex--direction-column l-position bs_slide is-active">
 			 <picture class="a-image a-image--background l-position--absolute a-pad-0 ">
 				<img class="a-image l-column--1-1 a-image--cover" src="' . $image . '">
 			 </picture>
@@ -61,6 +62,7 @@ function render_bs_slider_simple_render_elements($posts, $cta)
 			 </a>
 		  </div>
 		';
+
 		unset($post);
 	endwhile;
 	return $html;
@@ -87,7 +89,7 @@ function render_bs_slider_simple($attributes)
 	<section class="og-slider--simple
 	   l-grid-column--full
 	   l-flex l-flex--align-center l-flex--justify-center
-	   l-position bs_slider '.$brand.' ' .$class. ' ">
+	   l-position bs_slider ' . $brand . ' ' . $class . ' ">
 	   <div class="ml-arrow ml-arrow--left
 		  a-bg--gradient--dark a-text--secondary
 		  ml-arrow--full l-flex l-flex--align-center l-flex--justify-center">
@@ -103,7 +105,7 @@ function render_bs_slider_simple($attributes)
 	   	  ' . render_bs_slider_simple_render_elements($posts, $cta) . '
 	   </div>
 	   <div class="ml-slider-buttons l-flex l-position--absolute l-position--absolute--bottom og-slider--simple__buttons a-pad">
-	   	  ' . render_bs_slider_simple_render_navigation($posts->found_posts) . '
+	   	  ' . render_bs_slider_simple_render_navigation($max_entries) . '
 	   </div>
 	</section>
 	';

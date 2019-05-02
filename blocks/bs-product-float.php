@@ -83,6 +83,8 @@ function render_bs_product_float($attributes)
 	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
 	$postID = isset($attributes['post']) ? $attributes['post'] : '';
 	$post = get_post($postID);
+	$affiliateLink = get_post_meta($postID, 'affiliateLink', false);
+	var_dump($affiliateLink);
 	var_dump($post);
 	return '
 	<section class="ml-product-float a-bg--gradient--transparent-to-top
