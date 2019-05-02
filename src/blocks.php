@@ -47,3 +47,4 @@ require_once plugin_dir_path(__FILE__) . '../blocks/bs-head-circle.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-product-float.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-anchor-links.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-product-curved.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-link-category.php';

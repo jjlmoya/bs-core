@@ -2,9 +2,7 @@
 if (!defined('ABSPATH')) {
 	exit;
 }
-
 $block = 'block-bs-title-brand';
-
 register_block_type('bonseo/' . $block,
 	array(
 		'attributes' => array(

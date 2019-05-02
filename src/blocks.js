@@ -17,3 +17,4 @@ import './block/head-circle';
 import './block/product-float';
 import './block/anchor-links';
 import './block/product-curved';
+import './block/link-category';

@@ -1,21 +1,8 @@
 <?php
-/**
- * Blocks Initializer
- *
- * Enqueue CSS/JS of all the blocks.
- *
- * @since   1.0.0
- * @package BS
- */
-
-// Exit if accessed directly.
 if (!defined('ABSPATH')) {
 	exit;
 }
-
 $block = 'block-bs-articles-slim';
-
-// Hook server side rendering into render callback
 register_block_type('bonseo/' . $block,
 	array(
 		'attributes' => array(
