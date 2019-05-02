@@ -103,4 +103,13 @@ export let BasicCta = function (className, attributes, setAttributes) {
 	/>);
 };
 
+export let BasicUrl = function (className, attributes, setAttributes) {
+	return (<TextControl
+		className={`${className}__url`}
+		label={__('Link Url:')}
+		value={attributes.url}
+		onChange={url => setAttributes({url})}
+	/>);
+};
+
 
