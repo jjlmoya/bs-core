@@ -80,16 +80,17 @@ export let HeadingSelection = function (className, attributes, setAttributes) {
 
 
 export let PostSelection = function (className, attributes, setAttributes, posts) {
+	console.log(attributes.selectedPost);
 	return (<SelectControl
 		label="Selecciona la Entrada:"
 		className={`${className}__post`}
-		value={attributes.post}
+		value={attributes.selectedPost}
 		options={posts.map((post) => {
 			return {
 				label: post.title.raw,
 				value: post.id
 			}
 		})}
-		onChange={post => setAttributes({post})}
+		onChange={selectedPost => setAttributes({selectedPost})}
 	/>);
 };
