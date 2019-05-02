@@ -29,18 +29,21 @@ register_block_type('bonseo/' . $block,
 	)
 );
 
+
+
+
 function render_bs_authors_extract_entries($authors)
 {
 	$html = '';
 	while ($authors->have_posts()) : $authors->the_post();
+		$postID = get_the_ID();
 		$title = get_the_title();
-		$image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
-		$description = get_the_excerpt(get_the_ID());
+		$image = esc_url(get_the_post_thumbnail_url($postID));
+		$description =  wp_trim_words(get_the_content(), 20, '...');
 		$link = esc_url(get_the_permalink());
-		$position = get_post_meta(get_the_ID(), 'bs_publisher_position', TRUE);
-		$brand = get_post_meta(get_the_ID(), 'bs_theme_brand', TRUE);
+		$position = get_post_meta($postID, 'bs_publisher_position', true);
 		$html .= '
-		<div class="ml-card-author l-flex l-flex--direction-column l-flex--justify-center l-column--1-3 l-column--mobile--2-3 a-pad ' . $brand . '">
+		<div class="ml-card-author l-flex l-flex--direction-column l-flex--justify-center l-column--1-3 l-column--mobile--2-3 a-pad">
 			<div class="ml-card-author__image l-flex-item--align-center l-column--1-1">
 				<picture class="a-pad l-column--1-1 a-pad-0">
 					<img class="a-image l-column--1-1" src="' . $image . '">

@@ -37,8 +37,7 @@ function render_bs_articles_avatar_render($posts)
 	$html = '';
 	while ($posts->have_posts()) : $posts->the_post();
 		$title = get_the_title();
-		$excerpt = get_the_excerpt(get_the_ID());
-		$content = isset($excerpt) ? $excerpt : get_the_content();
+		$content =  wp_trim_words(get_the_content(), 20, '...');
 		$image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
 		$url = esc_url(get_the_permalink());
 		$html .= '
