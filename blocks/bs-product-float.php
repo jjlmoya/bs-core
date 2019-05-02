@@ -92,17 +92,20 @@ function render_bs_product_float($attributes)
 	$markerX = get_post_meta($postID, get_post_type($postID) . '_cordX', true);
 	$markerY = get_post_meta($postID, get_post_type($postID) . '_cordY', true);
 	$price = get_post_meta($postID, get_post_type($postID) . '_price', true);
+	$image = esc_url(get_the_post_thumbnail_url($postID));
+
 
 	return '
-	<div class="l-flex l-flex--justify-center">
-		<section class="ml-product-float a-bg--gradient--transparent-to-top
+	<section class="l-flex l-flex--justify-center">
+		<div class="ml-product-float a-bg--gradient--transparent-to-top
 			a-mar a-mar--top-60
 			l-flex l-flex--align-center l-flex--justify-center l-flex--direction-column ' . $class . ' ' . $brand . '">
 			<div class="ml-product-float__content
 				l-flex l-flex--direction-column  l-flex-align--center
 				a-mar-auto a-bg a-pad--x">
 					<picture class="a-text--center a-pad-0">
-						<img data-target="" class="a-image a-mar--minus-60" src="https://www.paredesoriginales.com/328-large_default/vinilo-torre-eiffel.jpg">
+						<img data-target="" class="a-image a-mar--minus-60 u-shadow--bottom" 
+						src="' . $image . '">
 					</picture>
 					<h2 class="a-text a-text--xl  a-text--m a-text--secondary a-pad--y-5">' . $post->post_title . '</h2>
 					' . render_bs_product_float_price($price) . '
@@ -113,8 +116,8 @@ function render_bs_product_float($attributes)
 			<div class="ml-action-icons ml-product-float__action a-mar--minus l-flex">
 				' . render_bs_product_float_actions($affiliateLink, $markerX, $markerY) . '
 			</div>
-		</section>
-	</div>';
+		</div>
+	</section>';
 }
 
 
