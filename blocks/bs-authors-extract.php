@@ -85,7 +85,7 @@ function render_bs_authors_extract($attributes)
 		return "";
 	}
 	return '
-	<section class="og-block-authors a-pad-40 ' . $class . ' ' . $brand . '">
+	<section class="og-block-authors ' . $class . ' ' . $brand . '">
 	<h2 class="a-text a-text--xl">' . $title . '</h2>
 		<div class="l-flex l-flex--justify-center l-flex--wrap a-pad--y">
 		' . render_bs_authors_extract_entries($authors) . '
