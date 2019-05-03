@@ -1,8 +1,8 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
-const BlockTitle = __('Artículos Slim');
-const BlockUrl = __('articulos-slim');
+const BlockTitle = __('Extracto de Artículos Básicos');
+const BlockUrl = __('articulos-basicos');
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
 import {BrandSelection, CategorySelection, PostTypeSelection} from '../controller/selects';
 import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent} from '../controller/basic';
@@ -24,7 +24,7 @@ registerBlockType('bonseo/block-bs-articles-slim', {
 		if (!props.categories || !props.types) {
 			return LoadingComponent();
 		}
-		console.log(props);
+
 		return (
 			<div className={EditorClass}>
 				{TitleComponent(BlockTitle)}

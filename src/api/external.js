@@ -1,6 +1,15 @@
 const {apiFetch} = wp;
-export const PostTypeFetch = function () {
-	apiFetch({path: '/wp/v2/types'}).then(types => {
-		console.log(types);
-	});
+import {map} from 'lodash';
+
+
+const YieldPostType = function* () {
+	let i = 1;
+	console.log(i++);
+	yield apiFetch({path: '/wp/v2/types?context=edit'}).next().value;
+};
+export const PostTypeFetch = function* () {
+	let postType = yield YieldPostType();
+	yield postType.next().value.then(function (data) {
+		return Object.keys(data).map(i => data[i])
+	})
 };
