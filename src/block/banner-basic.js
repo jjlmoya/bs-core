@@ -1,12 +1,12 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {TextControl} = wp.components;
-const BlockTitle = __('Banner Basic');
+const BlockTitle = __('Banner Básico');
+const BlockUrl = __('banner-basico');
+
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BasicTitle} from "../controller/basic";
+import {BasicTitle, BasicCta, BasicUrl, TitleComponent, DescriptionComponent} from "../controller/basic";
 import {BrandSelection} from '../controller/selects';
-
-
 registerBlockType('bonseo/block-bs-banner-basic', {
 	title: BlockTitle,
 	icon: Icons.minus,
@@ -15,7 +15,8 @@ registerBlockType('bonseo/block-bs-banner-basic', {
 	edit: function ({posts, className, attributes, setAttributes}) {
 		return (
 			<div className={EditorClass}>
-				<h2> {BlockTitle} </h2>
+				{TitleComponent(BlockTitle)}
+				{DescriptionComponent(BlockUrl)}
 				{BasicTitle(className, attributes, setAttributes)}
 				<TextControl
 					className={`${className}__content`}
@@ -23,18 +24,8 @@ registerBlockType('bonseo/block-bs-banner-basic', {
 					value={attributes.content}
 					onChange={content => setAttributes({content})}
 				/>
-				<TextControl
-					className={`${className}__cta`}
-					label={__('CTA')}
-					value={attributes.cta}
-					onChange={cta => setAttributes({cta})}
-				/>
-				<TextControl
-					className={`${className}__url`}
-					label={__('Url o Email(mailto:)')}
-					value={attributes.url}
-					onChange={url => setAttributes({url})}
-				/>
+				{BasicCta(className, attributes, setAttributes)}
+				{BasicUrl(className, attributes, setAttributes)}
 				{BrandSelection(className, attributes, setAttributes)}
 			</div>
 		);

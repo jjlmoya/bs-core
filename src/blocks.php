@@ -8,6 +8,11 @@ function bs_core_blocks_editor_assets()
 		filemtime(plugin_dir_path(__DIR__) . 'dist/blocks.build.js'),
 		true
 	);
+
+	wp_enqueue_style(
+		'bs_core_blocks_block_css',
+		plugins_url('/assets/style.css', dirname(__FILE__))
+	);
 }
 
 if (!function_exists('bs_create_block_category')) {

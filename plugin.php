@@ -40,6 +40,12 @@ function bs_core_scripts()
 	wp_enqueue_script('bs-core-script', plugins_url('assets/index.js', __FILE__), array(), $timestamp, true);
 }
 
+add_filter( 'admin_body_class', 'bs_core_admin_body_class' );
+
+function bs_core_admin_body_class( $classes ) {
+	return "$classes sky";
+}
+
 add_action('wp_enqueue_scripts', 'bs_core_scripts');
 
 require_once plugin_dir_path(__FILE__) . '/model/brand.php';

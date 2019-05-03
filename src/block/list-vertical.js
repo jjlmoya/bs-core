@@ -1,11 +1,13 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
-const BlockTitle = __('List Vertical');
+const BlockTitle = __('Lista Vertical');
+const BlockUrl = __('lista-vertical');
+
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicTitle, BasicMaxEntries} from '../controller/basic';
-import {PostTypes} from '../api/data';
+import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent} from '../controller/basic';
+import {PostTypes} from '../api/core';
 import {BrandSelection, PostTypeSelection} from '../controller/selects';
 
 registerBlockType('bonseo/block-bs-list-vertical', {
@@ -19,16 +21,16 @@ registerBlockType('bonseo/block-bs-list-vertical', {
 		};
 	})(function (props) {
 		const {attributes, className, setAttributes} = props;
-		var types = props.types;
 		if (!props.types) {
 			return LoadingComponent();
 		}
 		return (
 			<div className={EditorClass}>
-				<h2>{BlockTitle}</h2>
+				{TitleComponent(BlockTitle)}
+				{DescriptionComponent(BlockUrl)}
 				{BasicTitle(className, attributes, setAttributes)}
 				{BasicMaxEntries(className, attributes, setAttributes)}
-				{PostTypeSelection(className, attributes, setAttributes, types)}
+				{PostTypeSelection(className, attributes, setAttributes, props.types)}
 				{BrandSelection(className, attributes, setAttributes)}
 			</div>
 		);

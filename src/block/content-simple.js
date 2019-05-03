@@ -1,11 +1,11 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
-const BlockTitle = __('Content Simple');
+const BlockTitle = __('Contenido Simple');
+const BlockUrl = __('contenido-simple');
+
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BasicTitle, BasicContent} from "../controller/basic";
+import {BasicTitle, BasicContent, TitleComponent, DescriptionComponent} from "../controller/basic";
 import {BrandSelection, HeadingSelection} from '../controller/selects';
-
-
 
 registerBlockType('bonseo/block-bs-content-simple', {
 	title: BlockTitle,
@@ -15,7 +15,8 @@ registerBlockType('bonseo/block-bs-content-simple', {
 	edit: function ({posts, className, attributes, setAttributes}) {
 		return (
 			<div className={EditorClass}>
-				<h2>{BlockTitle}</h2>
+				{TitleComponent(BlockTitle)}
+				{DescriptionComponent(BlockUrl)}
 				{BasicTitle(className, attributes, setAttributes)}
 				{BasicContent(className, attributes, setAttributes)}
 				{HeadingSelection(className, attributes, setAttributes)}

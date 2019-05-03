@@ -1,11 +1,17 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
-const BlockTitle = __('Articles Condensed');
+const BlockTitle = __('Artículos Condensados');
+const BlockUrl = __('articulos-condensados');
+
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicTitle, BasicMaxEntries, BasicSeoDescription} from "../controller/basic";
+import {
+	BasicTitle, BasicMaxEntries, BasicSeoDescription, TitleComponent,
+	DescriptionComponent
+} from "../controller/basic";
 import {BrandSelection, PostTypeSelection} from '../controller/selects';
+import {PostTypes} from "../api/core";
 
 registerBlockType('bonseo/block-bs-articles-condensed', {
 	title: BlockTitle,
@@ -13,22 +19,21 @@ registerBlockType('bonseo/block-bs-articles-condensed', {
 	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: withSelect((select) => {
-		const {getPostTypes} = select('core');
 		return {
-			types: getPostTypes(),
+			types: PostTypes(select)
 		};
-	})( function (props) {
+	})(function (props) {
 		const {attributes, className, setAttributes} = props;
-		var types = props.types;
 		if (!props.types) {
 			return LoadingComponent();
 		}
 		return (
 			<div className={EditorClass}>
-				<h2>{BlockTitle}</h2>
+				{TitleComponent(BlockTitle)}
+				{DescriptionComponent(BlockUrl)}
 				{BasicTitle(className, attributes, setAttributes)}
 				{BasicMaxEntries(className, attributes, setAttributes)}
-				{PostTypeSelection(className, attributes, setAttributes, types)}
+				{PostTypeSelection(className, attributes, setAttributes, props.types)}
 				{BasicSeoDescription(className, attributes, setAttributes)}
 				{BrandSelection(className, attributes, setAttributes)}
 			</div>

@@ -1,9 +1,13 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
-const BlockTitle = __('Product Curved (H1, Image Transparent)');
+const BlockTitle = __('Producto Curvado (H1, Image Transparente)');
+const BlockUrl = __('producto-curvado');
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
 import {BrandSelection} from '../controller/selects';
-import {BasicTitle, BasicImage, BasicClaim, BasicCta, BasicUrl} from '../controller/basic';
+import {
+	BasicTitle, BasicImage, BasicClaim, BasicCta, BasicUrl, TitleComponent,
+	DescriptionComponent
+} from '../controller/basic';
 
 registerBlockType('bonseo/block-bs-product-curved', {
 	title: BlockTitle,
@@ -12,16 +16,15 @@ registerBlockType('bonseo/block-bs-product-curved', {
 	keywords: CoreKeywords,
 	edit: function ({posts, className, attributes, setAttributes}) {
 		return (
-			<div className="">
-				<h2>{BlockTitle}</h2>
-				<div className={EditorClass}>
-					{BasicTitle(className, attributes, setAttributes)}
-					{BasicClaim(className, attributes, setAttributes)}
-					{BrandSelection(className, attributes, setAttributes)}
-					{BasicImage(className, attributes, setAttributes)}
-					{BasicCta(className, attributes, setAttributes)}
-					{BasicUrl(className, attributes, setAttributes)}
-				</div>
+			<div className={EditorClass}>
+				{TitleComponent(BlockTitle)}
+				{DescriptionComponent(BlockUrl)}
+				{BasicTitle(className, attributes, setAttributes)}
+				{BasicClaim(className, attributes, setAttributes)}
+				{BrandSelection(className, attributes, setAttributes)}
+				{BasicImage(className, attributes, setAttributes)}
+				{BasicCta(className, attributes, setAttributes)}
+				{BasicUrl(className, attributes, setAttributes)}
 			</div>
 		);
 	},

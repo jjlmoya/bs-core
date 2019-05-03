@@ -1,10 +1,13 @@
+import {DescriptionComponent, TitleComponent} from "../controller/basic";
+
 const {withSelect} = wp.data;
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
-const BlockTitle = __('Product Float');
+const BlockTitle = __('Producto Flotante');
+const BlockUrl = __('producto-flotante');
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {BrandSelection, PostSelection} from '../controller/selects';
-import {PostByType} from "../api/data";
+import {PostByType} from "../api/core";
 import {LoadingComponent} from "../services/ux";
 
 registerBlockType('bonseo/block-bs-product-float', {
@@ -30,14 +33,15 @@ registerBlockType('bonseo/block-bs-product-float', {
 			return (
 				<div>
 					<h3>No hay Posts</h3>
-					<p> Este módulo necesita Posts para funcionar.</p>
+					<p>Este módulo necesita Posts para funcionar.</p>
 				</div>);
 		} else {
 			posts = pois.concat(accommodations).concat(restaurants);
 		}
 		return (
 			<div className={EditorClass}>
-				<h2> {BlockTitle} </h2>
+				{TitleComponent(BlockTitle)}
+				{DescriptionComponent(BlockUrl)}
 				{PostSelection(className, attributes, setAttributes, posts)}
 				{BrandSelection(className, attributes, setAttributes)}
 			</div>

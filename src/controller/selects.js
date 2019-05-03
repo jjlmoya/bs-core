@@ -1,11 +1,13 @@
 import {Brands} from "../settings";
 
 const {SelectControl} = wp.components;
+import {FieldClass} from '../settings';
+
 
 export let BrandSelection = function (className, attributes, setAttributes) {
 	return (<SelectControl
 		label="Elige el brand, por defecto el de tu tema"
-		className={`${className}__brand`}
+		className={`${className}__brand ${FieldClass}`}
 		value={attributes.brand}
 		options={Brands}
 		onChange={brand => setAttributes({brand})}
@@ -16,7 +18,7 @@ export let BrandSelection = function (className, attributes, setAttributes) {
 export let CategorySelection = function (className, attributes, setAttributes, categories) {
 	return (<SelectControl
 		label="categoría"
-		className={`${className}__select`}
+		className={`${className}__select  ${FieldClass}`}
 		value={attributes.category}
 		options={categories.map((category) => {
 			return {
@@ -32,7 +34,7 @@ export let CategorySelection = function (className, attributes, setAttributes, c
 export let PostTypeSelection = function (className, attributes, setAttributes, types) {
 	return (<SelectControl
 		label="Tipo de Post"
-		className={`${className}__type`}
+		className={`${className}__type ${FieldClass}`}
 		value={attributes.type}
 		options={types.map((type) => {
 			return {
@@ -72,7 +74,7 @@ export let HeadingSelection = function (className, attributes, setAttributes) {
 	};
 	return (<SelectControl
 		label="Heading"
-		className={`${className}__select`}
+		className={`${className}__select ${FieldClass}`}
 		value={attributes.heading}
 		options={getOptions()}
 		onChange={heading => setAttributes({heading})}/>);
@@ -83,7 +85,7 @@ export let PostSelection = function (className, attributes, setAttributes, posts
 	console.log(attributes.selectedPost);
 	return (<SelectControl
 		label="Selecciona la Entrada:"
-		className={`${className}__post`}
+		className={`${className}__post ${FieldClass}`}
 		value={attributes.selectedPost}
 		options={posts.map((post) => {
 			return {

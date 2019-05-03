@@ -1,12 +1,14 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
-const BlockTitle = __('Plain Card');
+const BlockTitle = __('Bloque Plano');
+const BlockUrl = __('bloque-plano');
+
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicMaxEntries} from '../controller/basic';
+import {BasicMaxEntries, DescriptionComponent, TitleComponent} from '../controller/basic';
 import {BrandSelection, PostTypeSelection} from '../controller/selects';
-import {PostTypes} from '../api/data';
+import {PostTypes} from '../api/core';
 
 
 registerBlockType('bonseo/block-bs-plain-card', {
@@ -20,15 +22,15 @@ registerBlockType('bonseo/block-bs-plain-card', {
 		};
 	})(function (props) {
 		const {attributes, className, setAttributes} = props;
-		var types = props.types;
 		if (!props.types) {
 			return LoadingComponent();
 		}
 		return (
 			<div className={EditorClass}>
-				<h2>{BlockTitle}</h2>
+				{TitleComponent(BlockTitle)}
+				{DescriptionComponent(BlockUrl)}
 				{BasicMaxEntries(className, attributes, setAttributes)}
-				{PostTypeSelection(className, attributes, setAttributes, types)}
+				{PostTypeSelection(className, attributes, setAttributes, props.types)}
 				{BrandSelection(className, attributes, setAttributes)}
 			</div>
 		);

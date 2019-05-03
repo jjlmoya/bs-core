@@ -1,7 +1,11 @@
+import {DescriptionComponent, TitleComponent} from "../controller/basic";
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {TextControl} = wp.components;
-const BlockTitle = __('Banner Data');
+const BlockTitle = __('Banner de Datos');
+const BlockUrl = __('banner-datos');
+
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {BrandSelection} from '../controller/selects';
 
@@ -13,7 +17,8 @@ registerBlockType('bonseo/block-bs-banner-data', {
 	edit: function ({posts, className, attributes, setAttributes}) {
 		return (
 			<div className={EditorClass}>
-				<h2>{BlockTitle}</h2>
+				{TitleComponent(BlockTitle)}
+				{DescriptionComponent(BlockUrl)}
 				<TextControl
 					className={`${className}__counter1`}
 					label={__('Contador 1')}

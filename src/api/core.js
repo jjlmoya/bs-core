@@ -14,3 +14,6 @@ export let PostByType = function (select, type) {
 	const query = {per_page: -1};
 	return getEntityRecords('postType', type, query);
 };
+
+
+
