@@ -1,7 +1,6 @@
 const {apiFetch} = wp;
 import {map} from 'lodash';
 
-
 const YieldPostType = function* () {
 	let i = 1;
 	console.log(i++);

@@ -7,8 +7,8 @@ const BlockTitle = __('Lista de Categoría');
 const BlockUrl = __('lista-categoria');
 
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
-import {BrandSelection, CategorySelection, PostTypeSelection} from '../controller/selects';
-import {BasicTitle, BasicImage, BasicSubtitle, TitleComponent, DescriptionComponent} from '../controller/basic';
+import {BrandSelection, CategorySelection, PostTypeSelection} from '../services/selects';
+import {BasicTitle, BasicImage, BasicSubtitle, TitleComponent, DescriptionComponent} from '../services/basic';
 import {PostTypes, Categories} from "../api/core";
 
 

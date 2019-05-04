@@ -3,11 +3,11 @@ const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Producto Curvado (H1, Image Transparente)');
 const BlockUrl = __('producto-curvado');
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
-import {BrandSelection} from '../controller/selects';
+import {BrandSelection} from '../services/selects';
 import {
 	BasicTitle, BasicImage, BasicClaim, BasicCta, BasicUrl, TitleComponent,
 	DescriptionComponent
-} from '../controller/basic';
+} from '../services/basic';
 
 registerBlockType('bonseo/block-bs-product-curved', {
 	title: BlockTitle,

@@ -6,9 +6,9 @@ const BlockUrl = __('lista-vertical');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent} from '../controller/basic';
+import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent} from '../services/basic';
 import {PostTypes} from '../api/core';
-import {BrandSelection, PostTypeSelection} from '../controller/selects';
+import {BrandSelection, PostTypeSelection} from '../services/selects';
 
 registerBlockType('bonseo/block-bs-list-vertical', {
 	title: BlockTitle,

@@ -5,8 +5,8 @@ const BlockUrl = __('opiniones-clientes');
 
 const {withSelect} = wp.data;
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent} from "../controller/basic";
-import {BrandSelection, PostTypeSelection} from '../controller/selects';
+import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent} from "../services/basic";
+import {BrandSelection, PostTypeSelection} from '../services/selects';
 import {LoadingComponent} from "../services/ux";
 import {PostTypes} from "../api/core";
 

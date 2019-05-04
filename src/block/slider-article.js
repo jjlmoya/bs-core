@@ -5,8 +5,8 @@ const BlockTitle = __('Cabecera con Artículos');
 const BlockUrl = __('cabecera-articulos');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BrandSelection, PostTypeSelection} from '../controller/selects';
-import {BasicTitle, BasicImage, TitleComponent, DescriptionComponent} from '../controller/basic';
+import {BrandSelection, PostTypeSelection} from '../services/selects';
+import {BasicTitle, BasicImage, TitleComponent, DescriptionComponent} from '../services/basic';
 import {PostTypes} from '../api/core';
 import {LoadingComponent} from '../services/ux';
 

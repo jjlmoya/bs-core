@@ -3,8 +3,8 @@ const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Título Temático');
 const BlockUrl = __('titlulo-temático');
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
-import {BrandSelection} from '../controller/selects';
-import {BasicTitle, BasicContent, BasicImage, BasicClaim, TitleComponent, DescriptionComponent} from '../controller/basic';
+import {BrandSelection} from '../services/selects';
+import {BasicTitle, BasicContent, BasicImage, BasicClaim, TitleComponent, DescriptionComponent} from '../services/basic';
 
 registerBlockType('bonseo/block-bs-title-brand', {
 	title: BlockTitle,

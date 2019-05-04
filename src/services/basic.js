@@ -26,7 +26,7 @@ export let TitleComponent = function (title) {
 export let BasicTitle = function (className, attributes, setAttributes) {
 	return (<TextControl
 		className={`${className}__title ${FieldClass}`}
-		label={__('Título')}
+		label={__('Título: ')}
 		value={attributes.title}
 		onChange={title => setAttributes({title})}
 	/>);
@@ -39,7 +39,7 @@ export let BasicContent = function (className, attributes, setAttributes) {
 		label={__('Contenido de bloque')}
 		value={attributes.content}
 		onChange={content => setAttributes({content})}
-		placeholder={__('Introduce el texto')}
+		placeholder={__('Introduce el contenido')}
 		keepPlaceholderOnFocus={true}
 	/>);
 };
@@ -58,7 +58,7 @@ export let BasicSeoDescription = function (className, attributes, setAttributes)
 export let BasicClaim = function (className, attributes, setAttributes) {
 	return (<TextControl
 		className={`${className}__claim  ${FieldClass}`}
-		label={__('Slogan')}
+		label={__('Un texto reclamo')}
 		value={attributes.claim}
 		onChange={claim => setAttributes({claim})}
 	/>);
@@ -67,7 +67,7 @@ export let BasicClaim = function (className, attributes, setAttributes) {
 export let BasicSubtitle = function (className, attributes, setAttributes) {
 	return (<TextControl
 		className={`${className}__subtitle  ${FieldClass}`}
-		label={__('Subtítulo')}
+		label={__('Un subtítulo')}
 		value={attributes.subtitle}
 		onChange={subtitle => setAttributes({subtitle})}
 	/>);
@@ -85,7 +85,7 @@ export let BasicImage = function (className, attributes, setAttributes) {
 		if (attributes.image) {
 			html = <img src={attributes.image}/>;
 		} else {
-			html = "Upload";
+			html = __("Subir Imagen");
 		}
 
 		return (<button onClick={open}>
@@ -107,7 +107,7 @@ export let BasicImage = function (className, attributes, setAttributes) {
 export let BasicMaxEntries = function (className, attributes, setAttributes) {
 	return (<TextControl
 		className={`${className}__max-entries  ${FieldClass}`}
-		label={__('Cuántas entradas:')}
+		label={__('Cuántas entradas quieres mostrar: ')}
 		type="number"
 		value={attributes.max_entries}
 		onChange={max_entries => setAttributes({max_entries})}
@@ -117,7 +117,7 @@ export let BasicMaxEntries = function (className, attributes, setAttributes) {
 export let BasicCta = function (className, attributes, setAttributes) {
 	return (<TextControl
 		className={`${className}__cta  ${FieldClass}`}
-		label={__('CTA')}
+		label={__('Texto del botón')}
 		value={attributes.cta}
 		onChange={cta => setAttributes({cta})}
 	/>);
@@ -126,7 +126,7 @@ export let BasicCta = function (className, attributes, setAttributes) {
 export let BasicUrl = function (className, attributes, setAttributes) {
 	return (<TextControl
 		className={`${className}__url  ${FieldClass}`}
-		label={__('Link Url:')}
+		label={__('Enlace para el botón: ')}
 		value={attributes.url}
 		onChange={url => setAttributes({url})}
 	/>);

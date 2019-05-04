@@ -4,8 +4,8 @@ const {withSelect} = wp.data;
 const BlockTitle = __('Extracto de Artículos Básicos');
 const BlockUrl = __('articulos-basicos');
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
-import {BrandSelection, CategorySelection, PostTypeSelection} from '../controller/selects';
-import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent} from '../controller/basic';
+import {BrandSelection, CategorySelection, PostTypeSelection} from '../services/selects';
+import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent} from '../services/basic';
 import {PostTypes, Categories} from '../api/core';
 import {LoadingComponent} from '../services/ux';
 

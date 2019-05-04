@@ -4,8 +4,8 @@ const BlockTitle = __('Navegación de Contenido');
 const BlockUrl = __('navegacion-contenido');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BasicTitle, DescriptionComponent, TitleComponent} from "../controller/basic";
-import {BrandSelection} from '../controller/selects';
+import {BasicTitle, DescriptionComponent, TitleComponent} from "../services/basic";
+import {BrandSelection} from '../services/selects';
 registerBlockType('bonseo/block-bs-anchor-links', {
 	title: BlockTitle,
 	icon: Icons.mark,

@@ -5,8 +5,8 @@ const BlockTitle = __('Banner Flecha');
 const BlockUrl = __('banner-flecha');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BasicTitle, BasicCta, BasicUrl, TitleComponent, DescriptionComponent} from "../controller/basic";
-import {BrandSelection} from '../controller/selects';
+import {BasicTitle, BasicCta, BasicUrl, TitleComponent, DescriptionComponent} from "../services/basic";
+import {BrandSelection} from '../services/selects';
 
 registerBlockType('bonseo/block-bs-arrow-banner', {
 	title: BlockTitle,

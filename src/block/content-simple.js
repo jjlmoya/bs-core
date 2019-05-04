@@ -4,8 +4,8 @@ const BlockTitle = __('Contenido Simple');
 const BlockUrl = __('contenido-simple');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BasicTitle, BasicContent, TitleComponent, DescriptionComponent} from "../controller/basic";
-import {BrandSelection, HeadingSelection} from '../controller/selects';
+import {BasicTitle, BasicContent, TitleComponent, DescriptionComponent} from "../services/basic";
+import {BrandSelection, HeadingSelection} from '../services/selects';
 
 registerBlockType('bonseo/block-bs-content-simple', {
 	title: BlockTitle,

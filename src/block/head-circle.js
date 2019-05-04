@@ -7,8 +7,8 @@ import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {
 	BasicTitle, BasicClaim, BasicSubtitle, BasicImage, TitleComponent,
 	DescriptionComponent
-} from "../controller/basic";
-import {BrandSelection} from '../controller/selects';
+} from "../services/basic";
+import {BrandSelection} from '../services/selects';
 
 
 registerBlockType('bonseo/block-bs-head-circle', {

@@ -6,8 +6,8 @@ const BlockUrl = __('bloque-plano');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicMaxEntries, DescriptionComponent, TitleComponent} from '../controller/basic';
-import {BrandSelection, PostTypeSelection} from '../controller/selects';
+import {BasicMaxEntries, DescriptionComponent, TitleComponent} from '../services/basic';
+import {BrandSelection, PostTypeSelection} from '../services/selects';
 import {PostTypes} from '../api/core';
 
 

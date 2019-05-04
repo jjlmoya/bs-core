@@ -5,8 +5,8 @@ const BlockTitle = __('Banner Básico');
 const BlockUrl = __('banner-basico');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BasicTitle, BasicCta, BasicUrl, TitleComponent, DescriptionComponent} from "../controller/basic";
-import {BrandSelection} from '../controller/selects';
+import {BasicTitle, BasicCta, BasicUrl, TitleComponent, DescriptionComponent} from "../services/basic";
+import {BrandSelection} from '../services/selects';
 registerBlockType('bonseo/block-bs-banner-basic', {
 	title: BlockTitle,
 	icon: Icons.minus,

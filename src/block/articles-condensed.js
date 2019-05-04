@@ -9,8 +9,8 @@ import {LoadingComponent} from '../services/ux';
 import {
 	BasicTitle, BasicMaxEntries, BasicSeoDescription, TitleComponent,
 	DescriptionComponent
-} from "../controller/basic";
-import {BrandSelection, PostTypeSelection} from '../controller/selects';
+} from "../services/basic";
+import {BrandSelection, PostTypeSelection} from '../services/selects';
 import {PostTypes} from "../api/core";
 
 registerBlockType('bonseo/block-bs-articles-condensed', {

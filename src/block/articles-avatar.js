@@ -6,8 +6,8 @@ const BlockUrl = __('articulos-avatar');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent} from "../controller/basic";
-import {BrandSelection, PostTypeSelection, CategorySelection} from '../controller/selects';
+import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent} from "../services/basic";
+import {BrandSelection, PostTypeSelection, CategorySelection} from '../services/selects';
 import {PostTypes, Categories} from "../api/core";
 
 registerBlockType('bonseo/block-bs-articles-avatar', {
