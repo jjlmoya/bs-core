@@ -39,7 +39,7 @@ function render_bs_content_simple($attributes)
 	$heading = isset($attributes['title']) ? render_bs_content_simple_header($headSize, $title) : '';
 	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
 	return '
-	<div class="og-content-plain a-pad-20 ' . $class . ' ' . $brand . '">
+	<div class="og-content-plain ' . $class . ' ' . $brand . '">
     	' . $heading . '
     	' . $content . '
     </div>';
