@@ -34,7 +34,7 @@ function render_bs_articles_slim_render($posts)
 	$html = '';
 	while ($posts->have_posts()) : $posts->the_post();
 		$title = get_the_title();
-		$content = wp_trim_words(get_the_excerpt(), 10, '...');
+		$content = wp_trim_words(get_the_excerpt(), 30, '...');
 		$image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
 		$url = esc_url(get_the_permalink());
 		$html .= '

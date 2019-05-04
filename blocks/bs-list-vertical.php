@@ -34,7 +34,7 @@ function render_bs_list_vertical_entries($posts)
 		$title = get_the_title();
 		$image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
 		$link = esc_url(get_the_permalink());
-		$content = wp_trim_words(get_the_excerpt(), 10, '...');
+		$content = wp_trim_words(get_the_excerpt(), 40, '...');
 		$html .= '<div class="og-list-title-vertical__container__wrapper">
 			<a href="' . $link . '" class="ml-article-rectangle
 					a-text

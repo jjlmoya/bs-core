@@ -72,7 +72,7 @@ function render_bs_banner_posts($posts, $cta, $words)
 		$title = get_the_title();
 		$image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
 		$link = esc_url(get_the_permalink());
-		$content = wp_trim_words(get_the_excerpt(), 10, '...');
+		$content = wp_trim_words(get_the_excerpt(), 200, '...');
 		$html .= render_bs_last_articles_zig_zag_element($index % 2 == 0, $cta, $title, $image, $link, $content);
 		unset($post);
 		$index ++;

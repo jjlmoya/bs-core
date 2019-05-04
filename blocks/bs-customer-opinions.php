@@ -31,20 +31,18 @@ function render_bs_customer_opinions_render($opinions)
 {
 	$html = '';
 	while ($opinions->have_posts()) : $opinions->the_post();
-		$brand = get_post_meta(get_the_ID(), 'bs_theme_brand', TRUE);
 		$title = get_the_title();
-		$content = wp_trim_words(get_the_excerpt(), 10, '...');
+		$content = get_the_excerpt();
 		$image = get_the_post_thumbnail_url(get_the_ID());
-		$brand = isset($brand) ? $brand : '';
 		$html .= '
 			<div class="ml-card-testimony 
 						l-flex l-flex--justify-center l-flex--mobile--direction-column l-column--1-2 l-column--mobile--1-1
-						a-mar u-shadow--bottom l-flex--align-center ' . $brand . '">
+						a-mar u-shadow--bottom l-flex--align-center ">
 				<picture class="a-pad">
 					<img class="a-image a-image--avatar " src="' . esc_url($image) . '">
 				</picture>
 				<div class="ml-card-testimony__content l-flex l-flex--direction-column l-flex--align-center a-pad">
-					<h3 class="a-text a-text--s  a-text--bold l-flex-item--align-start">
+					<h3 class="a-text a-pad--y-5 a-text--bold l-flex-item--align-start a-text--brand">
 					' . esc_html($title) . '
 					</h3>
 					<p class="a-text l-flex-item--align-start">
@@ -58,13 +56,23 @@ function render_bs_customer_opinions_render($opinions)
 	return $html;
 }
 
+function bs_render_block_title($title)
+{
+	if ($title && !empty($title)) {
+		return '<h2 class="a-text a-text--xl a-text--center a-text--brand">
+        		' . $title . '
+  		    </h2>';
+	}
+	return '';
+}
+
 function render_bs_customer_opinions($attributes)
 {
 	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
 	$entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
 	$title = isset($attributes['title']) ? $attributes['title'] : '';
 	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
-	$type = isset($attributes['type']) ? $attributes['type'] : 'posts';
+	$type = isset($attributes['type']) ? $attributes['type'] : 'post';
 	$args = array(
 		'post_type' => $type,
 		'post_status' => 'publish',
@@ -75,10 +83,8 @@ function render_bs_customer_opinions($attributes)
 		return "";
 	}
 	return '
-		<section class="og-block-testimony a-pad-40 ' . $class . ' ' . $brand . '">
-			<h2 class="a-text a-text--xl  ">
-        		' . $title . '
-  		    </h2>
+		<section class="og-block-testimony ' . $class . ' ' . $brand . '">
+			' . bs_render_block_title($title) . '
 			<div class="og-block-testimony__group l-flex a-pad l-flex--wrap l-flex--justify-center ">
 				' . render_bs_customer_opinions_render($posts) . '
 			</div>
