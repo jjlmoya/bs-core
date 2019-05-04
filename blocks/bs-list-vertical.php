@@ -34,7 +34,7 @@ function render_bs_list_vertical_entries($posts)
 		$title = get_the_title();
 		$image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
 		$link = esc_url(get_the_permalink());
-		$excerpt = strip_tags(wp_trim_words(get_the_content(), 20, '...'));
+		$content = wp_trim_words(get_the_excerpt(), 10, '...');
 		$html .= '<div class="og-list-title-vertical__container__wrapper">
 			<a href="' . $link . '" class="ml-article-rectangle
 					a-text
@@ -47,7 +47,7 @@ function render_bs_list_vertical_entries($posts)
 					<div class="ml-article-rectangle__container
 					   l-flex l-flex--direction-column a-pad">
 					   <h3 class="a-text  a-text--brand a-text--bold">' . $title . '</h3>
-					   <p class="a-text a-text--light a-text--s">' . $excerpt . '</p>
+					   <p class="a-text a-text--light a-text--s">' . $content . '</p>
 					</div>
 				 </a><hr class="a-separator--classic a-bg" />
 		  </div>';

@@ -39,7 +39,7 @@ function render_bs_authors_extract_entries($authors)
 		$postID = get_the_ID();
 		$title = get_the_title();
 		$image = esc_url(get_the_post_thumbnail_url($postID));
-		$description =  wp_trim_words(get_the_content(), 20, '...');
+		$content = wp_trim_words(get_the_excerpt(), 10, '...');
 		$link = esc_url(get_the_permalink());
 		$position = get_post_meta($postID, 'bs_publisher_position', true);
 		$html .= '

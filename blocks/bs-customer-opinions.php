@@ -33,7 +33,7 @@ function render_bs_customer_opinions_render($opinions)
 	while ($opinions->have_posts()) : $opinions->the_post();
 		$brand = get_post_meta(get_the_ID(), 'bs_theme_brand', TRUE);
 		$title = get_the_title();
-		$content = get_the_content();
+		$content = wp_trim_words(get_the_excerpt(), 10, '...');
 		$image = get_the_post_thumbnail_url(get_the_ID());
 		$brand = isset($brand) ? $brand : '';
 		$html .= '

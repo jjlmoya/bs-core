@@ -41,9 +41,9 @@ function render_bs_anchor_links($attributes)
 			 data-parent="ml-anchor-cloud"
 			 data-link-class="a-text--link a-text--brand a-text--xs a-text--center a-pad-5">
 		</div>
-	</nav>
-	';
+	</nav>';
 }
+
 
 
 
