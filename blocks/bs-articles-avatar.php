@@ -27,7 +27,7 @@ register_block_type('bonseo/' . $block,
                 'type' => 'string',
             ),
             'anchor' => array(
-                'type' => 'string',
+                'type' => 'boolean',
             )
         ),
         'render_callback' => 'render_bs_articles_avatar',
@@ -74,7 +74,7 @@ function render_bs_articles_avatar($attributes)
     $category = isset($attributes['category']) ? $attributes['category'] : '';
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $type = isset($attributes['type']) ? $attributes['type'] : '';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,

@@ -30,7 +30,7 @@ register_block_type('bonseo/' . $block,
                 'type' => 'string',
             ),
             'anchor' => array(
-                'type' => 'string',
+                'type' => 'boolean',
             )
         ),
         'render_callback' => 'render_bs_articles_condensed',
@@ -69,7 +69,7 @@ function render_bs_articles_condensed($attributes)
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $description = isset($attributes['description']) ? $attributes['description'] : '';
     $type = isset($attributes['type']) ? $attributes['type'] : '';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,

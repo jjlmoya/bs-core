@@ -29,7 +29,7 @@ register_block_type('bonseo/' . $block,
                 'type' => 'string',
             ),
             'anchor' => array(
-                'type' => 'string',
+                'type' => 'boolean',
             )
         ),
         'render_callback' => 'render_bs_last_articles_zig_zag',
@@ -90,7 +90,7 @@ function render_bs_last_articles_zig_zag($attributes)
     $cta = isset($attributes['cta']) ? $attributes['cta'] : 'Leer';
     $words = isset($attributes['words']) ? $attributes['words'] : 20;
     $type = isset($attributes['type']) ? $attributes['type'] : 'posts';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,

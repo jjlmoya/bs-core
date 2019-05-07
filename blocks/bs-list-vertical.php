@@ -22,7 +22,7 @@ register_block_type('bonseo/' . $block,
                 'type' => 'string',
             ),
             'anchor' => array(
-                'type' => 'string',
+                'type' => 'boolean',
             )
 
         ),
@@ -64,7 +64,7 @@ function render_bs_list_vertical($attributes)
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
     $type = isset($attributes['type']) ? $attributes['type'] : 'posts';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',

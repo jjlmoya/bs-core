@@ -21,8 +21,8 @@ register_block_type('bonseo/' . $block,
             'className' => array(
                 'type' => 'string',
             ),
-            'brand' => array(
-                'type' => 'string',
+            'anchor' => array(
+                'type' => 'boolean',
             )
 
         ),
@@ -36,7 +36,7 @@ function render_bs_head_circle($attributes)
     $subtitle = isset($attributes['subtitle']) ? $attributes['subtitle'] : '';
     $claim = isset($attributes['claim']) ? $attributes['claim'] : '';
     $image = isset($attributes['image']) ? $attributes['image'] : '';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
     return '
 		<section class="og-banner-outside-circle 
 						l-flex l-flex--direction-column l-flex--justify-center l-grid-column--full 

@@ -7,11 +7,11 @@ class ClassService
     public $anchor;
 
 
-    public function __construct($custom, $brand, $anchor)
+    public function __construct($attributes)
     {
-        $this->custom = isset($custom) ? $custom : '';
-        $this->brand = isset($brand) ? $brand : '';
-        $this->anchor = isset($anchor) && $anchor ? 'bs_anchor' : '';
+        $this->custom = isset($attributes['className']) ? $attributes['className'] : '';
+        $this->brand = isset($attributes['brand']) ? $attributes['brand'] : '';
+        $this->anchor = isset($attributes['anchor']) && $attributes['anchor'] ? 'bs_anchor' : '';
     }
 
     public function get_modifiers()

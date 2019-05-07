@@ -28,6 +28,9 @@ register_block_type('bonseo/' . $block,
             ),
             'className' => array(
                 'type' => 'string',
+            ),
+            'anchor' => array(
+                'type' => 'boolean',
             )
         ),
         'render_callback' => 'render_bs_product_curved',
@@ -42,7 +45,7 @@ function render_bs_product_curved($attributes)
     $cta = isset($attributes['cta']) ? $attributes['cta'] : '';
     $url = isset($attributes['url']) ? $attributes['url'] : '';
 
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
 
     return '
 		<div class="og-slider-product-curved a-bg

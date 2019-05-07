@@ -20,8 +20,8 @@ register_block_type('bonseo/' . $block,
             'className' => array(
                 'type' => 'string',
             ),
-            'brand' => array(
-                'type' => 'string',
+            'anchor' => array(
+                'type' => 'boolean',
             )
 
         ),
@@ -73,7 +73,7 @@ function render_bs_authors_extract($attributes)
     $entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 0;
     $title = isset($attributes['title']) ? $attributes['title'] : 'Nuestros Colaboradores:';
     $type = isset($attributes['type']) ? $attributes['type'] : 'bs-service';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,

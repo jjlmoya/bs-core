@@ -23,8 +23,8 @@ register_block_type('bonseo/' . $block,
             'className' => array(
                 'type' => 'string'
             ),
-            'brand' => array(
-                'type' => 'string',
+            'anchor' => array(
+                'type' => 'boolean',
             )
 
         ),
@@ -38,7 +38,7 @@ function render_bs_basic_banner($attributes)
     $content = isset($attributes['content']) ? $attributes['content'] : '';
     $cta = isset($attributes['cta']) ? $attributes['cta'] : '';
     $url = isset($attributes['url']) ? $attributes['url'] : '';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
     return '
 		<section class="og-banner-basic
 		 				l-flex l-flex--justify-space-around 

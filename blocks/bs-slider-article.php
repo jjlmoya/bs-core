@@ -21,6 +21,9 @@ register_block_type('bonseo/' . $block,
             'brand' => array(
                 'type' => 'string',
             ),
+            'anchor' => array(
+                'type' => 'boolean',
+            )
         ),
         'render_callback' => 'render_bs_slider_article',
     )
@@ -50,7 +53,7 @@ function render_bs_slider_article($attributes)
     $image = isset($attributes['image']) ? $attributes["image"] : '';
     $title = isset($attributes['title']) ? $attributes["title"] : '';
     $type = isset($attributes['type']) ? $attributes["type"] : 'posts';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,

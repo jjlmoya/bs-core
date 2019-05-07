@@ -23,7 +23,7 @@ register_block_type('bonseo/' . $block,
                 'type' => 'string',
             ),
             'anchor' => array(
-                'type' => 'string',
+                'type' => 'boolean',
             )
         ),
         'render_callback' => 'render_bs_customer_opinions',
@@ -74,7 +74,7 @@ function render_bs_customer_opinions($attributes)
     $entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $type = isset($attributes['type']) ? $attributes['type'] : 'post';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,

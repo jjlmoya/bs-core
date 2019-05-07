@@ -22,6 +22,9 @@ register_block_type('bonseo/' . $block,
             ),
             'brand' => array(
                 'type' => 'string',
+            ),
+            'anchor' => array(
+                'type' => 'boolean',
             )
         ),
         'render_callback' => 'render_bs_slider_simple',
@@ -73,7 +76,7 @@ function render_bs_slider_simple($attributes)
     $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 6;
     $cta = isset($attributes['cta']) ? $attributes['cta'] : '';
     $type = isset($attributes['type']) ? $attributes['type'] : '';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,

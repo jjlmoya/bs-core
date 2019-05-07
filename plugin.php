@@ -48,7 +48,6 @@ function bs_core_admin_body_class( $classes ) {
 
 add_action('wp_enqueue_scripts', 'bs_core_scripts');
 
-require_once plugin_dir_path(__FILE__) . '/model/brand.php';
 require_once plugin_dir_path(__FILE__) . '/services/index.php';
 require_once plugin_dir_path(__FILE__) . '/src/blocks.php';
 

@@ -40,7 +40,7 @@ function render_bs_content_simple($attributes)
     $content = isset($attributes['content']) ? $attributes["content"] : '';
     $headSize = isset($attributes['heading']) ? $attributes['heading'] : 'h1';
     $heading = isset($attributes['title']) ? render_bs_content_simple_header($headSize, $title) : '';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
     return '
 	<div class="og-content-plain ' . $modifier->get_modifiers() . '">
     	' . $heading . '

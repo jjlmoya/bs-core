@@ -26,7 +26,7 @@ register_block_type('bonseo/' . $block,
                 'type' => 'string',
             ),
             'anchor' => array(
-                'type' => 'string',
+                'type' => 'boolean',
             )
         ),
         'render_callback' => 'render_bs_arrow_banner',
@@ -39,7 +39,7 @@ function render_bs_arrow_banner($attributes)
     $content = isset($attributes['content']) ? $attributes['content'] : '';
     $cta = isset($attributes['cta']) ? $attributes['cta'] : '';
     $url = isset($attributes['url']) ? $attributes['url'] : '';
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
 
     return '
 		<section class="og-banner-arrow ' . $modifier->get_modifiers() . ' l-grid-column--full">

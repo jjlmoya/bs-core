@@ -30,6 +30,9 @@ register_block_type('bonseo/' . $block,
             ),
             'brand' => array(
                 'type' => 'string',
+            ),
+            'anchor' => array(
+                'type' => 'boolean',
             )
 
         ),
@@ -70,7 +73,7 @@ function render_bs_banner_data($attributes)
             'counter' => isset($attributes['counter3']) ? $attributes['counter3'] : ''
         ),
     );
-    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    $modifier = new ClassService($attributes);
 
 
 
