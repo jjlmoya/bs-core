@@ -6,8 +6,8 @@ const BlockUrl = __('bloque-plano');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicMaxEntries, DescriptionComponent, TitleComponent} from '../services/basic';
-import {BrandSelection, PostTypeSelection} from '../services/selects';
+import {BasicMaxEntries, CommonsElements, DescriptionComponent, TitleComponent} from '../services/basic';
+import {PostTypeSelection} from '../services/selects';
 import {PostTypes} from '../api/core';
 
 
@@ -31,7 +31,7 @@ registerBlockType('bonseo/block-bs-plain-card', {
 				{DescriptionComponent(BlockUrl)}
 				{BasicMaxEntries(className, attributes, setAttributes)}
 				{PostTypeSelection(className, attributes, setAttributes, props.types)}
-				{BrandSelection(className, attributes, setAttributes)}
+                {CommonsElements(className, attributes, setAttributes)}
 			</div>
 		);
 	}),

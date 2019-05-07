@@ -1,4 +1,4 @@
-import {DescriptionComponent, TitleComponent} from "../services/basic";
+import {CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
 
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
@@ -7,7 +7,6 @@ const BlockTitle = __('Banner de Datos');
 const BlockUrl = __('banner-datos');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BrandSelection} from '../services/selects';
 
 registerBlockType('bonseo/block-bs-banner-data', {
 	title: BlockTitle,
@@ -61,7 +60,7 @@ registerBlockType('bonseo/block-bs-banner-data', {
 					value={attributes.name3}
 					onChange={name3 => setAttributes({name3})}
 				/>
-				{BrandSelection(className, attributes, setAttributes)}
+                {CommonsElements(className, attributes, setAttributes)}
 			</div>
 		);
 	},

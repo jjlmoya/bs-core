@@ -1,47 +1,46 @@
 <?php
 if (!defined('ABSPATH')) {
-	exit;
+    exit;
 }
 $block = 'block-bs-head-circle';
 register_block_type('bonseo/' . $block,
-	array(
-		'attributes' => array(
-			'title' => array(
-				'type' => 'string',
-			),
-			'claim' => array(
-				'type' => 'string',
-			),
-			'subtitle' => array(
-				'type' => 'string',
-			),
-			'image' => array(
-				'type' => 'string',
-			),
-			'className' => array(
-				'type' => 'string',
-			),
-			'brand' => array(
-				'type' => 'string',
-			)
+    array(
+        'attributes' => array(
+            'title' => array(
+                'type' => 'string',
+            ),
+            'claim' => array(
+                'type' => 'string',
+            ),
+            'subtitle' => array(
+                'type' => 'string',
+            ),
+            'image' => array(
+                'type' => 'string',
+            ),
+            'className' => array(
+                'type' => 'string',
+            ),
+            'brand' => array(
+                'type' => 'string',
+            )
 
-		),
-		'render_callback' => 'render_bs_head_circle',
-	)
+        ),
+        'render_callback' => 'render_bs_head_circle',
+    )
 );
 
 function render_bs_head_circle($attributes)
 {
-	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
-	$title = isset($attributes['title']) ? $attributes['title'] : '';
-	$subtitle = isset($attributes['subtitle']) ? $attributes['subtitle'] : '';
-	$claim = isset($attributes['claim']) ? $attributes['claim'] : '';
-	$image = isset($attributes['image']) ? $attributes['image'] : '';
-	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
-	return '
+    $title = isset($attributes['title']) ? $attributes['title'] : '';
+    $subtitle = isset($attributes['subtitle']) ? $attributes['subtitle'] : '';
+    $claim = isset($attributes['claim']) ? $attributes['claim'] : '';
+    $image = isset($attributes['image']) ? $attributes['image'] : '';
+    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+    return '
 		<section class="og-banner-outside-circle 
 						l-flex l-flex--direction-column l-flex--justify-center l-grid-column--full 
-						' . $class . ' ' . $brand . '">
+						' .$modifier->get_modifiers() . '">
 			<div class="l-column--1-1">
 				<picture class="a-pad l-column--1-1 a-pad-0">
 					<img data-target="" class="a-image l-column--1-1" src="' . $image . '">

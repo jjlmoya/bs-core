@@ -5,8 +5,7 @@ const BlockTitle = __('Banner Flecha');
 const BlockUrl = __('banner-flecha');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BasicTitle, BasicCta, BasicUrl, TitleComponent, DescriptionComponent} from "../services/basic";
-import {BrandSelection} from '../services/selects';
+import {BasicTitle, BasicCta, BasicUrl, TitleComponent, DescriptionComponent, CommonsElements} from "../services/basic";
 
 registerBlockType('bonseo/block-bs-arrow-banner', {
 	title: BlockTitle,
@@ -27,7 +26,7 @@ registerBlockType('bonseo/block-bs-arrow-banner', {
 					value={attributes.content}
 					onChange={content => setAttributes({content})}
 				/>
-				{BrandSelection(className, attributes, setAttributes)}
+                {CommonsElements(className, attributes, setAttributes)}
 			</div>
 		);
 	},

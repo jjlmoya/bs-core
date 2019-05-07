@@ -14,7 +14,6 @@ export let BrandSelection = function (className, attributes, setAttributes) {
     />);
 };
 
-
 export let CategorySelection = function (className, attributes, setAttributes, categories) {
     return (<SelectControl
         label={`${__('Elige categoría:')}`}
@@ -82,7 +81,6 @@ export let HeadingSelection = function (className, attributes, setAttributes) {
 
 
 export let PostSelection = function (className, attributes, setAttributes, posts) {
-    console.log(attributes.selectedPost);
     return (<SelectControl
         label={`${__('Selecciona una entrada: ')}`}
         className={`${className}__post ${FieldClass}`}
@@ -96,3 +94,5 @@ export let PostSelection = function (className, attributes, setAttributes, posts
         onChange={selectedPost => setAttributes({selectedPost})}
     />);
 };
+
+

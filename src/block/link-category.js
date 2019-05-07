@@ -7,8 +7,11 @@ const BlockTitle = __('Lista de Categoría');
 const BlockUrl = __('lista-categoria');
 
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
-import {BrandSelection, CategorySelection, PostTypeSelection} from '../services/selects';
-import {BasicTitle, BasicImage, BasicSubtitle, TitleComponent, DescriptionComponent} from '../services/basic';
+import {CategorySelection, PostTypeSelection} from '../services/selects';
+import {
+    BasicTitle, BasicImage, BasicSubtitle, TitleComponent, DescriptionComponent,
+    CommonsElements
+} from '../services/basic';
 import {PostTypes, Categories} from "../api/core";
 
 
@@ -33,10 +36,11 @@ registerBlockType('bonseo/block-bs-link-category', {
 				{DescriptionComponent(BlockUrl)}
 				{BasicTitle(className, attributes, setAttributes)}
 				{BasicSubtitle(className, attributes, setAttributes)}
-				{BrandSelection(className, attributes, setAttributes)}
 				{BasicImage(className, attributes, setAttributes)}
 				{CategorySelection(className, attributes, setAttributes, props.categories)}
 				{PostTypeSelection(className, attributes, setAttributes, props.types)}
+                {CommonsElements(className, attributes, setAttributes)}
+
 			</div>
 		);
 	}),

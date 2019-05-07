@@ -1,46 +1,49 @@
 <?php
 
 if (!defined('ABSPATH')) {
-	exit;
+    exit;
 }
 
 $block = 'block-bs-articles-avatar';
 register_block_type('bonseo/' . $block,
-	array(
-		'attributes' => array(
-			'title' => array(
-				'type' => 'string',
-			),
-			'max_entries' => array(
-				'type' => 'string',
-			),
-			'className' => array(
-				'type' => 'string',
-			),
-			'category' => array(
-				'type' => 'string',
-			),
-			'type' => array(
-				'type' => 'string',
-			),
-			'brand' => array(
-				'type' => 'string',
-			)
-		),
-		'render_callback' => 'render_bs_articles_avatar',
-	)
+    array(
+        'attributes' => array(
+            'title' => array(
+                'type' => 'string',
+            ),
+            'max_entries' => array(
+                'type' => 'string',
+            ),
+            'className' => array(
+                'type' => 'string',
+            ),
+            'category' => array(
+                'type' => 'string',
+            ),
+            'type' => array(
+                'type' => 'string',
+            ),
+            'brand' => array(
+                'type' => 'string',
+            ),
+            'anchor' => array(
+                'type' => 'string',
+            )
+        ),
+        'render_callback' => 'render_bs_articles_avatar',
+    )
 );
 
 
 function render_bs_articles_avatar_render($posts)
 {
-	$html = '';
-	while ($posts->have_posts()) : $posts->the_post();
-		$title = get_the_title();
-		$content = wp_trim_words(get_the_excerpt(), 20, '...');
-		$image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
-		$url = esc_url(get_the_permalink());
-		$html .= '
+    $html = '';
+    while ($posts->have_posts()) : $posts->the_post();
+        $title = get_the_title();
+        $content = wp_trim_words(get_the_excerpt(), 20, '...');
+        $image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
+        $url = esc_url(get_the_permalink());
+        $html .= '
 			<div class="ml-article-avatar l-column--1-2 l-column--mobile--1-1 a-pad l-flex l-flex--align-center">
 				<a href="' . $url . '" class="ml-article-avatar__picture u-pointer">
 					<picture class="">
@@ -60,32 +63,32 @@ function render_bs_articles_avatar_render($posts)
 					</p>
 				</div>
 			</div>';
-		unset($post);
-	endwhile;
-	return $html;
+        unset($post);
+    endwhile;
+    return $html;
 }
 
 function render_bs_articles_avatar($attributes)
 {
-	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
-	$max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 6;
-	$category = isset($attributes['category']) ? $attributes['category'] : '';
-	$title = isset($attributes['title']) ? $attributes['title'] : '';
-	$type = isset($attributes['type']) ? $attributes['type'] : '';
-	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
-	$args = array(
-		'post_type' => $type,
-		'post_status' => 'publish',
-		'category' => $category,
-		'posts_per_page' => $max_entries
-	);
+    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 6;
+    $category = isset($attributes['category']) ? $attributes['category'] : '';
+    $title = isset($attributes['title']) ? $attributes['title'] : '';
+    $type = isset($attributes['type']) ? $attributes['type'] : '';
+    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
 
-	$posts = new WP_Query($args);
-	if (empty($posts)) {
-		return '';
-	}
-	return '
-	<section class="og-articles-avatar ' . $class . ' ' . $brand . '">
+    $args = array(
+        'post_type' => $type,
+        'post_status' => 'publish',
+        'category' => $category,
+        'posts_per_page' => $max_entries
+    );
+
+    $posts = new WP_Query($args);
+    if (empty($posts)) {
+        return '';
+    }
+    return '
+	<section class="og-articles-avatar ' . $modifier->get_modifiers() . '">
 		<h2 class="a-text a-text--xl  a-text--center a-pad-20">
 			' . $title . '
 		</h2>

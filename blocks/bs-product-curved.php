@@ -1,54 +1,55 @@
 <?php
 if (!defined('ABSPATH')) {
-	exit;
+    exit;
 }
 
 $block = 'block-bs-product-curved';
 
 register_block_type('bonseo/' . $block,
-	array(
-		'attributes' => array(
-			'title' => array(
-				'type' => 'string',
-			),
-			'claim' => array(
-				'type' => 'string',
-			),
-			'cta' => array(
-				'type' => 'string',
-			),
-			'url' => array(
-				'type' => 'string',
-			),
-			'image' => array(
-				'type' => 'string',
-			),
-			'brand' => array(
-				'type' => 'string',
-			),
-			'className' => array(
-				'type' => 'string',
-			)
-		),
-		'render_callback' => 'render_bs_product_curved',
-	)
+    array(
+        'attributes' => array(
+            'title' => array(
+                'type' => 'string',
+            ),
+            'claim' => array(
+                'type' => 'string',
+            ),
+            'cta' => array(
+                'type' => 'string',
+            ),
+            'url' => array(
+                'type' => 'string',
+            ),
+            'image' => array(
+                'type' => 'string',
+            ),
+            'brand' => array(
+                'type' => 'string',
+            ),
+            'className' => array(
+                'type' => 'string',
+            )
+        ),
+        'render_callback' => 'render_bs_product_curved',
+    )
 );
 
 function render_bs_product_curved($attributes)
 {
-	$title = isset($attributes['title']) ? $attributes['title'] : '';
-	$class = isset($attributes['className']) ? $attributes['className'] : '';
-	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
-	$claim = isset($attributes['claim']) ? $attributes['claim'] : '';
-	$image = isset($attributes['image']) ? $attributes['image'] : '';
-	$cta = isset($attributes['cta']) ? $attributes['cta'] : '';
-	$url = isset($attributes['url']) ? $attributes['url'] : '';
-	return '
+    $title = isset($attributes['title']) ? $attributes['title'] : '';
+    $claim = isset($attributes['claim']) ? $attributes['claim'] : '';
+    $image = isset($attributes['image']) ? $attributes['image'] : '';
+    $cta = isset($attributes['cta']) ? $attributes['cta'] : '';
+    $url = isset($attributes['url']) ? $attributes['url'] : '';
+
+    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+
+    return '
 		<div class="og-slider-product-curved a-bg
 				   a-bg--gradient--light
 				   l-grid-column--full
 				   l-column--1-1 l-position a-mar--bottom
-				   u-shadow--bottom ' . $brand . ' ' . $class . '">
+				   u-shadow--bottom ' . $modifier->get_modifiers() . '">
 			   <picture class="l-column--1-1 a-pad-0">
 				  <img data-target="" class="a-image og-slider-product-curved__image l-position--absolute l-position--absolute--center" src="' . $image . '">
 			   </picture>

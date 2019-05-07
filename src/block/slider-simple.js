@@ -5,8 +5,8 @@ const BlockTitle = __('Slider Básico');
 const BlockUrl = __('slider-basico');
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicMaxEntries, BasicCta, TitleComponent, DescriptionComponent} from "../services/basic";
-import {BrandSelection, PostTypeSelection} from '../services/selects';
+import {BasicMaxEntries, BasicCta, TitleComponent, DescriptionComponent, CommonsElements} from "../services/basic";
+import {PostTypeSelection} from '../services/selects';
 import {PostTypes} from '../api/core';
 
 registerBlockType('bonseo/block-bs-slider-simple', {
@@ -30,7 +30,7 @@ registerBlockType('bonseo/block-bs-slider-simple', {
 				{BasicMaxEntries(className, attributes, setAttributes)}
 				{BasicCta(className, attributes, setAttributes)}
 				{PostTypeSelection(className, attributes, setAttributes, props.types)}
-				{BrandSelection(className, attributes, setAttributes)}
+                {CommonsElements(className, attributes, setAttributes)}
 			</div>
 		);
 	}),

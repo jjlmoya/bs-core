@@ -5,11 +5,9 @@ const BlockUrl = __('cabecera-circulo');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {
-	BasicTitle, BasicClaim, BasicSubtitle, BasicImage, TitleComponent,
-	DescriptionComponent
+    BasicTitle, BasicClaim, BasicSubtitle, BasicImage, TitleComponent,
+    DescriptionComponent, CommonsElements
 } from "../services/basic";
-import {BrandSelection} from '../services/selects';
-
 
 registerBlockType('bonseo/block-bs-head-circle', {
 	title: BlockTitle,
@@ -25,7 +23,7 @@ registerBlockType('bonseo/block-bs-head-circle', {
 				{BasicTitle(className, attributes, setAttributes)}
 				{BasicSubtitle(className, attributes, setAttributes)}
 				{BasicImage(className, attributes, setAttributes)}
-				{BrandSelection(className, attributes, setAttributes)}
+                {CommonsElements(className, attributes, setAttributes)}
 			</div>
 		);
 	},

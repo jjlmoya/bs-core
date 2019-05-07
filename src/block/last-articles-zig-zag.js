@@ -6,8 +6,11 @@ const BlockTitle = __('Artículos en Zig Zag');
 const BlockUrl = __('articulos-zig-zag');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BasicTitle, BasicMaxEntries, BasicCta, TitleComponent, DescriptionComponent} from "../services/basic";
-import {BrandSelection, PostTypeSelection} from '../services/selects';
+import {
+    BasicTitle, BasicMaxEntries, BasicCta, TitleComponent, DescriptionComponent,
+    CommonsElements
+} from "../services/basic";
+import {PostTypeSelection} from '../services/selects';
 import {LoadingComponent} from "../services/ux";
 import {PostTypes} from "../api/core";
 
@@ -41,7 +44,7 @@ registerBlockType('bonseo/block-bs-last-articles-zig-zag', {
 					value={attributes.words}
 					onChange={words => setAttributes({words})}
 				/>
-				{BrandSelection(className, attributes, setAttributes)}
+                {CommonsElements(className, attributes, setAttributes)}
 			</div>
 		);
 	}),

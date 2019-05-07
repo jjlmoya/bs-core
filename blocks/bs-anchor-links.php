@@ -1,36 +1,39 @@
 <?php
 
 if (!defined('ABSPATH')) {
-	exit;
+    exit;
 }
 
 $block = 'block-bs-anchor-links';
 register_block_type('bonseo/' . $block,
-	array(
-		'attributes' => array(
-			'className' => array(
-				'type' => 'string',
-			),
-			'title' => array(
-				'type' => 'string',
-			),
-			'brand' => array(
-				'type' => 'string',
-			)
-		),
-		'render_callback' => 'render_bs_anchor_links',
-	)
+    array(
+        'attributes' => array(
+            'className' => array(
+                'type' => 'string',
+            ),
+            'title' => array(
+                'type' => 'string',
+            ),
+            'brand' => array(
+                'type' => 'string',
+            ),
+            'anchor' => array(
+                'type' => 'string',
+            )
+        ),
+        'render_callback' => 'render_bs_anchor_links',
+    )
 );
 
 function render_bs_anchor_links($attributes)
 {
-	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
-	$brand = isset($attributes['brand']) ? $attributes['brand'] : '';
-	$title = isset($attributes['title']) ? $attributes['title'] : '';
-	return '
+    $title = isset($attributes['title']) ? $attributes['title'] : '';
+    $modifier = new ClassService($attributes['className'], $attributes['brand'], $attributes['anchor']);
+
+    return '
 	<nav class="ml-anchor-cloud
             a-pad
-            l-flex l-flex--direction-column l-flex--align-center ' . $brand . ' ' . $class . '
+            l-flex l-flex--direction-column l-flex--align-center ' . $modifier->get_modifiers() . '
             ">
 		<div class="ml-anchor-cloud__title
 					a-pad-5

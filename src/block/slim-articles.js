@@ -4,8 +4,8 @@ const {withSelect} = wp.data;
 const BlockTitle = __('Extracto de Artículos Básicos');
 const BlockUrl = __('articulos-basicos');
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
-import {BrandSelection, CategorySelection, PostTypeSelection} from '../services/selects';
-import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent} from '../services/basic';
+import {CategorySelection, PostTypeSelection} from '../services/selects';
+import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent, CommonsElements} from '../services/basic';
 import {PostTypes, Categories} from '../api/core';
 import {LoadingComponent} from '../services/ux';
 
@@ -33,7 +33,7 @@ registerBlockType('bonseo/block-bs-articles-slim', {
 				{BasicMaxEntries(className, attributes, setAttributes)}
 				{CategorySelection(className, attributes, setAttributes, props.categories)}
 				{PostTypeSelection(className, attributes, setAttributes, props.types)}
-				{BrandSelection(className, attributes, setAttributes)}
+                {CommonsElements(className, attributes, setAttributes)}
 			</div>
 		);
 	}),
