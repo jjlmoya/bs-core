@@ -34,23 +34,21 @@ function render_bs_list_vertical_entries($posts)
 {
     $html = '';
     while ($posts->have_posts()) : $posts->the_post();
-        $title = get_the_title();
-        $image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
-        $link = esc_url(get_the_permalink());
-        $content = wp_trim_words(get_the_excerpt(), 40, '...');
+        $normalizePost = new PostService(40);
         $html .= '<div class="og-list-title-vertical__container__wrapper">
-			<a href="' . $link . '" class="ml-article-rectangle
+			<a href="' . $normalizePost->url . '" class="ml-article-rectangle
 					a-text
 					l-flex l-flex--align-center
 					a-pad
 					">
 					<picture class=" a-pad-0">
-					   <img class="a-image a-image--m a-image--rounded a-image--cover u-shadow--bottom lazy" data-src="' . $image . '">
+					   <img class="a-image a-image--m a-image--rounded a-image--cover u-shadow--bottom lazy" 
+					        data-src="' . $normalizePost->image . '">
 					</picture>
 					<div class="ml-article-rectangle__container
 					   l-flex l-flex--direction-column a-pad">
-					   <h3 class="a-text  a-text--brand a-text--bold">' . $title . '</h3>
-					   <p class="a-text a-text--light a-text--s">' . $content . '</p>
+					   <h3 class="a-text  a-text--brand a-text--bold">' . $normalizePost->title . '</h3>
+					   <p class="a-text a-text--light a-text--s">' . $normalizePost->description . '</p>
 					</div>
 				 </a><hr class="a-separator--classic a-bg" />
 		  </div>';

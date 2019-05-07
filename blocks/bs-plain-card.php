@@ -32,19 +32,17 @@ function render_bs_plain_card_entries($authors)
 {
     $html = '';
     while ($authors->have_posts()) : $authors->the_post();
-        $title = get_the_title();
-        $image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
-        $link = esc_url(get_the_permalink());
+        $normalizePost = new PostService(200);
         $html .= '
 			<div class="ml-card-sample l-flex l-flex--direction-column l-column--1-3 l-column--mobile--1-2 ml-card-sample--small a-pad">
-				<a href="' . $link . '" class="ml-card-sample__title a-bg--dark l-column--1-1">
+				<a href="' . $normalizePost->url . '" class="ml-card-sample__title a-bg--dark l-column--1-1">
 					<h3 class="a-text  a-text--secondary a-text--center a-pad--y">
-						' . $title . '
+						' . $normalizePost->title . '
 					</h3>    
 				</a>
 				<div class="ml-card-sample__container a-bg l-column--1-1">
 					<picture class="l-column--1-1 a-pad-0">
-						<img class="a-image l-column--1-1 a-pad--y lazy" data-src="' . $image . '">
+						<img class="a-image l-column--1-1 a-pad--y lazy" data-src="' . $normalizePost->image . '">
 					</picture>   
 				</div>
 			</div>';

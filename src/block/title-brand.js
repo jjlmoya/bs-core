@@ -18,7 +18,6 @@ registerBlockType('bonseo/block-bs-title-brand', {
             <div className={EditorClass}>
                 {TitleComponent(BlockTitle)}
                 {DescriptionComponent(BlockUrl)}
-                {DescriptionComponent(url)}
                 {BasicTitle(className, attributes, setAttributes)}
                 {BasicClaim(className, attributes, setAttributes)}
                 {BasicContent(className, attributes, setAttributes)}

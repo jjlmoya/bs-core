@@ -40,12 +40,14 @@ function render_bs_link_category_elements($posts)
 {
     $html = '';
     while ($posts->have_posts()) : $posts->the_post();
-        $image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
-        $url = esc_url(get_the_permalink());
-        $html .= '<a href="' . $url . '" class="a-pad u-pointer">
+        $normalizePost = new PostService(200);
+
+        $html .= '<a href="' . $normalizePost->url . '" class="a-pad u-pointer">
 					<picture class="a-pad ">
-						<img class="a-image a-image--avatar a-image--avatar--xl u-shadow u-shadow--bottom a-border a-border--fat a-border--light" 
-							 src="' . $image . '">
+						<img class="a-image a-image--avatar a-image--avatar--xl 
+						            u-shadow u-shadow--bottom 
+						            a-border a-border--fat a-border--light" 
+							 src="' . $normalizePost->image . '">
 					</picture>
 				</a>';
         unset($post);

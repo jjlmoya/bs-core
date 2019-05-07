@@ -33,10 +33,10 @@ function render_bs_slider_article_post($articles)
 {
     $html = '';
     while ($articles->have_posts()) : $articles->the_post();
-        $title = get_the_title();
-        $url = esc_url(get_the_permalink());
+        $normalizePost = new PostService(200);
         $html .= '<h3 class="ml-block-articles-minimalist__element a-pad--x-20">
-					<a class="a-text a-text--s a-text--underline a-text--center a-text--secondary" href="' . $url . '">' . $title . '</a>
+					<a class="a-text a-text--s a-text--underline a-text--center a-text--secondary"
+					    href="' . $normalizePost->url . '">' . $normalizePost->title . '</a>
 				  </h3>';
         unset($post);
     endwhile;

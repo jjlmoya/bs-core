@@ -42,20 +42,17 @@ function render_bs_articles_condensed_render($posts)
 {
     $html = '';
     while ($posts->have_posts()) : $posts->the_post();
-        $title = get_the_title();
-        $content = wp_trim_words(get_the_excerpt(), 10, '...');
-        $image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
-        $url = esc_url(get_the_permalink());
+        $normalizePost = new PostService();
         $html .= '
 			<div class="ml-article-condensed l-position l-flex l-flex--direction-column l-flex--justify-end a-mar-5  ">
 				<picture
 					class="a-image a-image--background l-position--absolute a-pad-0 bs_viewport a-mi--color-grayscale">
 					<img class="a-image l-column--1-1 a-image--cover"
-						 src="' . $image . '">
+						 src="' . $normalizePost->image . '">
 				</picture>
-				<div class="ml-article-condensed__excerpt a-text a-pad a-text--light a-text--secondary a-text--xs">' . $content . '</div>
-				<a href="' . $url . '"
-				   class="a-text a-text--link a-text--underline a-text a-text--secondary a-text--bold a-text--center a-pad">' . $title . '</a>
+				<div class="ml-article-condensed__excerpt a-text a-pad a-text--light a-text--secondary a-text--xs">' . $normalizePost->description . '</div>
+				<a href="' . $normalizePost->url . '"
+				   class="a-text a-text--link a-text--underline a-text a-text--secondary a-text--bold a-text--center a-pad">' . $normalizePost->title . '</a>
 			</div>
 		';
         unset($post);

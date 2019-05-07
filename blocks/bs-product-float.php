@@ -86,6 +86,9 @@ function render_bs_product_float_actions($link, $markerX, $markerY)
 function render_bs_product_float($attributes)
 {
     $postID = isset($attributes['selectedPost']) ? $attributes['selectedPost'] : '';
+    if (empty($postID)) {
+        return '';
+    }
     $post = get_post($postID);
     $modifier = new ClassService($attributes);
 

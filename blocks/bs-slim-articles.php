@@ -39,18 +39,15 @@ function render_bs_articles_slim_render($posts)
 {
     $html = '';
     while ($posts->have_posts()) : $posts->the_post();
-        $title = get_the_title();
-        $content = wp_trim_words(get_the_excerpt(), 30, '...');
-        $image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
-        $url = esc_url(get_the_permalink());
+        $normalizePost = new PostService();
         $html .= '
 			<article class="ml-article-slim l-flex l-flex--direction-column l-column--1-3 l-column--mobile--1-2 a-pad">
 				<picture class="l-column--1-1 a-pad-0">
-					<img data-target="" class="a-image l-column--1-1" src="' . $image . '">
+					<img data-target="" class="a-image l-column--1-1" src="' . $normalizePost->image . '">
 				</picture>   
-				<a href="' . $url . '" class="a-text a-text--link a-text--underline a-text--bold a-text--s a-text--link a-text--brand">' . $title . '</a>    
+				<a href="' . $normalizePost->url . '" class="a-text a-text--link a-text--underline a-text--bold a-text--s a-text--link a-text--brand">' . $normalizePost->title . '</a>    
 				<p class="a-text a-text--xs">
-					' . $content . '
+					' . $normalizePost->description . '
 				</p>
 			</article>';
         unset($post);

@@ -49,18 +49,16 @@ function render_bs_slider_simple_render_elements($posts, $cta)
     $index = 0;
     while ($posts->have_posts()) : $posts->the_post();
         $index++;
-        $title = get_the_title();
-        $image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
-        $url = esc_url(get_the_permalink());
+        $normalizePost = new PostService(200);
         $html .= '
 		  <div id="' . $index . '" class="og-slider--simple__slide l-column--1-1 l-flex l-flex--justify-space-evenly l-flex--align-center l-flex--direction-column l-position bs_slide is-active">
 			 <picture class="a-image a-image--background l-position--absolute a-pad-0 ">
-				<img class="a-image l-column--1-1 a-image--cover" src="' . $image . '">
+				<img class="a-image l-column--1-1 a-image--cover" src="' . $normalizePost->image . '">
 			 </picture>
 			 <h2 class="a-text a-text--xl  a-text--secondary a-text--center a-pad-40">
-				' . $title . '
+				' . $normalizePost->title . '
 			 </h2>
-			 <a href="' . $url . '" class="a-button a-button--linear a-button--linear--double a-mar a-button a-button--secondary a-button--m">
+			 <a href="' . $normalizePost->url . '" class="a-button a-button--linear a-button--linear--double a-mar a-button a-button--secondary a-button--m">
 				 ' . $cta . '
 			 </a>
 		  </div>

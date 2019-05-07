@@ -39,27 +39,24 @@ function render_bs_articles_avatar_render($posts)
 {
     $html = '';
     while ($posts->have_posts()) : $posts->the_post();
-        $title = get_the_title();
-        $content = wp_trim_words(get_the_excerpt(), 20, '...');
-        $image = esc_url(get_the_post_thumbnail_url(get_the_ID()));
-        $url = esc_url(get_the_permalink());
+        $normalizePost = new PostService();
         $html .= '
 			<div class="ml-article-avatar l-column--1-2 l-column--mobile--1-1 a-pad l-flex l-flex--align-center">
-				<a href="' . $url . '" class="ml-article-avatar__picture u-pointer">
+				<a href="' . $normalizePost->url . '" class="ml-article-avatar__picture u-pointer">
 					<picture class="">
 						<img class="a-bg--light a-image a-image--avatar a-image--avatar--xl
 									a-border a-border--fat a-border--light
 									ml-article-avatar__image 
 									u-shadow u-shadow--bottom " 
-						src="' . $image . '">
+						src="' . $normalizePost->image . '">
 					</picture>
 				</a>
 				<div class="ml-article-avatar__content l-column--1-1 l-flex l-flex--direction-column l-flex--justify-center l-flex--align-center a-bg">
-					<a href="' . $url . '" class="a-text a-text--underline a-text--bold a-text--sm a-text--link a-text--secondary ml-article-avatar__title">
-						' . $title . '
+					<a href="' . $normalizePost->url . '" class="a-text a-text--underline a-text--bold a-text--sm a-text--link a-text--secondary ml-article-avatar__title">
+						' . $normalizePost->title . '
 					</a>
 					<p class="a-text a-pad--y a-text--secondary">
-						' . wp_trim_words($content, 15, '...') . '
+						' . wp_trim_words($normalizePost->description, 15, '...') . '
 					</p>
 				</div>
 			</div>';

@@ -34,22 +34,20 @@ function render_bs_customer_opinions_render($opinions)
 {
     $html = '';
     while ($opinions->have_posts()) : $opinions->the_post();
-        $title = get_the_title();
-        $content = get_the_excerpt();
-        $image = get_the_post_thumbnail_url(get_the_ID());
+        $normalizePost = new PostService();
         $html .= '
 			<div class="ml-card-testimony 
 						l-flex l-flex--justify-center l-flex--mobile--direction-column l-column--1-2 l-column--mobile--1-1
 						a-mar u-shadow--bottom l-flex--align-center ">
 				<picture class="a-pad">
-					<img class="a-image a-image--avatar " src="' . esc_url($image) . '">
+					<img class="a-image a-image--avatar " src="' . $normalizePost->image . '">
 				</picture>
 				<div class="ml-card-testimony__content l-flex l-flex--direction-column l-flex--align-center a-pad">
 					<h3 class="a-text a-pad--y-5 a-text--bold l-flex-item--align-start a-text--brand">
-					' . esc_html($title) . '
+					' . $normalizePost->title . '
 					</h3>
 					<p class="a-text l-flex-item--align-start">
-						' . $content . '
+						' . $normalizePost->description . '
 					</p>
 				</div>
 			</div>
