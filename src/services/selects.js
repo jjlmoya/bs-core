@@ -1,55 +1,59 @@
-import {Brands} from "../settings";
-import {FieldClass} from '../settings';
+import {Brands, FieldClass, EmptyResult} from "../settings";
 
 const {__} = wp.i18n;
 const {SelectControl} = wp.components;
 
-export let BrandSelection = function (className, attributes, setAttributes) {
+
+const setEmptyResult = function (map) {
+    return [EmptyResult].concat(map);
+};
+
+export const BrandSelection = function (className, attributes, setAttributes) {
     return (<SelectControl
         label={`${__('Elige el brand, por defecto el de tu tema')}`}
         className={`${className}__brand ${FieldClass}`}
         value={attributes.brand}
-        options={Brands}
+        options={setEmptyResult(Brands)}
         onChange={brand => setAttributes({brand})}
     />);
 };
 
-export let CategorySelection = function (className, attributes, setAttributes, categories) {
+export const CategorySelection = function (className, attributes, setAttributes, categories) {
     return (<SelectControl
         label={`${__('Elige categoría:')}`}
         className={`${className}__select  ${FieldClass}`}
         value={attributes.category}
-        options={categories.map((category) => {
+        options={setEmptyResult(categories.map((category) => {
             return {
                 label: category.name,
                 value: category.id
             }
-        })}
+        }))}
         onChange={category => setAttributes({category})}
     />);
 };
 
-
-export let PostTypeSelection = function (className, attributes, setAttributes, types) {
+export const PostTypeSelection = function (className, attributes, setAttributes, types) {
     return (<SelectControl
         label={`${__('Elige tipo de Entradas')}`}
         className={`${className}__type ${FieldClass}`}
         value={attributes.type}
-        options={types.map((type) => {
+        options={setEmptyResult(types.map((type) => {
             return {
                 label: type.name,
                 value: type.slug
             }
-        })}
+        }))}
         onChange={type => setAttributes({type})}/>);
 };
 
-export let HeadingSelection = function (className, attributes, setAttributes) {
+export const HeadingSelection = function (className, attributes, setAttributes) {
     var getOptions = function () {
-        return [{
-            label: 1,
-            value: 'h1',
-        },
+        return setEmptyResult([
+            {
+                label: 1,
+                value: 'h1',
+            },
             {
                 label: 2,
                 value: 'h2',
@@ -69,7 +73,7 @@ export let HeadingSelection = function (className, attributes, setAttributes) {
             {
                 label: 6,
                 value: 'h6',
-            }]
+            }]);
     };
     return (<SelectControl
         label={`${__('Importancia del Título')}`}
@@ -80,7 +84,7 @@ export let HeadingSelection = function (className, attributes, setAttributes) {
 };
 
 
-export let PostSelection = function (className, attributes, setAttributes, posts) {
+export const PostSelection = function (className, attributes, setAttributes, posts) {
     return (<SelectControl
         label={`${__('Selecciona una entrada: ')}`}
         className={`${className}__post ${FieldClass}`}

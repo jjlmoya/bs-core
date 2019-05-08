@@ -38,8 +38,10 @@ function render_bs_content_simple($attributes)
 {
     $title = isset($attributes['title']) ? $attributes["title"] : '';
     $content = isset($attributes['content']) ? $attributes["content"] : '';
-    $headSize = isset($attributes['heading']) ? $attributes['heading'] : 'h1';
-    $heading = isset($attributes['title']) ? render_bs_content_simple_header($headSize, $title) : '';
+    $headSize = isset($attributes['heading']) ? $attributes['heading'] : '';
+    $heading = !empty($title) && !empty($headSize)
+        ? render_bs_content_simple_header($headSize, $title)
+        : '';
     $modifier = new ClassService($attributes);
     return '
 	<div class="og-content-plain ' . $modifier->get_modifiers() . '">

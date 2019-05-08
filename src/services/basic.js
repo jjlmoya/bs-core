@@ -2,8 +2,6 @@ const {TextControl, ToggleControl} = wp.components;
 const {MediaUpload, RichText} = wp.editor;
 const {__} = wp.i18n;
 import {BrandSelection} from '../services/selects';
-
-
 import {FieldClass, Bonseo} from '../settings';
 
 export let DescriptionComponent = function (url) {
