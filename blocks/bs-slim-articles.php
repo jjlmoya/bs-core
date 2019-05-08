@@ -62,6 +62,7 @@ function render_bs_articles_slim($attributes)
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $type = isset($attributes['type']) ? $attributes['type'] : '';
     $modifier = new ClassService($attributes);
+
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',

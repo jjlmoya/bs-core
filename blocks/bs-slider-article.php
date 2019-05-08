@@ -9,6 +9,9 @@ register_block_type('bonseo/' . $block,
             'title' => array(
                 'type' => 'string',
             ),
+            'max_entries' => array(
+                'type' => 'string',
+            ),
             'image' => array(
                 'type' => 'string',
             ),
@@ -23,6 +26,9 @@ register_block_type('bonseo/' . $block,
             ),
             'anchor' => array(
                 'type' => 'boolean',
+            ),
+            'category' => array(
+                'type' => 'string',
             )
         ),
         'render_callback' => 'render_bs_slider_article',
@@ -50,16 +56,20 @@ function render_bs_slider_article_post($articles)
 
 function render_bs_slider_article($attributes)
 {
+    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
     $image = isset($attributes['image']) ? $attributes["image"] : '';
     $title = isset($attributes['title']) ? $attributes["title"] : '';
-    $type = isset($attributes['type']) ? $attributes["type"] : 'posts';
+    $type = isset($attributes['type']) ? $attributes["type"] : 'post';
+    $category = isset($attributes['category']) ? $attributes['category'] : '';
     $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',
-        'posts_per_page' => 3
+        'category' => $category,
+        'posts_per_page' => $max_entries
     );
+
     $articles = new WP_Query($args);
     if (empty($articles)) {
         return '';

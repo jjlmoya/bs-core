@@ -30,6 +30,12 @@ register_block_type('bonseo/' . $block,
             ),
             'anchor' => array(
                 'type' => 'boolean',
+            ),
+            'max_entries' => array(
+                'type' => 'string',
+            ),
+            'category' => array(
+                'type' => 'string',
             )
         ),
         'render_callback' => 'render_bs_link_category',
@@ -57,18 +63,20 @@ function render_bs_link_category_elements($posts)
 
 function render_bs_link_category($attributes)
 {
+    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
     $category = isset($attributes['category']) ? $attributes['category'] : '';
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $subtitle = isset($attributes['subtitle']) ? $attributes['subtitle'] : '';
     $image = isset($attributes['image']) ? $attributes['image'] : '';
-    $type = isset($attributes['type']) ? $attributes['type'] : '';
+    $type = isset($attributes['type']) ? $attributes['type'] : 'post';
+    $category = isset($attributes['category']) ? $attributes['category'] : '';
     $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',
         'category' => $category,
-        'posts_per_page' => 3
+        'posts_per_page' => $max_entries
     );
 
     $posts = new WP_Query($args);

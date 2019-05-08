@@ -7,11 +7,10 @@ const BlockUrl = __('articulos-condensados');
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
 import {
-    BasicTitle, BasicMaxEntries, BasicSeoDescription, TitleComponent,
-    DescriptionComponent, CommonsElements
+    BasicTitle, BasicSeoDescription, TitleComponent,
+    DescriptionComponent, CommonsElements, GroupPostComponent
 } from "../services/basic";
-import {PostTypeSelection} from '../services/selects';
-import {PostTypes} from "../api/core";
+import {Categories, PostTypes} from "../api/core";
 
 registerBlockType('bonseo/block-bs-articles-condensed', {
     title: BlockTitle,
@@ -20,11 +19,12 @@ registerBlockType('bonseo/block-bs-articles-condensed', {
     keywords: CoreKeywords,
     edit: withSelect((select) => {
         return {
+            categories: Categories(select),
             types: PostTypes(select)
         };
     })(function (props) {
         const {attributes, className, setAttributes} = props;
-        if (!props.types) {
+        if (!props.categories || !props.types) {
             return LoadingComponent();
         }
         return (
@@ -32,8 +32,10 @@ registerBlockType('bonseo/block-bs-articles-condensed', {
                 {TitleComponent(BlockTitle)}
                 {DescriptionComponent(BlockUrl)}
                 {BasicTitle(className, attributes, setAttributes)}
-                {BasicMaxEntries(className, attributes, setAttributes)}
-                {PostTypeSelection(className, attributes, setAttributes, props.types)}
+                {GroupPostComponent(className, attributes, setAttributes, {
+                    types: props.types,
+                    categories: props.categories
+                })}
                 {BasicSeoDescription(className, attributes, setAttributes)}
                 {CommonsElements(className, attributes, setAttributes)}
             </div>

@@ -22,6 +22,9 @@ register_block_type('bonseo/' . $block,
             ),
             'anchor' => array(
                 'type' => 'boolean',
+            ),
+            'category' => array(
+                'type' => 'string',
             )
 
         ),
@@ -67,15 +70,17 @@ function render_bs_authors_extract_entries($authors)
 
 function render_bs_authors_extract($attributes)
 {
-    $entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 0;
+    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
     $title = isset($attributes['title']) ? $attributes['title'] : 'Nuestros Colaboradores:';
-    $type = isset($attributes['type']) ? $attributes['type'] : 'bs-service';
+    $type = isset($attributes['type']) ? $attributes['type'] : '';
+    $category = isset($attributes['category']) ? $attributes['category'] : '';
     $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',
-        'posts_per_page' => $entries
+        'category' => $category,
+        'posts_per_page' => $max_entries
     );
     $authors = new WP_Query($args);
     if (empty($authors)) {

@@ -5,9 +5,11 @@ const BlockTitle = __('Slider Básico');
 const BlockUrl = __('slider-basico');
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicMaxEntries, BasicCta, TitleComponent, DescriptionComponent, CommonsElements} from "../services/basic";
-import {PostTypeSelection} from '../services/selects';
-import {PostTypes} from '../api/core';
+import {
+    BasicMaxEntries, BasicCta, TitleComponent, DescriptionComponent, CommonsElements,
+    GroupPostComponent
+} from "../services/basic";
+import {Categories, PostTypes} from '../api/core';
 
 registerBlockType('bonseo/block-bs-slider-simple', {
 	title: BlockTitle,
@@ -15,21 +17,25 @@ registerBlockType('bonseo/block-bs-slider-simple', {
 	category: CategoryGroup,
 	keywords: CoreKeywords,
 	edit: withSelect((select) => {
-		return {
-			types: PostTypes(select),
-		};
+        return {
+            categories: Categories(select),
+            types: PostTypes(select)
+        };
 	})(function (props) {
 		const {attributes, className, setAttributes} = props;
-		if (!props.types) {
-			return LoadingComponent();
-		}
+        if (!props.categories || !props.types) {
+            return LoadingComponent();
+        }
 		return (
 			<div className={EditorClass}>
 				{TitleComponent(BlockTitle)}
 				{DescriptionComponent(BlockUrl)}
 				{BasicMaxEntries(className, attributes, setAttributes)}
 				{BasicCta(className, attributes, setAttributes)}
-				{PostTypeSelection(className, attributes, setAttributes, props.types)}
+                {GroupPostComponent(className, attributes, setAttributes, {
+                    types: props.types,
+                    categories: props.categories
+                })}
                 {CommonsElements(className, attributes, setAttributes)}
 			</div>
 		);

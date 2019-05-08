@@ -6,39 +6,45 @@ const BlockUrl = __('articulos-avatar');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent, CommonsElements} from "../services/basic";
-import {PostTypeSelection, CategorySelection} from '../services/selects';
+import {
+    BasicTitle,
+    TitleComponent,
+    DescriptionComponent,
+    CommonsElements,
+    GroupPostComponent
+} from "../services/basic";
 import {PostTypes, Categories} from "../api/core";
 
 registerBlockType('bonseo/block-bs-articles-avatar', {
-	title: BlockTitle,
-	icon: Icons.writer,
-	category: CategoryGroup,
-	keywords: CoreKeywords,
+    title: BlockTitle,
+    icon: Icons.writer,
+    category: CategoryGroup,
+    keywords: CoreKeywords,
 
-	edit: withSelect((select) => {
-		return {
-			categories: Categories(select),
-			types: PostTypes(select)
-		};
-	})(function (props) {
-		const {attributes, className, setAttributes} = props;
-		if (!props.categories || !props.types) {
-			return LoadingComponent();
-		}
-		return (
-			<div className={EditorClass}>
-				{TitleComponent(BlockTitle)}
-				{DescriptionComponent(BlockUrl)}
-				{BasicTitle(className, attributes, setAttributes)}
-				{BasicMaxEntries(className, attributes, setAttributes)}
-				{CategorySelection(className, attributes, setAttributes, props.categories)}
-				{PostTypeSelection(className, attributes, setAttributes, props.types)}
-				{CommonsElements(className, attributes, setAttributes)}
-			</div>
-		);
-	}),
-	save: function () {
-		return null;
-	}
+    edit: withSelect((select) => {
+        return {
+            categories: Categories(select),
+            types: PostTypes(select)
+        };
+    })(function (props) {
+        const {attributes, className, setAttributes} = props;
+        if (!props.categories || !props.types) {
+            return LoadingComponent();
+        }
+        return (
+            <div className={EditorClass}>
+                {TitleComponent(BlockTitle)}
+                {DescriptionComponent(BlockUrl)}
+                {BasicTitle(className, attributes, setAttributes)}
+                {GroupPostComponent(className, attributes, setAttributes, {
+                    types: props.types,
+                    categories: props.categories
+                })}
+                {CommonsElements(className, attributes, setAttributes)}
+            </div>
+        );
+    }),
+    save: function () {
+        return null;
+    }
 });

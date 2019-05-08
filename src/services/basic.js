@@ -1,10 +1,47 @@
+import {CategorySelection, PostTypeSelection, BrandSelection} from "./selects";
+import {FieldClass, Bonseo} from '../settings';
+
 const {TextControl, ToggleControl} = wp.components;
 const {MediaUpload, RichText} = wp.editor;
 const {__} = wp.i18n;
-import {BrandSelection} from '../services/selects';
-import {FieldClass, Bonseo} from '../settings';
 
-export let DescriptionComponent = function (url) {
+
+export const GroupPostComponent = function (className, attributes, setAttributes, options) {
+    return (
+        <div className={`l-flex l-flex--align-end`}>
+            {BasicMaxEntries(className, attributes, setAttributes)}
+            {CategorySelection(className, attributes, setAttributes, options.categories)}
+            {PostTypeSelection(className, attributes, setAttributes, options.types)}
+        </div>
+    );
+};
+
+export const BasicPlainContent = function (className, attributes, setAttributes) {
+    return (
+        <TextControl
+            className={`${className}__content ${FieldClass}`}
+            label={__('Frase del banner')}
+            value={attributes.content}
+            onChange={content => setAttributes({content})}
+        />
+    )
+};
+
+
+export const BasicWords = function (className, attributes, setAttributes) {
+    return (
+        <TextControl
+            className={`${className}__words ${FieldClass}`}
+            type="number"
+            label={__('Palabras')}
+            value={attributes.words}
+            onChange={words => setAttributes({words})}
+        />
+    )
+};
+
+
+export const DescriptionComponent = function (url) {
     return (
         <div class="l-column--1-1">
             <p>
@@ -143,7 +180,7 @@ export let ToggleAnchor = function (className, attributes, setAttributes) {
 
 export let CommonsElements = function (className, attributes, setAttributes) {
     return (
-        <div className={FieldClass}>
+        <div className={`l-flex l-flex--align-end`}>
             {BrandSelection(className, attributes, setAttributes)}
             {ToggleAnchor(className, attributes, setAttributes)}
         </div>

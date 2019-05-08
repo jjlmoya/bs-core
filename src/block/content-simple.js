@@ -5,8 +5,7 @@ const BlockUrl = __('contenido-simple');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {
-    BasicTitle, BasicContent, TitleComponent, DescriptionComponent, ToggleAnchor,
-    CommonsElements
+    BasicTitle, BasicContent, TitleComponent, DescriptionComponent, CommonsElements
 } from "../services/basic";
 import {HeadingSelection} from '../services/selects';
 

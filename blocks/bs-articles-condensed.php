@@ -14,6 +14,9 @@ register_block_type('bonseo/' . $block,
             'description' => array(
                 'type' => 'string',
             ),
+            'category' => array(
+                'type' => 'string',
+            ),
             'max_entries' => array(
                 'type' => 'string',
             ),
@@ -66,11 +69,13 @@ function render_bs_articles_condensed($attributes)
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $description = isset($attributes['description']) ? $attributes['description'] : '';
     $type = isset($attributes['type']) ? $attributes['type'] : '';
+    $category = isset($attributes['category']) ? $attributes['category'] : '';
     $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',
+        'category' => $category,
         'posts_per_page' => $max_entries
     );
     $posts = new WP_Query($args);

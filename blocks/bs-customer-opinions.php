@@ -24,6 +24,9 @@ register_block_type('bonseo/' . $block,
             ),
             'anchor' => array(
                 'type' => 'boolean',
+            ),
+            'category' => array(
+                'type' => 'string',
             )
         ),
         'render_callback' => 'render_bs_customer_opinions',
@@ -69,15 +72,17 @@ function bs_render_block_title($title)
 
 function render_bs_customer_opinions($attributes)
 {
-    $entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
+    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $type = isset($attributes['type']) ? $attributes['type'] : 'post';
+    $category = isset($attributes['category']) ? $attributes['category'] : '';
     $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',
-        'posts_per_page' => $entries
+        'category' => $category,
+        'posts_per_page' => $max_entries
     );
     $posts = new WP_Query($args);
     if (empty($posts)) {

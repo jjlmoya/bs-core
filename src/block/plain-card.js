@@ -6,37 +6,42 @@ const BlockUrl = __('bloque-plano');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
-import {BasicMaxEntries, CommonsElements, DescriptionComponent, TitleComponent} from '../services/basic';
-import {PostTypeSelection} from '../services/selects';
-import {PostTypes} from '../api/core';
+import {
+    CommonsElements, DescriptionComponent, GroupPostComponent,
+    TitleComponent
+} from '../services/basic';
+import {Categories, PostTypes} from '../api/core';
 
 
 registerBlockType('bonseo/block-bs-plain-card', {
-	title: BlockTitle,
-	icon: Icons.pages,
-	category: CategoryGroup,
-	keywords: CoreKeywords,
-	edit: withSelect((select) => {
-		return {
-			types: PostTypes(select),
-		};
-	})(function (props) {
-		const {attributes, className, setAttributes} = props;
-		if (!props.types) {
-			return LoadingComponent();
-		}
-		return (
-			<div className={EditorClass}>
-				{TitleComponent(BlockTitle)}
-				{DescriptionComponent(BlockUrl)}
-				{BasicMaxEntries(className, attributes, setAttributes)}
-				{PostTypeSelection(className, attributes, setAttributes, props.types)}
+    title: BlockTitle,
+    icon: Icons.pages,
+    category: CategoryGroup,
+    keywords: CoreKeywords,
+    edit: withSelect((select) => {
+        return {
+            categories: Categories(select),
+            types: PostTypes(select)
+        };
+    })(function (props) {
+        const {attributes, className, setAttributes} = props;
+        if (!props.categories || !props.types) {
+            return LoadingComponent();
+        }
+        return (
+            <div className={EditorClass}>
+                {TitleComponent(BlockTitle)}
+                {DescriptionComponent(BlockUrl)}
+                {GroupPostComponent(className, attributes, setAttributes, {
+                    types: props.types,
+                    categories: props.categories
+                })}
                 {CommonsElements(className, attributes, setAttributes)}
-			</div>
-		);
-	}),
-	save: function () {
-		return null;
-	}
+            </div>
+        );
+    }),
+    save: function () {
+        return null;
+    }
 })
 ;

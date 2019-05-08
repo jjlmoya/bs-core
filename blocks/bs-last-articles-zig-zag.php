@@ -30,6 +30,9 @@ register_block_type('bonseo/' . $block,
             ),
             'anchor' => array(
                 'type' => 'boolean',
+            ),
+            'category' => array(
+                'type' => 'string',
             )
         ),
         'render_callback' => 'render_bs_last_articles_zig_zag',
@@ -87,17 +90,19 @@ function render_bs_banner_posts($posts, $cta, $words)
 
 function render_bs_last_articles_zig_zag($attributes)
 {
-    $entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 5;
+    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 5;
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $cta = isset($attributes['cta']) ? $attributes['cta'] : 'Leer';
     $words = isset($attributes['words']) ? $attributes['words'] : 20;
-    $type = isset($attributes['type']) ? $attributes['type'] : 'posts';
+    $type = isset($attributes['type']) ? $attributes['type'] : 'post';
+    $category = isset($attributes['category']) ? $attributes['category'] : '';
     $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',
-        'posts_per_page' => $entries
+        'category' => $category,
+        'posts_per_page' => $max_entries
     );
     $posts = new WP_Query($args);
     if (empty($posts)) {

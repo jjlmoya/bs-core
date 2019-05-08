@@ -5,6 +5,7 @@ const BlockUrl = __('navegacion-contenido');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {BasicTitle, CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
+
 registerBlockType('bonseo/block-bs-anchor-links', {
 	title: BlockTitle,
 	icon: Icons.mark,

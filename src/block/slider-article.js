@@ -5,8 +5,10 @@ const BlockTitle = __('Cabecera con Artículos');
 const BlockUrl = __('cabecera-articulos');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {PostTypeSelection} from '../services/selects';
-import {BasicTitle, BasicImage, TitleComponent, DescriptionComponent, CommonsElements} from '../services/basic';
+import {
+    BasicTitle, BasicImage, TitleComponent, DescriptionComponent, CommonsElements,
+    GroupPostComponent
+} from '../services/basic';
 import {PostTypes} from '../api/core';
 import {LoadingComponent} from '../services/ux';
 
@@ -21,15 +23,18 @@ registerBlockType('bonseo/block-bs-slider-article', {
 		};
 	})(function (props) {
 		const {attributes, className, setAttributes} = props;
-		if (!props.types) {
-			return LoadingComponent();
-		}
+        if (!props.categories || !props.types) {
+            return LoadingComponent();
+        }
 		return (
 			<div className={EditorClass}>
 				{TitleComponent(BlockTitle)}
 				{DescriptionComponent(BlockUrl)}
 				{BasicTitle(className, attributes, setAttributes)}
-				{PostTypeSelection(className, attributes, setAttributes, props.types)}
+                {GroupPostComponent(className, attributes, setAttributes, {
+                    types: props.types,
+                    categories: props.categories
+                })}
 				{BasicImage(className, attributes, setAttributes)}
                 {CommonsElements(className, attributes, setAttributes)}
 			</div>

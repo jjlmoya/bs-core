@@ -23,6 +23,9 @@ register_block_type('bonseo/' . $block,
             ),
             'anchor' => array(
                 'type' => 'boolean',
+            ),
+            'brand' => array(
+                'type' => 'string',
             )
 
         ),

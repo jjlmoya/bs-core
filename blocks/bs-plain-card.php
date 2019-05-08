@@ -21,6 +21,9 @@ register_block_type('bonseo/' . $block,
             ),
             'anchor' => array(
                 'type' => 'boolean',
+            ),
+            'category' => array(
+                'type' => 'string',
             )
 
         ),
@@ -53,14 +56,16 @@ function render_bs_plain_card_entries($authors)
 
 function render_bs_plain_card($attributes)
 {
-    $entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
-    $type = isset($attributes['type']) ? $attributes['type'] : 'posts';
+    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
+    $type = isset($attributes['type']) ? $attributes['type'] : 'post';
+    $category = isset($attributes['category']) ? $attributes['category'] : '';
     $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',
-        'posts_per_page' => $entries
+        'category' => $category,
+        'posts_per_page' => $max_entries
     );
     $posts = new WP_Query($args);
     if (empty($posts)) {

@@ -25,6 +25,9 @@ register_block_type('bonseo/' . $block,
             ),
             'anchor' => array(
                 'type' => 'boolean',
+            ),
+            'category' => array(
+                'type' => 'string',
             )
         ),
         'render_callback' => 'render_bs_slider_simple',
@@ -74,13 +77,16 @@ function render_bs_slider_simple($attributes)
     $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 6;
     $cta = isset($attributes['cta']) ? $attributes['cta'] : '';
     $type = isset($attributes['type']) ? $attributes['type'] : '';
+    $category = isset($attributes['category']) ? $attributes['category'] : '';
     $modifier = new ClassService($attributes);
 
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',
+        'category' => $category,
         'posts_per_page' => $max_entries
     );
+
 
     $posts = new WP_Query($args);
     if (empty($posts)) {
