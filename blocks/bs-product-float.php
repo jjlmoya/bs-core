@@ -3,6 +3,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 $block = 'block-bs-product-float';
+$registers = new RegisterService(
+    array('selectedPost', 'className', 'brand', 'anchor')
+);
 register_block_type('bonseo/' . $block,
     array(
         'attributes' => array(

@@ -4,35 +4,15 @@ if (!defined('ABSPATH')) {
 }
 
 $block = 'block-bs-authors-extract';
-
+$registers = new RegisterService(
+    array('title', 'max_entries', 'type', 'className', 'anchor', 'category', 'brand')
+);
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'title' => array(
-                'type' => 'string',
-            ),
-            'max_entries' => array(
-                'type' => 'string',
-            ),
-            'type' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            ),
-            'category' => array(
-                'type' => 'string',
-            )
-
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_authors_extract',
     )
 );
-
-
 
 
 function render_bs_authors_extract_entries($authors)

@@ -3,34 +3,12 @@ if (!defined('ABSPATH')) {
     exit;
 }
 $block = 'block-bs-slider-article';
+$registers = new RegisterService(
+    array('title', 'max_entries', 'type', 'category', 'image', 'brand', 'className', 'anchor')
+);
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'title' => array(
-                'type' => 'string',
-            ),
-            'max_entries' => array(
-                'type' => 'string',
-            ),
-            'image' => array(
-                'type' => 'string',
-            ),
-            'type' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            ),
-            'category' => array(
-                'type' => 'string',
-            )
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_slider_article',
     )
 );
@@ -62,7 +40,6 @@ function render_bs_slider_article($attributes)
     $type = isset($attributes['type']) ? $attributes["type"] : 'post';
     $category = isset($attributes['category']) ? $attributes['category'] : '';
     $modifier = new ClassService($attributes);
-
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',

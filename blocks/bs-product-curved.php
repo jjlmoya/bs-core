@@ -4,35 +4,12 @@ if (!defined('ABSPATH')) {
 }
 
 $block = 'block-bs-product-curved';
-
+$registers = new RegisterService(
+    array('title', 'claim', 'cta', 'url', 'image', 'brand', 'className', 'anchor')
+);
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'title' => array(
-                'type' => 'string',
-            ),
-            'claim' => array(
-                'type' => 'string',
-            ),
-            'cta' => array(
-                'type' => 'string',
-            ),
-            'url' => array(
-                'type' => 'string',
-            ),
-            'image' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            )
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_product_curved',
     )
 );

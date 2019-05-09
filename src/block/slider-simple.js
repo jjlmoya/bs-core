@@ -30,7 +30,6 @@ registerBlockType('bonseo/block-bs-slider-simple', {
 			<div className={EditorClass}>
 				{TitleComponent(BlockTitle)}
 				{DescriptionComponent(BlockUrl)}
-				{BasicMaxEntries(className, attributes, setAttributes)}
 				{BasicCta(className, attributes, setAttributes)}
                 {GroupPostComponent(className, attributes, setAttributes, {
                     types: props.types,

@@ -9,39 +9,40 @@ import {
     BasicTitle, BasicImage, TitleComponent, DescriptionComponent, CommonsElements,
     GroupPostComponent
 } from '../services/basic';
-import {PostTypes} from '../api/core';
+import {Categories, PostTypes} from '../api/core';
 import {LoadingComponent} from '../services/ux';
 
 registerBlockType('bonseo/block-bs-slider-article', {
-	title: BlockTitle,
-	icon: Icons.slides,
-	category: CategoryGroup,
-	keywords: CoreKeywords,
-	edit: withSelect((select) => {
-		return {
-			types: PostTypes(select),
-		};
-	})(function (props) {
-		const {attributes, className, setAttributes} = props;
+    title: BlockTitle,
+    icon: Icons.slides,
+    category: CategoryGroup,
+    keywords: CoreKeywords,
+    edit: withSelect((select) => {
+        return {
+            categories: Categories(select),
+            types: PostTypes(select)
+        };
+    })(function (props) {
+        const {attributes, className, setAttributes} = props;
         if (!props.categories || !props.types) {
             return LoadingComponent();
         }
-		return (
-			<div className={EditorClass}>
-				{TitleComponent(BlockTitle)}
-				{DescriptionComponent(BlockUrl)}
-				{BasicTitle(className, attributes, setAttributes)}
+        return (
+            <div className={EditorClass}>
+                {TitleComponent(BlockTitle)}
+                {DescriptionComponent(BlockUrl)}
+                {BasicTitle(className, attributes, setAttributes)}
                 {GroupPostComponent(className, attributes, setAttributes, {
                     types: props.types,
                     categories: props.categories
                 })}
-				{BasicImage(className, attributes, setAttributes)}
+                {BasicImage(className, attributes, setAttributes)}
                 {CommonsElements(className, attributes, setAttributes)}
-			</div>
-		);
-	}),
-	save: function () {
-		return null;
-	}
+            </div>
+        );
+    }),
+    save: function () {
+        return null;
+    }
 })
 ;

@@ -3,32 +3,12 @@ if (!defined('ABSPATH')) {
     exit;
 }
 $block = 'block-bs-list-vertical';
+$registers = new RegisterService(
+    array('title', 'className', 'brand', 'type', 'anchor', 'category', 'max_entries')
+);
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'title' => array(
-                'type' => 'string',
-            ),
-            'max_entries' => array(
-                'type' => 'string',
-            ),
-            'type' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            ),
-            'category' => array(
-                'type' => 'string',
-            )
-
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_list_vertical',
     )
 );

@@ -5,31 +5,12 @@ if (!defined('ABSPATH')) {
 }
 
 $block = 'block-bs-articles-avatar';
+$registers = new RegisterService(
+    array('title', 'max_entries', 'className', 'category', 'type', 'brand', 'anchor')
+);
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'title' => array(
-                'type' => 'string',
-            ),
-            'max_entries' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'category' => array(
-                'type' => 'string',
-            ),
-            'type' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            )
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_articles_avatar',
     )
 );
@@ -72,7 +53,6 @@ function render_bs_articles_avatar($attributes)
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $type = isset($attributes['type']) ? $attributes['type'] : '';
     $modifier = new ClassService($attributes);
-
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',

@@ -6,6 +6,7 @@ class RegisterService
 
     private $string = 'string';
     private $boolean = 'boolean';
+    private $number = 'int';
 
     public function __construct($attributes)
     {
@@ -26,6 +27,15 @@ class RegisterService
             'className' => array(
                 'type' => $this->string,
             ),
+            'max_entries' => array(
+                'type' => $this->string,
+            ),
+            'category' => array(
+                'type' => $this->string,
+            ),
+            'type' => array(
+                'type' => $this->string,
+            ),
             'brand' => array(
                 'type' => $this->string,
             ),
@@ -40,7 +50,29 @@ class RegisterService
             ),
             'anchor' => array(
                 'type' => $this->boolean,
-            )
+            ),
+            'description' => array(
+                'type' => $this->string,
+            ),
+            'heading' => array(
+                'type' => $this->string,
+            ),
+            'image' => array(
+                'type' => $this->string,
+            ),
+            'claim' => array(
+                'type' => $this->string,
+            ),
+            'subtitle' => array(
+                'type' => $this->string,
+            ),
+            'words' => array(
+                'type' => $this->number,
+            ),
+            'selectedPost' => array(
+                'type' => $this->number,
+            ),
+
         );
     }
 }

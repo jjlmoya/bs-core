@@ -5,31 +5,12 @@ if (!defined('ABSPATH')) {
 }
 
 $block = 'block-bs-slider-simple';
+$registers = new RegisterService(
+    array('cta', 'max_entries', 'type', 'category', 'brand', 'className', 'anchor')
+);
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'max_entries' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'cta' => array(
-                'type' => 'string',
-            ),
-            'type' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            ),
-            'category' => array(
-                'type' => 'string',
-            )
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_slider_simple',
     )
 );
@@ -86,7 +67,6 @@ function render_bs_slider_simple($attributes)
         'category' => $category,
         'posts_per_page' => $max_entries
     );
-
 
     $posts = new WP_Query($args);
     if (empty($posts)) {

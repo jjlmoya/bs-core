@@ -4,37 +4,12 @@ if (!defined('ABSPATH')) {
 }
 
 $block = 'block-bs-last-articles-zig-zag';
+$registers = new RegisterService(
+    array('title', 'max_entries', 'cta', 'words', 'className', 'brand', 'type', 'anchor', 'category')
+);
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'title' => array(
-                'type' => 'string',
-            ),
-            'max_entries' => array(
-                'type' => 'string',
-            ),
-            'cta' => array(
-                'type' => 'string',
-            ),
-            'words' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            ),
-            'type' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            ),
-            'category' => array(
-                'type' => 'string',
-            )
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_last_articles_zig_zag',
     )
 );
@@ -75,7 +50,7 @@ function render_bs_banner_posts($posts, $cta, $words)
     $html = '';
     $index = 0;
     while ($posts->have_posts()) : $posts->the_post();
-        $normalizePost = new PostService(200);
+        $normalizePost = new PostService($words);
         $html .= render_bs_last_articles_zig_zag_element($index % 2 == 0,
             $cta,
             $normalizePost->title,
@@ -93,11 +68,10 @@ function render_bs_last_articles_zig_zag($attributes)
     $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 5;
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $cta = isset($attributes['cta']) ? $attributes['cta'] : 'Leer';
-    $words = isset($attributes['words']) ? $attributes['words'] : 20;
+    $words = isset($attributes['words']) ? $attributes['words'] : 30;
     $type = isset($attributes['type']) ? $attributes['type'] : 'post';
     $category = isset($attributes['category']) ? $attributes['category'] : '';
     $modifier = new ClassService($attributes);
-
     $args = array(
         'post_type' => $type,
         'post_status' => 'publish',
@@ -108,7 +82,6 @@ function render_bs_last_articles_zig_zag($attributes)
     if (empty($posts)) {
         return "";
     }
-
     return '
 	<section class="og-articles-zigzag a-pad-2 ' . $modifier->get_modifiers() . '">
 		<h2 class="a-text a-text--xl  a-text--center a-text--bold a-pad">

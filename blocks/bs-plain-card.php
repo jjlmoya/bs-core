@@ -4,29 +4,12 @@ if (!defined('ABSPATH')) {
 }
 
 $block = 'block-bs-plain-card';
+$registers = new RegisterService(
+    array('className', 'brand', 'type', 'anchor', 'category', 'max_entries')
+);
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'max_entries' => array(
-                'type' => 'string',
-            ),
-            'type' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            ),
-            'category' => array(
-                'type' => 'string',
-            )
-
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_plain_card',
     )
 );

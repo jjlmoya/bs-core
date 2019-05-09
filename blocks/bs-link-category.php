@@ -4,40 +4,13 @@ if (!defined('ABSPATH')) {
     exit;
 }
 $block = 'block-bs-link-category';
+$registers = new RegisterService(
+    array('title', 'subtitle', 'image', 'words', 'className',
+        'brand', 'type', 'anchor', 'category', 'max_entries')
+);
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'title' => array(
-                'type' => 'string',
-            ),
-            'subtitle' => array(
-                'type' => 'string',
-            ),
-            'image' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'category' => array(
-                'type' => 'string',
-            ),
-            'type' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            ),
-            'max_entries' => array(
-                'type' => 'string',
-            ),
-            'category' => array(
-                'type' => 'string',
-            )
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_link_category',
     )
 );
@@ -69,7 +42,6 @@ function render_bs_link_category($attributes)
     $subtitle = isset($attributes['subtitle']) ? $attributes['subtitle'] : '';
     $image = isset($attributes['image']) ? $attributes['image'] : '';
     $type = isset($attributes['type']) ? $attributes['type'] : 'post';
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
     $modifier = new ClassService($attributes);
 
     $args = array(

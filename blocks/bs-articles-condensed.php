@@ -5,38 +5,13 @@ if (!defined('ABSPATH')) {
 }
 
 $block = 'block-bs-articles-condensed';
+$registers = new RegisterService(
+    array('title', 'description', 'max_entries', 'className', 'category', 'type', 'brand', 'anchor')
+);
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'title' => array(
-                'type' => 'string',
-            ),
-            'description' => array(
-                'type' => 'string',
-            ),
-            'category' => array(
-                'type' => 'string',
-            ),
-            'max_entries' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'category' => array(
-                'type' => 'string',
-            ),
-            'type' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            )
-        ),
-        'render_callback' => 'render_bs_articles_condensed',
+        'attributes' => $registers->register,
+        'render_callback' => 'render_bs_articles_condensed'
     )
 );
 

@@ -5,29 +5,14 @@ if (!defined('ABSPATH')) {
 }
 $block = 'block-bs-banner-basic';
 
+$registers = new RegisterService(
+    array('title', 'content', 'cta', 'url', 'className', 'anchor', 'brand')
+);
+
+
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'title' => array(
-                'type' => 'string',
-            ),
-            'content' => array(
-                'type' => 'string',
-            ),
-            'cta' => array(
-                'type' => 'string',
-            ),
-            'url' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string'
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            )
-
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_basic_banner',
     )
 );
