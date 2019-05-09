@@ -5,28 +5,19 @@ if (!defined('ABSPATH')) {
 }
 
 $block = 'block-bs-anchor-links';
+$registers = new RegisterService(
+    array('title', 'brand', 'className')
+);
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'className' => array(
-                'type' => 'string',
-            ),
-            'title' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            )
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_anchor_links',
     )
 );
-
 function render_bs_anchor_links($attributes)
 {
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $modifier = new ClassService($attributes);
-
     return '
 	<nav class="ml-anchor-cloud
             a-pad
