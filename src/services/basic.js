@@ -1,10 +1,10 @@
 import {CategorySelection, PostTypeSelection, BrandSelection} from "./selects";
 import {FieldClass, Bonseo} from '../settings';
+import {InfoIcon} from "./ux";
 
 const {TextControl, ToggleControl} = wp.components;
 const {MediaUpload, RichText} = wp.editor;
 const {__} = wp.i18n;
-
 
 export const GroupPostComponent = function (className, attributes, setAttributes, options) {
     return (
@@ -43,13 +43,9 @@ export const BasicWords = function (className, attributes, setAttributes) {
 
 export const DescriptionComponent = function (url) {
     return (
-        <div class="l-column--1-1">
-            <p>
-                {__('Para más información de configuración o visualización previa visite ')}
-                <a href={Bonseo.path + url}>{__('la página de este bloque')}</a>
-            </p>
-
-        </div>
+        <a className={`l-position--absolute l-position--absolute--top-right`} href={Bonseo.path + url}>
+            {InfoIcon()}
+        </a>
     )
 };
 export let TitleComponent = function (title) {
