@@ -40,31 +40,19 @@ function render_bs_articles_condensed_render($posts)
 
 function render_bs_articles_condensed($attributes)
 {
-    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 6;
-    $title = isset($attributes['title']) ? $attributes['title'] : '';
-    $description = isset($attributes['description']) ? $attributes['description'] : '';
-    $type = isset($attributes['type']) ? $attributes['type'] : '';
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
-    $modifier = new ClassService($attributes);
-
-    $args = array(
-        'post_type' => $type,
-        'post_status' => 'publish',
-        'category' => $category,
-        'posts_per_page' => $max_entries
-    );
-    $posts = new WP_Query($args);
+    $block = new AttributesService($attributes);
+    $posts = new WP_Query($block->getCategoryTypeQuery());
     if (empty($posts)) {
         return '';
     }
 
     return '
-	<section class="og-articles-condensed a-pad ' . $modifier->get_modifiers() . ' ">
+	<section class="og-articles-condensed a-pad ' . $block->get_modifiers() . ' ">
 		<h2 class="a-text a-text--xl  a-text-brand a-pad--y">
-			' . $title . '
+			' . $block->title . '
 		</h2>
 		<p class="a-text a-text--s a-pad-5">
-			' . $description . '
+			' . $block->description . '
 		</p>
 		<div class="og-articles-condensed__container l-flex l-flex--wrap l-flex--justify-center ">
 			' . render_bs_articles_condensed_render($posts) . '

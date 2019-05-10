@@ -36,42 +36,28 @@ function render_bs_link_category_elements($posts)
 
 function render_bs_link_category($attributes)
 {
-    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
-    $title = isset($attributes['title']) ? $attributes['title'] : '';
-    $subtitle = isset($attributes['subtitle']) ? $attributes['subtitle'] : '';
-    $image = isset($attributes['image']) ? $attributes['image'] : '';
-    $type = isset($attributes['type']) ? $attributes['type'] : 'post';
-    $modifier = new ClassService($attributes);
-
-    $args = array(
-        'post_type' => $type,
-        'post_status' => 'publish',
-        'category' => $category,
-        'posts_per_page' => $max_entries
-    );
-
-    $posts = new WP_Query($args);
+    $block = new AttributesService($attributes);
+    $posts = new WP_Query($block->getCategoryTypeQuery());
     if (empty($posts)) {
         return '';
     }
 
-    return '<div class="og-list-category l-flex l-flex--direction-column a-mar ' . $modifier->get_modifiers() . '">
+    return '<div class="og-list-category l-flex l-flex--direction-column a-mar ' . $block->get_modifiers() . '">
 				<div class="og-list-category__title l-flex">
 					<a href="" class="a-text a-text--link a-text--underline 
 									  bs_viewport a-mi a-mi--left a-pad a-text--center 
 									  og-list-category__title__text a-bg--dark a-text--secondary">
-									  ' . $title . '
+									  ' . $block->title . '
 				  </a>
 				</div>
 				<div class="og-list-category__row l-flex">
 					<picture class="og-list-category__row__picture  a-pad-0">
 						<img data-target="" class="a-image l-column--1-1 a-image--cover bs_viewport a-mi a-mi--zoom a-mi--zoom--out" 
-						src="' . $image . '">
+						src="' . $block->image . '">
 					</picture>
 					<div class="og-list-category__row__content a-bg--mono-1 a-pad-40">
 						<h3 class="a-text  a-text--brand--secondary l-column--1-1">
-							' . $subtitle . '
+							' . $block->subtitle . '
 						</h3>
 						<nav class="og-list-category__row__content__navigation l-flex l-flex--justify-center l-flex--wrap l-column--1-1">
 						' . render_bs_link_category_elements($posts) . '

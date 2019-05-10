@@ -39,23 +39,13 @@ function render_bs_plain_card_entries($authors)
 
 function render_bs_plain_card($attributes)
 {
-    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
-    $type = isset($attributes['type']) ? $attributes['type'] : 'post';
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
-    $modifier = new ClassService($attributes);
-
-    $args = array(
-        'post_type' => $type,
-        'post_status' => 'publish',
-        'category' => $category,
-        'posts_per_page' => $max_entries
-    );
-    $posts = new WP_Query($args);
+    $block = new AttributesService($attributes);
+    $posts = new WP_Query($block->getCategoryTypeQuery());
     if (empty($posts)) {
         return "";
     }
     return '
-		<div class="og-block-samples l-flex l-flex--wrap a-pad l-flex--justify-center ' . $modifier->get_modifiers() . '">
+		<div class="og-block-samples l-flex l-flex--wrap a-pad l-flex--justify-center ' . $block->get_modifiers() . '">
 			' . render_bs_plain_card_entries($posts) . '
         </div>';
 }

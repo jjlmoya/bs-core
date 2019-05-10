@@ -9,30 +9,8 @@ $registers = new RegisterService(
 );
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'title' => array(
-                'type' => 'string',
-            ),
-            'max_entries' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            ),
-            'type' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            ),
-            'category' => array(
-                'type' => 'string',
-            )
-        ),
-        'render_callback' => 'render_bs_customer_opinions',
+        'attributes' => $registers->register,
+        'render_callback' => 'render_bs_customer_opinions'
     )
 );
 
@@ -75,25 +53,14 @@ function bs_render_block_title($title)
 
 function render_bs_customer_opinions($attributes)
 {
-    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
-    $title = isset($attributes['title']) ? $attributes['title'] : '';
-    $type = isset($attributes['type']) ? $attributes['type'] : 'post';
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
-    $modifier = new ClassService($attributes);
-
-    $args = array(
-        'post_type' => $type,
-        'post_status' => 'publish',
-        'category' => $category,
-        'posts_per_page' => $max_entries
-    );
-    $posts = new WP_Query($args);
+    $block = new AttributesService($attributes);
+    $posts = new WP_Query($block->getCategoryTypeQuery());
     if (empty($posts)) {
         return "";
     }
     return '
-		<section class="og-block-testimony ' . $modifier->get_modifiers() . '">
-			' . bs_render_block_title($title) . '
+		<section class="og-block-testimony ' . $block->get_modifiers() . '">
+			' . bs_render_block_title($block->title) . '
 			<div class="og-block-testimony__group l-flex a-pad l-flex--wrap l-flex--justify-center ">
 				' . render_bs_customer_opinions_render($posts) . '
 			</div>

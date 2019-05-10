@@ -16,16 +16,15 @@ register_block_type('bonseo/' . $block,
 );
 function render_bs_anchor_links($attributes)
 {
-    $title = isset($attributes['title']) ? $attributes['title'] : '';
-    $modifier = new ClassService($attributes);
+    $block = new AttributesService($attributes);
     return '
 	<nav class="ml-anchor-cloud
             a-pad
-            l-flex l-flex--direction-column l-flex--align-center ' . $modifier->get_modifiers() . '
+            l-flex l-flex--direction-column l-flex--align-center ' . $block->get_modifiers() . '
             ">
 		<div class="ml-anchor-cloud__title
 					a-pad-5
-					a-text a-text--m a-text--bold a-text--brand">' . $title . '</div>
+					a-text a-text--m a-text--bold a-text--brand">' . $block->title . '</div>
 		<div class="ml-anchor-cloud__list
 					l-flex l-flex--wrap l-flex--justify-center
 					bs_anchor_container"

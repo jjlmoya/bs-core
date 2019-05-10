@@ -65,29 +65,17 @@ function render_bs_banner_posts($posts, $cta, $words)
 
 function render_bs_last_articles_zig_zag($attributes)
 {
-    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 5;
-    $title = isset($attributes['title']) ? $attributes['title'] : '';
-    $cta = isset($attributes['cta']) ? $attributes['cta'] : 'Leer';
-    $words = isset($attributes['words']) ? $attributes['words'] : 30;
-    $type = isset($attributes['type']) ? $attributes['type'] : 'post';
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
-    $modifier = new ClassService($attributes);
-    $args = array(
-        'post_type' => $type,
-        'post_status' => 'publish',
-        'category' => $category,
-        'posts_per_page' => $max_entries
-    );
-    $posts = new WP_Query($args);
+    $block = new AttributesService($attributes);
+    $posts = new WP_Query($block->getCategoryTypeQuery());
     if (empty($posts)) {
         return "";
     }
     return '
-	<section class="og-articles-zigzag a-pad-2 ' . $modifier->get_modifiers() . '">
+	<section class="og-articles-zigzag a-pad-2 ' . $block->get_modifiers() . '">
 		<h2 class="a-text a-text--xl  a-text--center a-text--bold a-pad">
-        	' . $title . '
+        	' . $block->title . '
    		</h2>
-   		' . render_bs_banner_posts($posts, $cta, $words) . '
+   		' . render_bs_banner_posts($posts, $block->cta, $block->words) . '
 	</section>';
 
 }

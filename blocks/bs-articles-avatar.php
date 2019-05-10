@@ -48,26 +48,15 @@ function render_bs_articles_avatar_render($posts)
 
 function render_bs_articles_avatar($attributes)
 {
-    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 6;
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
-    $title = isset($attributes['title']) ? $attributes['title'] : '';
-    $type = isset($attributes['type']) ? $attributes['type'] : '';
-    $modifier = new ClassService($attributes);
-    $args = array(
-        'post_type' => $type,
-        'post_status' => 'publish',
-        'category' => $category,
-        'posts_per_page' => $max_entries
-    );
-
-    $posts = new WP_Query($args);
+    $block = new AttributesService($attributes);
+    $posts = new WP_Query($block->getCategoryTypeQuery());
     if (empty($posts)) {
         return '';
     }
     return '
-	<section class="og-articles-avatar ' . $modifier->get_modifiers() . '">
+	<section class="og-articles-avatar ' . $block->get_modifiers() . '">
 		<h2 class="a-text a-text--xl  a-text--center a-pad-20">
-			' . $title . '
+			' . $block->title . '
 		</h2>
 		<div class="og-article-avatar__list l-flex l-flex--wrap l-flex--justify-center a-pad">
 			' . render_bs_articles_avatar_render($posts) . '

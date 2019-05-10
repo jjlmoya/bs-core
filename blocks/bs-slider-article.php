@@ -34,35 +34,23 @@ function render_bs_slider_article_post($articles)
 
 function render_bs_slider_article($attributes)
 {
-    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
-    $image = isset($attributes['image']) ? $attributes["image"] : '';
-    $title = isset($attributes['title']) ? $attributes["title"] : '';
-    $type = isset($attributes['type']) ? $attributes["type"] : 'post';
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
-    $modifier = new ClassService($attributes);
-    $args = array(
-        'post_type' => $type,
-        'post_status' => 'publish',
-        'category' => $category,
-        'posts_per_page' => $max_entries
-    );
-
-    $articles = new WP_Query($args);
-    if (empty($articles)) {
+    $block = new AttributesService($attributes);
+    $posts = new WP_Query($block->getCategoryTypeQuery());
+    if (empty($posts)) {
         return '';
     }
     return '
 		<section class="og-slider og-slider--articles
 		 			   l-flex l-flex--direction-column l-grid-column--full 
-		 			    a-bg--image a-bg--image--technology ' . $modifier->get_modifiers() . '">
+		 			    a-bg--image a-bg--image--technology ' . $block->get_modifiers() . '">
 			<h1 class="a-text a-text--xl a-text--secondary a-mar-40 og-slider--articles__text">
-				' . $title . '
+				' . $block->title . '
 			</h1>    
-			' . render_bs_slider_article_post($articles) . '
+			' . render_bs_slider_article_post($posts) . '
 		</section>
 		<style>
 		 .a-bg--image--technology::after {
-		 	background-image:url(' . $image . ');
+		 	background-image:url(' . $block->image . ');
 		 }
 		</style>
 	';

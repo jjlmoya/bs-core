@@ -50,27 +50,16 @@ function render_bs_authors_extract_entries($authors)
 
 function render_bs_authors_extract($attributes)
 {
-    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
-    $title = isset($attributes['title']) ? $attributes['title'] : 'Nuestros Colaboradores:';
-    $type = isset($attributes['type']) ? $attributes['type'] : '';
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
-    $modifier = new ClassService($attributes);
-
-    $args = array(
-        'post_type' => $type,
-        'post_status' => 'publish',
-        'category' => $category,
-        'posts_per_page' => $max_entries
-    );
-    $authors = new WP_Query($args);
-    if (empty($authors)) {
+    $block = new AttributesService($attributes);
+    $posts = new WP_Query($block->getCategoryTypeQuery());
+    if (empty($posts)) {
         return "";
     }
     return '
-	<section class="og-block-authors ' . $modifier->get_modifiers() . '">
-	<h2 class="a-text a-text--xl">' . $title . '</h2>
+	<section class="og-block-authors ' . $block->get_modifiers() . '">
+	<h2 class="a-text a-text--xl">' . $block->title . '</h2>
 		<div class="l-flex l-flex--justify-center l-flex--wrap a-pad--y">
-		' . render_bs_authors_extract_entries($authors) . '
+		' . render_bs_authors_extract_entries($posts) . '
 		</div>
 	</section>';
 }

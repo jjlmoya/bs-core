@@ -55,20 +55,8 @@ function render_bs_slider_simple_render_elements($posts, $cta)
 
 function render_bs_slider_simple($attributes)
 {
-    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 6;
-    $cta = isset($attributes['cta']) ? $attributes['cta'] : '';
-    $type = isset($attributes['type']) ? $attributes['type'] : '';
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
-    $modifier = new ClassService($attributes);
-
-    $args = array(
-        'post_type' => $type,
-        'post_status' => 'publish',
-        'category' => $category,
-        'posts_per_page' => $max_entries
-    );
-
-    $posts = new WP_Query($args);
+    $block = new AttributesService($attributes);
+    $posts = new WP_Query($block->getCategoryTypeQuery());
     if (empty($posts)) {
         return '';
     }
@@ -76,7 +64,7 @@ function render_bs_slider_simple($attributes)
 	<section class="og-slider--simple
 	   l-grid-column--full
 	   l-flex l-flex--align-center l-flex--justify-center
-	   l-position bs_slider ' . $modifier->get_modifiers() . ' ">
+	   l-position bs_slider ' . $block->get_modifiers() . ' ">
 	   <div class="ml-arrow ml-arrow--left
 		  a-bg--gradient--dark a-text--secondary
 		  ml-arrow--full l-flex l-flex--align-center l-flex--justify-center">
@@ -89,10 +77,10 @@ function render_bs_slider_simple($attributes)
 		  &lt;
 	   </div>
 	   <div class="og-slider--simple__content bs_slider_content">
-	   	  ' . render_bs_slider_simple_render_elements($posts, $cta) . '
+	   	  ' . render_bs_slider_simple_render_elements($posts, $block->cta) . '
 	   </div>
 	   <div class="ml-slider-buttons l-flex l-position--absolute l-position--absolute--bottom og-slider--simple__buttons a-pad">
-	   	  ' . render_bs_slider_simple_render_navigation($max_entries) . '
+	   	  ' . render_bs_slider_simple_render_navigation($block->max_entries) . '
 	   </div>
 	</section>
 	';

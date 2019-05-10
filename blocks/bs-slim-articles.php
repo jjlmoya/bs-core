@@ -35,28 +35,15 @@ function render_bs_articles_slim_render($posts)
 
 function render_bs_articles_slim($attributes)
 {
-    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 6;
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
-    $title = isset($attributes['title']) ? $attributes['title'] : '';
-    $type = isset($attributes['type']) ? $attributes['type'] : '';
-    $modifier = new ClassService($attributes);
-
-    $args = array(
-        'post_type' => $type,
-        'post_status' => 'publish',
-        'category' => $category,
-        'posts_per_page' => $max_entries
-    );
-
-    $posts = new WP_Query($args);
+    $block = new AttributesService($attributes);
+    $posts = new WP_Query($block->getCategoryTypeQuery());
     if (empty($posts)) {
         return '';
     }
-
     return '
-	<section class="og-articles--slim a-mi a-mi--left bs_viewport a-pad--y-20 ' . $modifier->get_modifiers() . '">
+	<section class="og-articles--slim a-mi a-mi--left bs_viewport a-pad--y-20 ' . $block->get_modifiers() . '">
 		<h3 class="a-text  l-column--1-1 a-text--center a-text--brand">
-			' . $title . '
+			' . $block->title . '
 		</h3>    
 		<div class="og-articles--slim__container l-flex l-flex--wrap l-flex--justify-center a-pad">
 			  ' . render_bs_articles_slim_render($posts) . '

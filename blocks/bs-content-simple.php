@@ -20,16 +20,13 @@ function render_bs_content_simple_header($header, $title)
 
 function render_bs_content_simple($attributes)
 {
-    $title = isset($attributes['title']) ? $attributes["title"] : '';
-    $content = isset($attributes['content']) ? $attributes["content"] : '';
-    $headSize = isset($attributes['heading']) ? $attributes['heading'] : '';
-    $heading = !empty($title) && !empty($headSize)
-        ? render_bs_content_simple_header($headSize, $title)
+    $block = new AttributesService($attributes);
+    $heading = !empty($block->title) && !empty($block->heading)
+        ? render_bs_content_simple_header($block->heading, $block->title)
         : '';
-    $modifier = new ClassService($attributes);
     return '
-	<div class="og-content-plain ' . $modifier->get_modifiers() . '">
+	<div class="og-content-plain ' . $block->get_modifiers() . '">
     	' . $heading . '
-    	' . $content . '
+    	' . $block->content . '
     </div>';
 }

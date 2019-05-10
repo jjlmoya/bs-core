@@ -8,20 +8,7 @@ $registers = new RegisterService(
 );
 register_block_type('bonseo/' . $block,
     array(
-        'attributes' => array(
-            'selectedPost' => array(
-                'type' => 'string',
-            ),
-            'className' => array(
-                'type' => 'string',
-            ),
-            'brand' => array(
-                'type' => 'string',
-            ),
-            'anchor' => array(
-                'type' => 'boolean',
-            )
-        ),
+        'attributes' => $registers->register,
         'render_callback' => 'render_bs_product_float',
     )
 );
@@ -88,25 +75,26 @@ function render_bs_product_float_actions($link, $markerX, $markerY)
 
 function render_bs_product_float($attributes)
 {
-    $postID = isset($attributes['selectedPost']) ? $attributes['selectedPost'] : '';
-    if (empty($postID)) {
+    $block = new AttributesService($attributes);
+    if (empty($block->selectedPost)) {
         return '';
     }
-    $post = get_post($postID);
-    $modifier = new ClassService($attributes);
+    $id = $block->selectedPost;
+    $post = get_post($block->selectedPost);
+    $postType = get_post_type($block->selectedPost);
 
-    $affiliateLink = get_post_meta($postID, get_post_type($postID) . '_affiliateLink', true);
-    $markerX = get_post_meta($postID, get_post_type($postID) . '_cordX', true);
-    $markerY = get_post_meta($postID, get_post_type($postID) . '_cordY', true);
-    $price = get_post_meta($postID, get_post_type($postID) . '_price', true);
-    $image = esc_url(get_the_post_thumbnail_url($postID));
+    $affiliateLink = get_post_meta($id, $postType . '_affiliateLink', true);
+    $markerX = get_post_meta($id, $postType . '_cordX', true);
+    $markerY = get_post_meta($id, $postType . '_cordY', true);
+    $price = get_post_meta($id, $postType . '_price', true);
+    $image = esc_url(get_the_post_thumbnail_url($id));
 
 
     return '
 	<section class="l-flex l-flex--justify-center">
 		<div class="ml-product-float a-bg--gradient--transparent-to-top
 			a-mar a-mar--top-60
-			l-flex l-flex--align-center l-flex--justify-center l-flex--direction-column ' . $modifier->get_modifiers() . '">
+			l-flex l-flex--align-center l-flex--justify-center l-flex--direction-column ' . $block->get_modifiers() . '">
 			<div class="ml-product-float__content
 				l-flex l-flex--direction-column  l-flex-align--center
 				a-mar-auto a-bg a-pad--x">

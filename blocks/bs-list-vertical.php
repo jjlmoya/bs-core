@@ -42,18 +42,8 @@ function render_bs_list_vertical_entries($posts)
 
 function render_bs_list_vertical($attributes)
 {
-    $title = isset($attributes['title']) ? $attributes['title'] : '';
-    $max_entries = isset($attributes['max_entries']) ? $attributes['max_entries'] : 3;
-    $type = isset($attributes['type']) ? $attributes['type'] : 'post';
-    $category = isset($attributes['category']) ? $attributes['category'] : '';
-    $modifier = new ClassService($attributes);
-    $args = array(
-        'post_type' => $type,
-        'post_status' => 'publish',
-        'category' => $category,
-        'posts_per_page' => $max_entries
-    );
-    $posts = new WP_Query($args);
+    $block = new AttributesService($attributes);
+    $posts = new WP_Query($block->getCategoryTypeQuery());
     if (empty($posts)) {
         return "";
     }
@@ -61,9 +51,9 @@ function render_bs_list_vertical($attributes)
 		<section class="og-list-title-vertical
 			   l-flex l-grid-column--full
 			   l-position
-			   a-bg ' . $modifier->get_modifiers() . '">
+			   a-bg ' . $block->get_modifiers() . '">
 		   <h1 class="a-text  a-text--xl  og-list-title-vertical__title a-text--secondary">
-			  ' . $title . '
+			  ' . $block->title . '
 		   </h1>
 		   <nav class="og-list-title-vertical__container 
 		   			   l-flex l-flex--direction-column l-column--1-1 
