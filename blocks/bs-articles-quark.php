@@ -53,7 +53,10 @@ function render_bs_articles_quark($attributes)
         return '';
     }
     return '
-	<section class="og-articles-quark l-flex l-flex--justify-center l-flex--wrap ' . $block->get_modifiers() . '">
+	<section class="og-articles-quark ' . $block->get_modifiers() . '">
+	    ' . $block->get_title() . '
+	    <div class="l-flex l-flex--justify-center l-flex--wrap ">
         ' . render_bs_articles_quark_render($posts) . '
+        </div>
     </section>';
 }

@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-plain-card';
 $registers = new RegisterService(
-    array('className', 'brand', 'type', 'anchor', 'category', 'max_entries')
+    array('title', 'className', 'brand', 'type', 'anchor', 'category', 'max_entries')
 );
 register_block_type('bonseo/' . $block,
     array(
@@ -45,7 +45,10 @@ function render_bs_plain_card($attributes)
         return "";
     }
     return '
-		<div class="og-block-samples l-flex l-flex--wrap a-pad l-flex--justify-center ' . $block->get_modifiers() . '">
+		<div class="og-block-samples ' . $block->get_modifiers() . '">
+		    ' . $block->get_title() . '
+		    <div class="l-flex l-flex--wrap a-pad l-flex--justify-center">
 			' . render_bs_plain_card_entries($posts) . '
+			</div>
         </div>';
 }

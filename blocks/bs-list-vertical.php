@@ -52,9 +52,9 @@ function render_bs_list_vertical($attributes)
 			   l-flex l-grid-column--full
 			   l-position
 			   a-bg ' . $block->get_modifiers() . '">
-		   <h1 class="a-text  a-text--xl  og-list-title-vertical__title a-text--secondary">
+		   <h2 class="a-text  a-text--xl  og-list-title-vertical__title a-text--secondary">
 			  ' . $block->title . '
-		   </h1>
+		   </h2>
 		   <nav class="og-list-title-vertical__container 
 		   			   l-flex l-flex--direction-column l-column--1-1 
 		   			   a-bg--mono-0 a-mar bs_viewport a-mi a-mi--temporal--left">'

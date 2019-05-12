@@ -57,7 +57,7 @@ function render_bs_authors_extract($attributes)
     }
     return '
 	<section class="og-block-authors ' . $block->get_modifiers() . '">
-	<h2 class="a-text a-text--xl">' . $block->title . '</h2>
+	' . $block->get_title() . '
 		<div class="l-flex l-flex--justify-center l-flex--wrap a-pad--y">
 		' . render_bs_authors_extract_entries($posts) . '
 		</div>
