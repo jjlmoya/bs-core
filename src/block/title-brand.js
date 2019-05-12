@@ -1,7 +1,7 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Título Temático');
-const BlockUrl = __('titlulo-temático');
+const BlockUrl = __('titlulo-tematico');
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
 import {
     BasicTitle, BasicContent, BasicImage, BasicClaim, TitleComponent, DescriptionComponent,
