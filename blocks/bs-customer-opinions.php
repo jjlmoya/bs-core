@@ -41,16 +41,6 @@ function render_bs_customer_opinions_render($opinions)
     return $html;
 }
 
-function bs_render_block_title($title)
-{
-    if ($title && !empty($title)) {
-        return '<h2 class="a-text a-text--xl a-text--center a-text--brand">
-        		' . $title . '
-  		    </h2>';
-    }
-    return '';
-}
-
 function render_bs_customer_opinions($attributes)
 {
     $block = new AttributesService($attributes);
@@ -60,7 +50,7 @@ function render_bs_customer_opinions($attributes)
     }
     return '
 		<section class="og-block-testimony ' . $block->get_modifiers() . '">
-			' . bs_render_block_title($block->title) . '
+			' . $block->get_title() . '
 			<div class="og-block-testimony__group l-flex a-pad l-flex--wrap l-flex--justify-center ">
 				' . render_bs_customer_opinions_render($posts) . '
 			</div>

@@ -35,6 +35,7 @@ registerBlockType('bonseo/block-bs-articles-quark', {
             <div className={EditorClass}>
                 {TitleComponent(BlockTitle)}
                 {DescriptionComponent(BlockUrl)}
+                {BasicTitle(className, attributes, setAttributes)}
                 {GroupPostComponent(className, attributes, setAttributes, {
                     types: props.types,
                     categories: props.categories

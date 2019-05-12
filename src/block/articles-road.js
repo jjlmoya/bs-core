@@ -1,24 +1,26 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
-const BlockTitle = __('Bloque Plano');
-const BlockUrl = __('bloque-plano');
+const BlockTitle = __('Artículos Road');
+const BlockUrl = __('articulos-road');
 
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
 import {
     BasicTitle,
-    CommonsElements, DescriptionComponent, GroupPostComponent,
-    TitleComponent
-} from '../services/basic';
-import {Categories, PostTypes} from '../api/core';
+    TitleComponent,
+    DescriptionComponent,
+    CommonsElements,
+    GroupPostComponent
+} from "../services/basic";
+import {PostTypes, Categories} from "../api/core";
 
-
-registerBlockType('bonseo/block-bs-plain-card', {
+registerBlockType('bonseo/block-bs-articles-road', {
     title: BlockTitle,
-    icon: Icons.pages,
+    icon: Icons.writer,
     category: CategoryGroup,
     keywords: CoreKeywords,
+
     edit: withSelect((select) => {
         return {
             categories: Categories(select),
@@ -45,5 +47,4 @@ registerBlockType('bonseo/block-bs-plain-card', {
     save: function () {
         return null;
     }
-})
-;
+});

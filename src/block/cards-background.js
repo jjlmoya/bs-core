@@ -7,6 +7,7 @@ const BlockUrl = __('bloque-fondo');
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
 import {
+    BasicTitle,
     CommonsElements, DescriptionComponent, GroupPostComponent,
     TitleComponent
 } from '../services/basic';
@@ -32,6 +33,7 @@ registerBlockType('bonseo/block-bs-cards-background', {
             <div className={EditorClass}>
                 {TitleComponent(BlockTitle)}
                 {DescriptionComponent(BlockUrl)}
+                {BasicTitle(className, attributes, setAttributes)}
                 {GroupPostComponent(className, attributes, setAttributes, {
                     types: props.types,
                     categories: props.categories

@@ -42,9 +42,7 @@ function render_bs_articles_slim($attributes)
     }
     return '
 	<section class="og-articles--slim a-mi a-mi--left bs_viewport a-pad--y-20 ' . $block->get_modifiers() . '">
-		<h3 class="a-text  l-column--1-1 a-text--center a-text--brand">
-			' . $block->title . '
-		</h3>    
+		' . $block->get_title() . '   
 		<div class="og-articles--slim__container l-flex l-flex--wrap l-flex--justify-center a-pad">
 			  ' . render_bs_articles_slim_render($posts) . '
 		</div>

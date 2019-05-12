@@ -30,7 +30,7 @@ function render_bs_head_circle($attributes)
 				<p class="a-text a-text--center a-text--xs">
 					' . $block->claim . '
 				</p>
-				<p class="a-text  a-text--l  a-text--bold">
+				<p class="a-text a-text--center a-text--l  a-text--bold">
 					' . $block->title . '
 				</p>
 				<p class="a-text a-text--center a-text--xs">

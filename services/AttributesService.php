@@ -19,6 +19,7 @@ class AttributesService
     public $subtitle;
     public $words;
     public $selectedPost;
+    public $title_direction;
 
     private $attributes;
 
@@ -48,9 +49,18 @@ class AttributesService
         $this->words = $this->secure_get('words');
         $this->selectedPost = $this->secure_get('selectedPost');
     }
+
     public function get_modifiers()
     {
         return $this->brand . ' ' . $this->className . ' ' . $this->anchor;
+    }
+
+    public function get_title()
+    {
+        $title_direction = $this->title_direction ? $this->title_direction : 'a-text--center';
+        return $this->title && !empty($this->title)
+            ? '<h2 class="a-text a-text--xl a-text--brand a-pad--y ' . $title_direction . '">' . $this->title . '</h2>'
+            : '';
     }
 
     public function getCategoryTypeQuery()
