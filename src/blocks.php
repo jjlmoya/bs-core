@@ -35,6 +35,7 @@ add_action('enqueue_block_editor_assets', 'bs_core_blocks_editor_assets');
 
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-arrow-banner.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-articles-avatar.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-articles-quark.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-articles-condensed.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-authors-extract.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-banner-basic.php';

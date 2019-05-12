@@ -1,5 +1,6 @@
 import './block/arrow-banner';
 import './block/articles-avatar';
+import './block/articles-quark';
 import './block/articles-condensed';
 import './block/authors-extract';
 import './block/banner-basic';
