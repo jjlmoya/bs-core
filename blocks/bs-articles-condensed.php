@@ -48,9 +48,7 @@ function render_bs_articles_condensed($attributes)
 
     return '
 	<section class="og-articles-condensed a-pad ' . $block->get_modifiers() . ' ">
-		<h2 class="a-text a-text--xl  a-text-brand a-pad--y">
-			' . $block->title . '
-		</h2>
+        ' . $block->get_title() . '
 		<p class="a-text a-text--s a-pad-5">
 			' . $block->description . '
 		</p>

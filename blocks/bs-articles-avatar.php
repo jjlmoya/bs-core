@@ -55,9 +55,7 @@ function render_bs_articles_avatar($attributes)
     }
     return '
 	<section class="og-articles-avatar ' . $block->get_modifiers() . '">
-		<h2 class="a-text a-text--xl  a-text--center a-pad-20">
-			' . $block->title . '
-		</h2>
+		' . $block->get_title() . '
 		<div class="og-article-avatar__list l-flex l-flex--wrap l-flex--justify-center a-pad">
 			' . render_bs_articles_avatar_render($posts) . '
 		</div>
