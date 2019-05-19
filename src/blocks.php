@@ -56,3 +56,4 @@ require_once plugin_dir_path(__FILE__) . '../blocks/bs-anchor-links.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-product-curved.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-link-category.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-cards-background.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-image-parallax.php';
