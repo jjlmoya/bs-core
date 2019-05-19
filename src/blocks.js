@@ -17,6 +17,7 @@ import './block/title-brand';
 import './block/slider-simple';
 import './block/head-circle';
 import './block/product-float';
+import './block/parallax';
 import './block/anchor-links';
 import './block/product-curved';
 import './block/link-category';
