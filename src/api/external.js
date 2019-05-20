@@ -3,7 +3,6 @@ import {map} from 'lodash';
 
 const YieldPostType = function* () {
 	let i = 1;
-	console.log(i++);
 	yield apiFetch({path: '/wp/v2/types?context=edit'}).next().value;
 };
 export const PostTypeFetch = function* () {

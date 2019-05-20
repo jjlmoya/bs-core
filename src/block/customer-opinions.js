@@ -2,11 +2,11 @@ const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Opiniones de Clientes');
 const BlockUrl = __('opiniones-clientes');
-
 const {withSelect} = wp.data;
+
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {
-    BasicTitle, BasicMaxEntries, TitleComponent, DescriptionComponent, CommonsElements,
+    BasicTitle, TitleComponent, DescriptionComponent, CommonsElements,
     GroupPostComponent
 } from "../services/basic";
 import {LoadingComponent} from "../services/ux";

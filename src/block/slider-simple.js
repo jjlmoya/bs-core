@@ -3,10 +3,11 @@ const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
 const BlockTitle = __('Slider Básico');
 const BlockUrl = __('slider-basico');
+
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {LoadingComponent} from '../services/ux';
 import {
-    BasicMaxEntries, BasicCta, TitleComponent, DescriptionComponent, CommonsElements,
+	BasicCta, TitleComponent, DescriptionComponent, CommonsElements,
     GroupPostComponent
 } from "../services/basic";
 import {Categories, PostTypes} from '../api/core';

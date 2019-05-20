@@ -2,6 +2,7 @@ const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Producto Curvado (H1, Image Transparente)');
 const BlockUrl = __('producto-curvado');
+
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
 import {
     BasicTitle, BasicImage, BasicClaim, BasicCta, BasicUrl, TitleComponent,

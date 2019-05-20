@@ -13,7 +13,6 @@ import {
 } from '../services/basic';
 import {Categories, PostTypes} from '../api/core';
 
-
 registerBlockType('bonseo/block-bs-cards-background', {
     title: BlockTitle,
     icon: Icons.pages,
