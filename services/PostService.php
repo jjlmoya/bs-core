@@ -8,7 +8,6 @@ class PostService
     public $url;
     public $words;
 
-
     public function __construct($words = 30)
     {
         //global post used here

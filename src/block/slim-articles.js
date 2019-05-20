@@ -3,6 +3,7 @@ const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
 const BlockTitle = __('Extracto de Artículos Básicos');
 const BlockUrl = __('articulos-basicos');
+
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
 import {
     BasicTitle, TitleComponent, DescriptionComponent, CommonsElements,

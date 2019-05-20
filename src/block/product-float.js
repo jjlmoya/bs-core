@@ -1,10 +1,10 @@
-import {CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
-
 const {withSelect} = wp.data;
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Producto Flotante');
 const BlockUrl = __('producto-flotante');
+
+import {CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
 import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
 import {PostSelection} from '../services/selects';
 import {PostByType} from "../api/core";

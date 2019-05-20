@@ -1,10 +1,11 @@
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Parallax Image');
-const BlockUrl = __('parallax-image');
+const BlockUrl = __('parallax');
+
 import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
 import {
-    BasicTitle, BasicContent, BasicImage, BasicClaim, TitleComponent, DescriptionComponent,
+    BasicImage, DescriptionComponent,
     CommonsElements
 } from '../services/basic';
 

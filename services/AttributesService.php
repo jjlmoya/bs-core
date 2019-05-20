@@ -20,7 +20,6 @@ class AttributesService
     public $words;
     public $selectedPost;
     public $title_direction;
-
     private $attributes;
 
     public function secure_get($key)
@@ -57,9 +56,9 @@ class AttributesService
 
     public function get_title()
     {
-        $title_direction = $this->title_direction ? $this->title_direction : 'a-text--center';
+        $modifierPosition = $this->title_direction ? $this->title_direction : 'a-text--center';
         return $this->title && !empty($this->title)
-            ? '<h2 class="a-text a-text--xl a-text--brand a-pad--y ' . $title_direction . '">' . $this->title . '</h2>'
+            ? '<h2 class="a-text a-text--xl a-text--brand a-pad--y ' . $modifierPosition . '">' . $this->title . '</h2>'
             : '';
     }
 
