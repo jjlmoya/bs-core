@@ -67,7 +67,7 @@ class AttributesService
         return array(
             'post_type' => $this->type,
             'post_status' => 'publish',
-            'category' => $this->category,
+            'cat' => $this->category,
             'posts_per_page' => $this->max_entries
         );
     }
