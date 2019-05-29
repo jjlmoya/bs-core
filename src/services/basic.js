@@ -174,11 +174,21 @@ export let ToggleAnchor = function (className, attributes, setAttributes) {
     />);
 }
 
+export let ToggleLink = function (className, attributes, setAttributes) {
+    return (<ToggleControl
+        className={`${className}__actionable ${FieldClass}`}
+        label={__('¿Enlazar?')}
+        checked={attributes.isActionable}
+        onChange={() => setAttributes({isActionable: !attributes.isActionable})}
+    />);
+}
+
 export let CommonsElements = function (className, attributes, setAttributes) {
     return (
         <div className={`l-flex l-flex--align-end`}>
             {BrandSelection(className, attributes, setAttributes)}
             {ToggleAnchor(className, attributes, setAttributes)}
+            {ToggleLink(className, attributes, setAttributes)}
         </div>
     );
 }

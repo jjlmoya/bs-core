@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 }
 $block = 'block-bs-arrow-banner';
 $registers = new RegisterService(
-    array('title', 'content', 'cta', 'url', 'className', 'brand', 'anchor')
+    array('title', 'content', 'cta', 'url', 'className', 'brand', 'anchor', 'isActionable')
 );
 register_block_type('bonseo/' . $block,
     array(
@@ -14,9 +14,15 @@ register_block_type('bonseo/' . $block,
     )
 );
 
+function render_bs_arrow_banner_action($block)
+{
+
+}
+
 function render_bs_arrow_banner($attributes)
 {
     $block = new AttributesService($attributes);
+    $components = new ComponentService();
     return '
 		<section class="og-banner-arrow ' . $block->get_modifiers() . ' l-grid-column--full">
 			<div class="og-banner-arrow__simple a-pad">
@@ -28,8 +34,12 @@ function render_bs_arrow_banner($attributes)
 				</p>
 			</div>
 			<div class="og-banner-arrow__edge  l-flex l-flex--justify-center a-pad">
-				<a href="' . $block->url . '" class="a-bg a-button a-button--rounded a-button--s a-button--secondary">' . $block->cta . '</a>
-			</div>
+			      ' . $components->get_actionable_url(
+            'a-bg a-button a-button--rounded a-button--s a-button--secondary',
+                    $block->url,
+                    $block->cta,
+                    $block->isActionable, false) . '
+            </div>
 		</section>';
 }
 

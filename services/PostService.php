@@ -26,4 +26,5 @@ class PostService
             'description' => $this->description
         );
     }
+
 }

@@ -72,6 +72,9 @@ class RegisterService
             'selectedPost' => array(
                 'type' => $this->number,
             ),
+            'isActionable' => array(
+                'type' => $this->boolean,
+            ),
 
         );
     }

@@ -20,33 +20,35 @@ class AttributesService
     public $words;
     public $selectedPost;
     public $title_direction;
+    public $isActionable;
     private $attributes;
 
-    public function secure_get($key)
+    public function secure_get($key, $defaultValue)
     {
-        return isset($this->attributes[$key]) ? $this->attributes[$key] : null;
+        return isset($this->attributes[$key]) ? $this->attributes[$key] : $defaultValue;
     }
 
     public function __construct($attributes)
     {
         $this->attributes = $attributes;
-        $this->title = $this->secure_get('title');
-        $this->className = $this->secure_get('className');
-        $this->max_entries = $this->secure_get('max_entries');
-        $this->category = $this->secure_get('category');
-        $this->type = $this->secure_get('type');
-        $this->brand = $this->secure_get('brand');
-        $this->content = $this->secure_get('content');
-        $this->cta = $this->secure_get('cta');
-        $this->url = $this->secure_get('url');
-        $this->anchor = $this->secure_get('anchor');
-        $this->description = $this->secure_get('description');
-        $this->heading = $this->secure_get('heading');
-        $this->image = $this->secure_get('image');
-        $this->claim = $this->secure_get('claim');
-        $this->subtitle = $this->secure_get('subtitle');
-        $this->words = $this->secure_get('words');
-        $this->selectedPost = $this->secure_get('selectedPost');
+        $this->title = $this->secure_get('title', null);
+        $this->className = $this->secure_get('className', null);
+        $this->max_entries = $this->secure_get('max_entries', null);
+        $this->category = $this->secure_get('category', null);
+        $this->type = $this->secure_get('type', null);
+        $this->brand = $this->secure_get('brand', null);
+        $this->content = $this->secure_get('content', null);
+        $this->cta = $this->secure_get('cta', null);
+        $this->url = $this->secure_get('url', null);
+        $this->anchor = $this->secure_get('anchor', null);
+        $this->description = $this->secure_get('description', null);
+        $this->heading = $this->secure_get('heading', null);
+        $this->image = $this->secure_get('image', null);
+        $this->claim = $this->secure_get('claim', null);
+        $this->subtitle = $this->secure_get('subtitle', null);
+        $this->words = $this->secure_get('words', null);
+        $this->selectedPost = $this->secure_get('selectedPost', null);
+        $this->isActionable = $this->secure_get('isActionable', true);
     }
 
     public function get_modifiers()
@@ -70,5 +72,10 @@ class AttributesService
             'cat' => $this->category,
             'posts_per_page' => $this->max_entries
         );
+    }
+
+    public function get_actionable_url($classes, $link, $anchor, $isActionable)
+    {
+
     }
 }

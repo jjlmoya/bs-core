@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-articles-avatar';
 $registers = new RegisterService(
-    array('title', 'max_entries', 'className', 'category', 'type', 'brand', 'anchor')
+    array('title', 'max_entries', 'className', 'category', 'type', 'brand', 'anchor', 'isActionable')
 );
 register_block_type('bonseo/' . $block,
     array(
@@ -14,7 +14,6 @@ register_block_type('bonseo/' . $block,
         'render_callback' => 'render_bs_articles_avatar',
     )
 );
-
 
 function render_bs_articles_avatar_render($posts)
 {
