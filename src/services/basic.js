@@ -175,10 +175,11 @@ export let ToggleAnchor = function (className, attributes, setAttributes) {
 }
 
 export let ToggleLink = function (className, attributes, setAttributes) {
+    console.log(attributes);
     return (<ToggleControl
         className={`${className}__actionable ${FieldClass}`}
         label={__('¿Enlazar?')}
-        checked={attributes.isActionable}
+        checked={attributes.isActionable !== undefined ? attributes.isActionable : true}
         onChange={() => setAttributes({isActionable: !attributes.isActionable})}
     />);
 }

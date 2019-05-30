@@ -16,13 +16,14 @@ register_block_type('bonseo/' . $block,
 );
 
 
-function render_bs_articles_quark_render($posts)
+function render_bs_articles_quark_render($posts, $isActionable)
 {
     $html = '';
+    $linkClasses = 'ml-card-articles-quark a-mar u-shadow--bottom a-text';
+    $components = new ComponentService();
     while ($posts->have_posts()) : $posts->the_post();
         $normalizePost = new PostService();
-        $html .= '
-			<a href="' . $normalizePost->url . '" class="ml-card-articles-quark a-mar u-shadow--bottom a-text">
+        $temporal = '
                 <div class="ml-card-articles-quark__image l-position">
                     <picture class="a-image a-image--background l-position--absolute a-pad-0 
                     a-border a-border--bottom a-border--mobile--bottom
@@ -38,8 +39,8 @@ function render_bs_articles_quark_render($posts)
                     <h3 class="a-text a-text--xl  a-text--m a-text--center a-text--brand">
                         ' . $normalizePost->title . '
                     </h3>
-                </div>
-            </a>';
+                </div>';
+        $html .= $components->get_actionable_url($linkClasses, $normalizePost->url, $temporal, $isActionable, true);
         unset($post);
     endwhile;
     return $html;
@@ -56,7 +57,7 @@ function render_bs_articles_quark($attributes)
 	<section class="og-articles-quark ' . $block->get_modifiers() . '">
 	    ' . $block->get_title() . '
 	    <div class="l-flex l-flex--justify-center l-flex--wrap ">
-        ' . render_bs_articles_quark_render($posts) . '
+        ' . render_bs_articles_quark_render($posts, $block->isActionable) . '
         </div>
     </section>';
 }
