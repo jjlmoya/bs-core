@@ -74,7 +74,7 @@ function render_bs_last_articles_zig_zag($attributes)
     return '
 	<section class="og-articles-zigzag a-pad-2 ' . $block->get_modifiers() . '">
 		' . $block->get_title() . '
-   		' . render_bs_banner_posts($posts, $block->cta, $block->words) . '
+   		' . render_bs_banner_posts($posts, $block->cta, $block->words, $block->isActionable) . '
 	</section>';
 
 }

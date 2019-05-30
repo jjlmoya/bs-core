@@ -16,7 +16,7 @@ register_block_type('bonseo/' . $block,
 function render_bs_articles_slim_render($posts, $isActionable)
 {
     $html = '';
-    $linkClasses = 'a-text a-text--bold a-text--s a-text--link a-text--brand';
+    $linkClasses = 'a-text a-text--bold a-text--s a-text--brand';
     $actionClasses = 'a-text--link a-text--underline';
     $components = new ComponentService();
     while ($posts->have_posts()) : $posts->the_post();

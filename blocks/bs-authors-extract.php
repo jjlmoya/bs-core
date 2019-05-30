@@ -18,8 +18,8 @@ register_block_type('bonseo/' . $block,
 function render_bs_authors_extract_entries($authors, $isActionable)
 {
     $html = '';
-    $linkClasses = 'a-text a-text--underline a-text--bold a-text--link a-text--brand';
-    $actionClasses = 'a-text--underline';
+    $linkClasses = 'a-text a-text--underline a-text--bold a-text--brand';
+    $actionClasses = 'a-text--link a-text--underline';
     $components = new ComponentService();
     while ($authors->have_posts()) : $authors->the_post();
         $normalizePost = new PostService();
