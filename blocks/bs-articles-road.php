@@ -16,9 +16,12 @@ register_block_type('bonseo/' . $block,
 );
 
 
-function render_bs_articles_road_render($posts)
+function render_bs_articles_road_render($posts, $isActionable)
 {
     $html = '';
+    $linkClasses = 'a-text a-text a-text--secondary a-text--center a-text--uppercase';
+    $actionClasses = 'a-text--link a-text--underline';
+    $components = new ComponentService();
     while ($posts->have_posts()) : $posts->the_post();
         $normalizePost = new PostService();
         $html .= '
@@ -29,9 +32,7 @@ function render_bs_articles_road_render($posts)
                         src="' . $normalizePost->image . '">
                     </picture>    </div>
                 <div class="ml-card-articles-road__title a-bg a-pad l-flex l-flex--justify-center">
-                    <a href="' . $normalizePost->url . '" class="a-text a-text--link a-text--underline a-text a-text--secondary a-text--center a-text--uppercase">
-                    ' . $normalizePost->title . '
-                    </a>   
+                    ' . $components->get_actionable_url($linkClasses, $normalizePost->url, $normalizePost->title, $isActionable, true, $actionClasses) . '
                 </div>
                 <div class="ml-card-articles-road__description">
                     <p class="a-text a-pad-20">
@@ -55,7 +56,7 @@ function render_bs_articles_road($attributes)
 	<section class="og-articles-road l-flex l-flex--direction-column l-flex--justify-center ' . $block->get_modifiers() . '">
 	    ' . $block->get_title() . '
 	    <div class="l-flex l-flex--justify-center l-flex--wrap ">
-        ' . render_bs_articles_road_render($posts) . '
+        ' . render_bs_articles_road_render($posts, $block->isActionable) . '
         </div>
     </section>';
 }

@@ -13,18 +13,14 @@ register_block_type('bonseo/' . $block,
     )
 );
 
-function render_bs_list_vertical_entries($posts)
+function render_bs_list_vertical_entries($posts, $isActionable)
 {
     $html = '';
+    $components = new ComponentService();
+    $linkClasses = 'ml-article-rectangle a-text l-flex l-flex--align-center a-pad';
     while ($posts->have_posts()) : $posts->the_post();
         $normalizePost = new PostService(40);
-        $html .= '<div class="og-list-title-vertical__container__wrapper">
-			<a href="' . $normalizePost->url . '" class="ml-article-rectangle
-					a-text
-					l-flex l-flex--align-center
-					a-pad
-					">
-					<picture class=" a-pad-0">
+        $temporal = '<picture class=" a-pad-0">
 					   <img class="a-image a-image--m a-image--rounded a-image--cover u-shadow--bottom lazy" 
 					        data-src="' . $normalizePost->image . '">
 					</picture>
@@ -33,8 +29,11 @@ function render_bs_list_vertical_entries($posts)
 					   <h3 class="a-text  a-text--brand a-text--bold">' . $normalizePost->title . '</h3>
 					   <p class="a-text a-text--light a-text--s">' . $normalizePost->description . '</p>
 					</div>
-				 </a><hr class="a-separator--classic a-bg" />
-		  </div>';
+				 </a><hr class="a-separator--classic a-bg" />';
+        $html .= '
+            <div class="og-list-title-vertical__container__wrapper">'
+            . $components->get_actionable_url($linkClasses, $normalizePost->url, $temporal, $isActionable, true, '') .
+            '</div>';
         unset($post);
     endwhile;
     return $html;
@@ -58,6 +57,6 @@ function render_bs_list_vertical($attributes)
 		   <nav class="og-list-title-vertical__container 
 		   			   l-flex l-flex--direction-column l-column--1-1 
 		   			   a-bg--mono-0 a-mar bs_viewport a-mi a-mi--temporal--left">'
-        . render_bs_list_vertical_entries($posts) . '</nav>
+        . render_bs_list_vertical_entries($posts, $block->isActionable) . '</nav>
 		</section>';
 }

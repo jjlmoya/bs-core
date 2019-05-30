@@ -20,6 +20,8 @@ register_block_type('bonseo/' . $block,
 function render_bs_basic_banner($attributes)
 {
     $block = new AttributesService($attributes);
+    $components = new ComponentService();
+
     return '
 		<section class="og-banner-basic
 		 				l-flex l-flex--justify-space-around 
@@ -32,9 +34,11 @@ function render_bs_basic_banner($attributes)
 					' . $block->content . '
 				</p>
 			</div>
-			<a href="' . $block->url . '" class="a-button a-button--rounded a-button--s a-button--secondary a-text--m l-flex-item--align-center">
-				' . $block->cta . '
-			</a>
+			 ' . $components->get_actionable_url(
+            'a-button a-button--rounded a-button--s a-button--secondary a-text--m l-flex-item--align-center',
+            $block->url,
+            $block->cta,
+            $block->isActionable, false, '') . '
 		</section>';
 }
 

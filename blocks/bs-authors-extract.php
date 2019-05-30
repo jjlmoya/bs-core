@@ -15,9 +15,12 @@ register_block_type('bonseo/' . $block,
 );
 
 
-function render_bs_authors_extract_entries($authors)
+function render_bs_authors_extract_entries($authors, $isActionable)
 {
     $html = '';
+    $linkClasses = 'a-text a-text--underline a-text--bold a-text--link a-text--brand';
+    $actionClasses = 'a-text--underline';
+    $components = new ComponentService();
     while ($authors->have_posts()) : $authors->the_post();
         $normalizePost = new PostService();
         $postID = get_the_ID();
@@ -31,9 +34,7 @@ function render_bs_authors_extract_entries($authors)
 				</div>
 			<div class="ml-card-author__description a-border--primary a-pad">
 				<h3>
-					<a href="' . $normalizePost->url . '" class="a-text a-text--underline a-text--bold a-text--link a-text--brand">
-						' . $normalizePost->title . '
-					</a>
+                    ' . $components->get_actionable_url($linkClasses, $normalizePost->url, $normalizePost->title, $isActionable, true, $actionClasses) . '
 				</h3>
 				<p class="a-text a-text--bold a-text--xs ">
 					' . $position . '
@@ -59,7 +60,7 @@ function render_bs_authors_extract($attributes)
 	<section class="og-block-authors ' . $block->get_modifiers() . '">
 	' . $block->get_title() . '
 		<div class="l-flex l-flex--justify-center l-flex--wrap a-pad--y">
-		' . render_bs_authors_extract_entries($posts) . '
+		' . render_bs_authors_extract_entries($posts, $block->isActionable) . '
 		</div>
 	</section>';
 }

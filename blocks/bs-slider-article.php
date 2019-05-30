@@ -13,14 +13,16 @@ register_block_type('bonseo/' . $block,
     )
 );
 
-function render_bs_slider_article_post($articles)
+function render_bs_slider_article_post($articles, $isActionable)
 {
     $html = '';
+    $linkClasses = 'a-text a-text--s a-text--center a-text--secondary';
+    $actionClasses = 'a-text--underline ';
+    $components = new ComponentService();
     while ($articles->have_posts()) : $articles->the_post();
         $normalizePost = new PostService(200);
         $html .= '<h3 class="ml-block-articles-minimalist__element a-pad--x-20">
-					<a class="a-text a-text--s a-text--underline a-text--center a-text--secondary"
-					    href="' . $normalizePost->url . '">' . $normalizePost->title . '</a>
+                   ' . $components->get_actionable_url($linkClasses, $normalizePost->url, $normalizePost->title, $isActionable, true, $actionClasses) . '
 				  </h3>';
         unset($post);
     endwhile;
@@ -46,7 +48,7 @@ function render_bs_slider_article($attributes)
 			<h1 class="a-text a-text--xl a-text--secondary a-mar-40 og-slider--articles__text">
 				' . $block->title . '
 			</h1>    
-			' . render_bs_slider_article_post($posts) . '
+			' . render_bs_slider_article_post($posts, $block->isActionable) . '
 		</section>
 		<style>
 		 .a-bg--image--technology::after {

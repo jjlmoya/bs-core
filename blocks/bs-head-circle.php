@@ -16,7 +16,6 @@ register_block_type('bonseo/' . $block,
 function render_bs_head_circle($attributes)
 {
     $block = new AttributesService($attributes);
-    $posts = new WP_Query($block->getCategoryTypeQuery());
     return '
 		<section class="og-banner-outside-circle 
 						l-flex l-flex--direction-column l-flex--justify-center l-grid-column--full 

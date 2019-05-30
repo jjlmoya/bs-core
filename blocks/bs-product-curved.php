@@ -17,6 +17,8 @@ register_block_type('bonseo/' . $block,
 function render_bs_product_curved($attributes)
 {
     $block = new AttributesService($attributes);
+    $components = new ComponentService();
+    $linkClasses = 'a-button a-button--rounded og-slider-product-curved__button a-button--m a-button--secondary l-position--absolute';
     return '
 		<div class="og-slider-product-curved a-bg
 				   a-bg--gradient--light
@@ -36,7 +38,7 @@ function render_bs_product_curved($attributes)
 					 ' . $block->claim . '
 				  </p>
 			   </div>
-			   <a target="_blank" href="' . $block->url . '" class="a-button a-button--rounded og-slider-product-curved__button a-button--m a-button--secondary l-position--absolute">' . $block->cta . '</a>
+			    ' . $components->get_actionable_url($linkClasses, $block->url, $block->cta, $block->isActionable, false, '') . '
 	   </div>';
 }
 

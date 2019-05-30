@@ -14,9 +14,11 @@ register_block_type('bonseo/' . $block,
     )
 );
 
-function render_bs_last_articles_zig_zag_element($isReverse, $cta, $title, $image, $link, $excerpt)
+function render_bs_last_articles_zig_zag_element($isReverse, $cta, $title, $image, $link, $excerpt, $isActionable)
 {
     $modifier = $isReverse ? 'is-reverse' : '';
+    $components = new ComponentService();
+    $linkClasses = 'a-button a-button--rounded a-button--s a-button--secondary l-flex--align-center';
     return '
 		<div class="ml-article-extract l-flex l-flex--wrap a-pad ' . $modifier . '">
 			<div class="ml-article-extract__image l-column--1-2 l-column--mobile--1-1">
@@ -37,15 +39,13 @@ function render_bs_last_articles_zig_zag_element($isReverse, $cta, $title, $imag
 					' . $title . '
 				</h3>
 				<div class="entry-resume-content a-pad"> ' . $excerpt . '</div>
-				<a href="' . $link . '" class="a-button a-button--rounded a-button--s a-button--secondary l-flex--align-center">
-					' . $cta . '
-				</a>
+				' . $components->get_actionable_url($linkClasses . '', $link, $cta, $isActionable, false, '') . '
 			</div>
 		</div>';
 }
 
 
-function render_bs_banner_posts($posts, $cta, $words)
+function render_bs_banner_posts($posts, $cta, $words, $isActionable)
 {
     $html = '';
     $index = 0;
@@ -56,7 +56,8 @@ function render_bs_banner_posts($posts, $cta, $words)
             $normalizePost->title,
             $normalizePost->image,
             $normalizePost->url,
-            $normalizePost->description);
+            $normalizePost->description,
+            $isActionable);
         unset($post);
         $index++;
     endwhile;

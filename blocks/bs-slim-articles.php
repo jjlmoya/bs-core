@@ -13,9 +13,12 @@ register_block_type('bonseo/' . $block,
     )
 );
 
-function render_bs_articles_slim_render($posts)
+function render_bs_articles_slim_render($posts, $isActionable)
 {
     $html = '';
+    $linkClasses = 'a-text a-text--bold a-text--s a-text--link a-text--brand';
+    $actionClasses = 'a-text--link a-text--underline';
+    $components = new ComponentService();
     while ($posts->have_posts()) : $posts->the_post();
         $normalizePost = new PostService();
         $html .= '
@@ -23,7 +26,7 @@ function render_bs_articles_slim_render($posts)
 				<picture class="l-column--1-1 a-pad-0">
 					<img data-target="" class="a-image l-column--1-1" src="' . $normalizePost->image . '">
 				</picture>   
-				<a href="' . $normalizePost->url . '" class="a-text a-text--link a-text--underline a-text--bold a-text--s a-text--link a-text--brand">' . $normalizePost->title . '</a>    
+				' . $components->get_actionable_url($linkClasses, $normalizePost->url, $normalizePost->title, $isActionable, true, $actionClasses) . '
 				<p class="a-text a-text--xs">
 					' . $normalizePost->description . '
 				</p>
@@ -44,7 +47,7 @@ function render_bs_articles_slim($attributes)
 	<section class="og-articles--slim a-mi a-mi--left bs_viewport a-pad--y-20 ' . $block->get_modifiers() . '">
 		' . $block->get_title() . '   
 		<div class="og-articles--slim__container l-flex l-flex--wrap l-flex--justify-center a-pad">
-			  ' . render_bs_articles_slim_render($posts) . '
+			  ' . render_bs_articles_slim_render($posts, $block->isActionable) . '
 		</div>
 	</section>';
 }

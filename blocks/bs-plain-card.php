@@ -14,18 +14,20 @@ register_block_type('bonseo/' . $block,
     )
 );
 
-function render_bs_plain_card_entries($authors)
+function render_bs_plain_card_entries($authors, $isActionable)
 {
     $html = '';
+    $linkClasses = 'ml-card-sample__title a-bg--dark l-column--1-1';
+    $actionClasses = '';
+    $components = new ComponentService();
     while ($authors->have_posts()) : $authors->the_post();
         $normalizePost = new PostService(200);
+        $temporal = '<h3 class="a-text  a-text--secondary a-text--center a-pad--y">
+						' . $normalizePost->title . '
+					</h3>';
         $html .= '
 			<div class="ml-card-sample l-flex l-flex--direction-column l-column--1-3 l-column--mobile--1-2 ml-card-sample--small a-pad">
-				<a href="' . $normalizePost->url . '" class="ml-card-sample__title a-bg--dark l-column--1-1">
-					<h3 class="a-text  a-text--secondary a-text--center a-pad--y">
-						' . $normalizePost->title . '
-					</h3>    
-				</a>
+				' . $components->get_actionable_url($linkClasses, $normalizePost->url, $temporal, $isActionable, true, $actionClasses) . '
 				<div class="ml-card-sample__container a-bg l-column--1-1">
 					<picture class="l-column--1-1 a-pad-0">
 						<img class="a-image l-column--1-1 a-pad--y lazy" data-src="' . $normalizePost->image . '">
@@ -48,7 +50,7 @@ function render_bs_plain_card($attributes)
 		<div class="og-block-samples ' . $block->get_modifiers() . '">
 		    ' . $block->get_title() . '
 		    <div class="l-flex l-flex--wrap a-pad l-flex--justify-center">
-			' . render_bs_plain_card_entries($posts) . '
+			' . render_bs_plain_card_entries($posts, $block->isActionable) . '
 			</div>
         </div>';
 }
