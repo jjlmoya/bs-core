@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-cards-background';
 $registers = new RegisterService(
-    array('className', 'brand', 'type', 'anchor', 'category', 'max_entries')
+    array('className', 'brand', 'type', 'anchor', 'category', 'max_entries', 'isActionable')
 );
 register_block_type('bonseo/' . $block,
     array(

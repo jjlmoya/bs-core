@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-articles-condensed';
 $registers = new RegisterService(
-    array('title', 'description', 'max_entries', 'className', 'category', 'type', 'brand', 'anchor')
+    array('title', 'description', 'max_entries', 'className', 'category', 'type', 'brand', 'anchor', 'isActionable')
 );
 register_block_type('bonseo/' . $block,
     array(
@@ -16,9 +16,11 @@ register_block_type('bonseo/' . $block,
 );
 
 
-function render_bs_articles_condensed_render($posts)
+function render_bs_articles_condensed_render($posts, $isActionable)
 {
     $html = '';
+    $linkClasses = 'a-text a-text--link a-text--underline a-text a-text--secondary a-text--bold a-text--center a-pad';
+    $components = new ComponentService();
     while ($posts->have_posts()) : $posts->the_post();
         $normalizePost = new PostService();
         $html .= '
@@ -29,8 +31,7 @@ function render_bs_articles_condensed_render($posts)
 						 src="' . $normalizePost->image . '">
 				</picture>
 				<div class="ml-article-condensed__excerpt a-text a-pad a-text--light a-text--secondary a-text--xs">' . $normalizePost->description . '</div>
-				<a href="' . $normalizePost->url . '"
-				   class="a-text a-text--link a-text--underline a-text a-text--secondary a-text--bold a-text--center a-pad">' . $normalizePost->title . '</a>
+				' . $components->get_actionable_url($linkClasses, $normalizePost->url, $normalizePost->title, $isActionable, true) . '
 			</div>
 		';
         unset($post);
@@ -53,7 +54,7 @@ function render_bs_articles_condensed($attributes)
 			' . $block->description . '
 		</p>
 		<div class="og-articles-condensed__container l-flex l-flex--wrap l-flex--justify-center ">
-			' . render_bs_articles_condensed_render($posts) . '
+			' . render_bs_articles_condensed_render($posts, $block->isActionable) . '
 		</div>
 	</section>
 	';

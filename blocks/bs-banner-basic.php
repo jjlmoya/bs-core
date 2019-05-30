@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 $block = 'block-bs-banner-basic';
 
 $registers = new RegisterService(
-    array('title', 'content', 'cta', 'url', 'className', 'anchor', 'brand')
+    array('title', 'content', 'cta', 'url', 'className', 'anchor', 'brand', 'isActionable')
 );
 
 

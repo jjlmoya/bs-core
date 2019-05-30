@@ -15,9 +15,11 @@ register_block_type('bonseo/' . $block,
     )
 );
 
-function render_bs_articles_avatar_render($posts)
+function render_bs_articles_avatar_render($posts, $isActionable)
 {
     $html = '';
+    $linkClasses = 'ml-article-avatar__title a-text a-text--underline a-text--bold a-text--sm a-text--link a-text--secondary ';
+    $components = new ComponentService();
     while ($posts->have_posts()) : $posts->the_post();
         $normalizePost = new PostService();
         $html .= '
@@ -32,9 +34,7 @@ function render_bs_articles_avatar_render($posts)
 					</picture>
 				</a>
 				<div class="ml-article-avatar__content l-column--1-1 l-flex l-flex--direction-column l-flex--justify-center l-flex--align-center a-bg">
-					<a href="' . $normalizePost->url . '" class="a-text a-text--underline a-text--bold a-text--sm a-text--link a-text--secondary ml-article-avatar__title">
-						' . $normalizePost->title . '
-					</a>
+					' . $components->get_actionable_url($linkClasses, $normalizePost->url, $normalizePost->title, $isActionable, true) . '
 					<p class="a-text a-pad--y a-text--secondary">
 						' . wp_trim_words($normalizePost->description, 15, '...') . '
 					</p>
@@ -56,7 +56,7 @@ function render_bs_articles_avatar($attributes)
 	<section class="og-articles-avatar ' . $block->get_modifiers() . '">
 		' . $block->get_title() . '
 		<div class="og-article-avatar__list l-flex l-flex--wrap l-flex--justify-center a-pad">
-			' . render_bs_articles_avatar_render($posts) . '
+			' . render_bs_articles_avatar_render($posts, $block->isActionable) . '
 		</div>
 	</section>
 	';

@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 }
 $block = 'block-bs-articles-slim';
 $registers = new RegisterService(
-    array('title', 'max_entries', 'type', 'category', 'image', 'brand', 'className', 'anchor')
+    array('title', 'max_entries', 'type', 'category', 'image', 'brand', 'className', 'anchor', 'isActionable')
 );
 register_block_type('bonseo/' . $block,
     array(

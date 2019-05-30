@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-slider-simple';
 $registers = new RegisterService(
-    array('cta', 'max_entries', 'type', 'category', 'brand', 'className', 'anchor')
+    array('cta', 'max_entries', 'type', 'category', 'brand', 'className', 'anchor', 'isActionable')
 );
 register_block_type('bonseo/' . $block,
     array(

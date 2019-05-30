@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 }
 $block = 'block-bs-head-circle';
 $registers = new RegisterService(
-    array('title', 'claim', 'subtitle', 'image', 'className', 'anchor', 'brand')
+    array('title', 'claim', 'subtitle', 'image', 'className', 'anchor', 'brand', 'isActionable')
 );
 register_block_type('bonseo/' . $block,
     array(

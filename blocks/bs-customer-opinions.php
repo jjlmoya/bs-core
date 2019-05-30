@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 }
 $block = 'block-bs-customer-opinions';
 $registers = new RegisterService(
-    array('title', 'claim', 'subtitle', 'image', 'className', 'anchor', 'brand')
+    array('title', 'claim', 'subtitle', 'image', 'className', 'anchor', 'brand', 'isActionable')
 );
 register_block_type('bonseo/' . $block,
     array(

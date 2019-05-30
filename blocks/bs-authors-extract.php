@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-authors-extract';
 $registers = new RegisterService(
-    array('title', 'max_entries', 'type', 'className', 'anchor', 'category', 'brand')
+    array('title', 'max_entries', 'type', 'className', 'anchor', 'category', 'brand', 'isActionable')
 );
 register_block_type('bonseo/' . $block,
     array(

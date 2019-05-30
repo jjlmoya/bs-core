@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 }
 $block = 'block-bs-list-vertical';
 $registers = new RegisterService(
-    array('title', 'className', 'brand', 'type', 'anchor', 'category', 'max_entries')
+    array('title', 'className', 'brand', 'type', 'anchor', 'category', 'max_entries', 'isActionable')
 );
 register_block_type('bonseo/' . $block,
     array(
