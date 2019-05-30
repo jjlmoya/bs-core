@@ -7,10 +7,10 @@ class ComponentService
     {
     }
 
-    public function get_actionable_url($classes, $link, $anchor, $isActionable, $isVisible)
+    public function get_actionable_url($classes, $link, $anchor, $isActionable, $isVisible, $actionModifier)
     {
         if ($isActionable) {
-            return '<a href="' . $link . '" class="' . $classes . '">' . $anchor . '</a>';
+            return '<a href="' . $link . '" class="' . $classes . ' ' . $actionModifier . '">' . $anchor . '</a>';
         }
         return $isVisible ? '<div class="' . $classes . '">' . $anchor . '</div>' : '';
     }

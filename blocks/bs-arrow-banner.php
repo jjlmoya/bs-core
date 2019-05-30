@@ -38,7 +38,7 @@ function render_bs_arrow_banner($attributes)
             'a-bg a-button a-button--rounded a-button--s a-button--secondary',
                     $block->url,
                     $block->cta,
-                    $block->isActionable, false) . '
+                    $block->isActionable, false, '') . '
             </div>
 		</section>';
 }

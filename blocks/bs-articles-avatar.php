@@ -34,7 +34,7 @@ function render_bs_articles_avatar_render($posts, $isActionable)
 					</picture>
 				</a>
 				<div class="ml-article-avatar__content l-column--1-1 l-flex l-flex--direction-column l-flex--justify-center l-flex--align-center a-bg">
-					' . $components->get_actionable_url($linkClasses, $normalizePost->url, $normalizePost->title, $isActionable, true) . '
+					' . $components->get_actionable_url($linkClasses, $normalizePost->url, $normalizePost->title, $isActionable, true, '') . '
 					<p class="a-text a-pad--y a-text--secondary">
 						' . wp_trim_words($normalizePost->description, 15, '...') . '
 					</p>

@@ -73,9 +73,4 @@ class AttributesService
             'posts_per_page' => $this->max_entries
         );
     }
-
-    public function get_actionable_url($classes, $link, $anchor, $isActionable)
-    {
-
-    }
 }

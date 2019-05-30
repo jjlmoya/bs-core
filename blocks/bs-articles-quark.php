@@ -40,7 +40,7 @@ function render_bs_articles_quark_render($posts, $isActionable)
                         ' . $normalizePost->title . '
                     </h3>
                 </div>';
-        $html .= $components->get_actionable_url($linkClasses, $normalizePost->url, $temporal, $isActionable, true);
+        $html .= $components->get_actionable_url($linkClasses, $normalizePost->url, $temporal, $isActionable, true, '');
         unset($post);
     endwhile;
     return $html;
