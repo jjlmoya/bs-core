@@ -5,6 +5,7 @@ import './block/articles-avatar';
 import './block/articles-condensed';
 import './block/articles-image';
 import './block/articles-road';
+import './block/articles-rainbow';
 import './block/articles-quark';
 
 import './block/authors-extract';
