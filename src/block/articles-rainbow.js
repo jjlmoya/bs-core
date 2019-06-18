@@ -11,7 +11,7 @@ import {
     TitleComponent,
     DescriptionComponent,
     CommonsElements,
-    GroupPostComponent, BasicCta
+    GroupPostComponent, BasicCta, BasicSeoDescription
 } from "../services/basic";
 import {PostTypes, Categories} from "../api/core";
 
@@ -36,6 +36,7 @@ registerBlockType('bonseo/block-bs-articles-rainbow', {
                 {TitleComponent(BlockTitle)}
                 {DescriptionComponent(BlockUrl)}
                 {BasicTitle(className, attributes, setAttributes)}
+                {BasicSeoDescription(className, attributes, setAttributes)}
                 {BasicCta(className, attributes, setAttributes)}
                 {GroupPostComponent(className, attributes, setAttributes, {
                     types: props.types,
