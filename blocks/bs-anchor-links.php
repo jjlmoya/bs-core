@@ -35,5 +35,3 @@ function render_bs_anchor_links($attributes)
 }
 
 
-
-

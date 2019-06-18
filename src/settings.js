@@ -16,16 +16,26 @@ export const CoreKeywords = [
 export const CategoryGroup = 'bonseo-blocks';
 export const Brands = [
     {label: 'Aviator', value: 'aviator'},
+    {label: 'Blue Berry', value: 'blueberry'},
+    {label: 'Cake', value: 'cake'},
+    {label: 'Caribbean', value: 'caribbean'},
+    {label: 'Celeste', value: 'celeste'},
+    {label: 'Clouds', value: 'clouds'},
     {label: 'Diable', value: 'diable'},
     {label: 'Forest', value: 'forest'},
     {label: 'Graylord', value: 'graylord'},
     {label: 'Kino', value: 'kino'},
+    {label: 'Lavanda', value: 'lavanadula'},
+    {label: 'Lemon', value: 'lemon'},
     {label: 'Lime Sports', value: 'lime-sports'},
     {label: 'Lollipop', value: 'lollipop'},
     {label: 'Mint', value: 'mint'},
+    {label: 'Nature', value: 'nature'},
     {label: 'Paradise Orange', value: 'paradise-orange'},
     {label: 'Reverse Sky', value: 'reverse-sky'},
-    {label: 'Sky', value: 'sky'}
+    {label: 'Sky', value: 'sky'},
+    {label: 'Spring Melody', value: 'spring-melody'},
+    {label: 'Strawberry', value: 'strawberry'}
 ];
 export const Icons = {
     quote: 'editor-quote',
