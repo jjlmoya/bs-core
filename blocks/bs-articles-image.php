@@ -29,7 +29,7 @@ function render_bs_articles_image_render($posts, $isActionable)
             l-position l-flex l-flex--align-end l-flex--justify-center">
             <picture class="a-image a-image--background l-position--absolute a-pad-0 ">
                 <img class="a-image l-column--1-1 a-image--cover" src="' . $normalizePost->image . '">
-            </picture>a>
+            </picture>
         	' . $components->get_actionable_url($linkClasses, $normalizePost->url, $normalizePost->title, $isActionable, true, $actionClasses) . '
         </article>';
         unset($post);
