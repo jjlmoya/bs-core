@@ -13,43 +13,41 @@
 
 
 if (!defined('ABSPATH')) {
-	exit;
+    exit;
 }
 if (!in_array('bs-core/plugin.php', apply_filters('active_plugins', get_option('active_plugins')))) {
-	add_action('admin_notices', function () {
-		global $pagenow;
-		if ($pagenow == "plugins.php") {
-			?>
-			<div id="updated" class="error notice is-dismissible">
-				<p>
-					Puede que algunos plugins vean afectados su comportamiento y estilo debido a que no se ha instalado
-					la dependencia con el Plugin "BS-CORE" disponible gratuitamente en https://bonseo.es/plugins
-				</p>
-			</div>
-			<?php
-		}
-	});
-	return;
+    add_action('admin_notices', function () {
+        global $pagenow;
+        if ($pagenow == "plugins.php") {
+            ?>
+            <div id="updated" class="error notice is-dismissible">
+                <p>
+                    Puede que algunos plugins vean afectados su comportamiento y estilo debido a que no se ha instalado
+                    la dependencia con el Plugin "BS-CORE" disponible gratuitamente en https://bonseo.es/plugins
+                </p>
+            </div>
+            <?php
+        }
+    });
+    return;
 }
 
 
 function bs_core_scripts()
 {
-	$timestamp = '2019120619';
-	wp_enqueue_style('bs-core-style', plugins_url('assets/style.css', __FILE__), array(), $timestamp);
-	wp_enqueue_script('bs-core-script', plugins_url('assets/index.js', __FILE__), array(), $timestamp, true);
+    $timestamp = '2019080719';
+    wp_enqueue_style('bs-core-style', plugins_url('assets/style.css', __FILE__), array(), $timestamp);
+    wp_enqueue_script('bs-core-script', plugins_url('assets/index.js', __FILE__), array(), $timestamp, true);
 }
 
-add_filter( 'admin_body_class', 'bs_core_admin_body_class' );
+add_filter('admin_body_class', 'bs_core_admin_body_class');
 
-function bs_core_admin_body_class( $classes ) {
-	return "$classes sky";
+function bs_core_admin_body_class($classes)
+{
+    return "$classes sky";
 }
 
 add_action('wp_enqueue_scripts', 'bs_core_scripts');
 
 require_once plugin_dir_path(__FILE__) . '/services/index.php';
 require_once plugin_dir_path(__FILE__) . '/src/blocks.php';
-
-
-

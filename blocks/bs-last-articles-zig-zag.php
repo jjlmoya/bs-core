@@ -34,7 +34,7 @@ function render_bs_last_articles_zig_zag_element($isReverse, $cta, $title, $imag
 					l-flex--justify-space-around	
 					l-column--1-2
 					l-column--mobile--1-1
-					a-pad--x-40">
+					a-pad--x-40 a-pad--mobile-0">
 				<h3 class="a-text a-text--l l-column--1-1">
 					' . $title . '
 				</h3>
@@ -78,3 +78,7 @@ function render_bs_last_articles_zig_zag($attributes)
 	</section>';
 
 }
+
+
+
+

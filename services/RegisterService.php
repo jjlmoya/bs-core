@@ -75,7 +75,13 @@ class RegisterService
             'isActionable' => array(
                 'type' => $this->boolean,
             ),
-
+            'gallery' => array(
+                'type'    => 'array',
+                'default' => [],
+                'items'   => [
+                    'type' => 'string',
+                ],
+            )
         );
     }
 }

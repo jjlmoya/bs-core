@@ -23,6 +23,8 @@ import './block/last-articles-zig-zag';
 import './block/list-vertical';
 import './block/link-category';
 
+import './block/masonry-gallery';
+
 import './block/parallax';
 import './block/plain-card';
 import './block/product-curved';

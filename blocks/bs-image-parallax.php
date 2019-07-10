@@ -23,10 +23,3 @@ function render_bs_parallax($attributes)
 	     style="--img-parallax: url(' . $block->image . ');"></div>
 	';
 }
-
-
-
-
-
-
-

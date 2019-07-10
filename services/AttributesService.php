@@ -21,6 +21,7 @@ class AttributesService
     public $selectedPost;
     public $title_direction;
     public $isActionable;
+    public $gallery;
     private $attributes;
 
     public function secure_get($key, $defaultValue)
@@ -49,6 +50,7 @@ class AttributesService
         $this->words = $this->secure_get('words', null);
         $this->selectedPost = $this->secure_get('selectedPost', null);
         $this->isActionable = $this->secure_get('isActionable', true);
+        $this->gallery = $this->secure_get('gallery', null);
     }
 
     public function get_modifiers()

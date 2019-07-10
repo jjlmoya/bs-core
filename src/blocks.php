@@ -33,6 +33,7 @@ if (!function_exists('bs_create_block_category')) {
 }
 add_action('enqueue_block_editor_assets', 'bs_core_blocks_editor_assets');
 
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-anchor-links.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-arrow-banner.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-articles-avatar.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-articles-quark.php';
@@ -41,21 +42,31 @@ require_once plugin_dir_path(__FILE__) . '../blocks/bs-articles-image.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-articles-rainbow.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-articles-road.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-authors-extract.php';
+
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-banner-basic.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-banner-data.php';
+
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-cards-background.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-content-simple.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-customer-opinions.php';
+
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-head-circle.php';
+
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-image-parallax.php';
+
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-last-articles-zig-zag.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-list-vertical.php';
-require_once plugin_dir_path(__FILE__) . '../blocks/bs-plain-card.php';
-require_once plugin_dir_path(__FILE__) . '../blocks/bs-slider-article.php';
-require_once plugin_dir_path(__FILE__) . '../blocks/bs-slim-articles.php';
-require_once plugin_dir_path(__FILE__) . '../blocks/bs-title-brand.php';
-require_once plugin_dir_path(__FILE__) . '../blocks/bs-slider-simple.php';
-require_once plugin_dir_path(__FILE__) . '../blocks/bs-head-circle.php';
-require_once plugin_dir_path(__FILE__) . '../blocks/bs-product-float.php';
-require_once plugin_dir_path(__FILE__) . '../blocks/bs-anchor-links.php';
-require_once plugin_dir_path(__FILE__) . '../blocks/bs-product-curved.php';
 require_once plugin_dir_path(__FILE__) . '../blocks/bs-link-category.php';
-require_once plugin_dir_path(__FILE__) . '../blocks/bs-cards-background.php';
-require_once plugin_dir_path(__FILE__) . '../blocks/bs-image-parallax.php';
+
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-masonry-gallery.php';
+
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-plain-card.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-product-curved.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-product-float.php';
+
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-slider-article.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-slider-simple.php';
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-slim-articles.php';
+
+require_once plugin_dir_path(__FILE__) . '../blocks/bs-title-brand.php';
+
