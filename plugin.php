@@ -35,9 +35,9 @@ if (!in_array('bs-core/plugin.php', apply_filters('active_plugins', get_option('
 
 function bs_core_scripts()
 {
-    $timestamp = '2019080719';
-    wp_enqueue_style('bs-core-style', plugins_url('assets/style.css', __FILE__), array(), $timestamp);
-    wp_enqueue_script('bs-core-script', plugins_url('assets/index.js', __FILE__), array(), $timestamp, true);
+    $bs_timestamp = '2019081520';
+    wp_enqueue_style('bs-core-style', plugins_url('assets/style.css', __FILE__), array(), $bs_timestamp);
+    wp_enqueue_script('bs-core-script', plugins_url('assets/index.js', __FILE__), array(), $bs_timestamp, true);
 }
 
 add_filter('admin_body_class', 'bs_core_admin_body_class');
