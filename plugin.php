@@ -5,7 +5,7 @@
  * Description: Core Assets for Bonseo Guttenberg Blocks
  * Author: jjlmoya
  * Author URI: https://www.bonseo.es/
- * Version: 1.0.0
+ * Version: 1.0.1
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * @package BS
@@ -35,7 +35,7 @@ if (!in_array('bs-core/plugin.php', apply_filters('active_plugins', get_option('
 
 function bs_core_scripts()
 {
-    $bs_timestamp = '2019081520';
+    $bs_timestamp = '2019081620';
     wp_enqueue_style('bs-core-style', plugins_url('assets/style.css', __FILE__), array(), $bs_timestamp);
     wp_enqueue_script('bs-core-script', plugins_url('assets/index.js', __FILE__), array(), $bs_timestamp, true);
 }
