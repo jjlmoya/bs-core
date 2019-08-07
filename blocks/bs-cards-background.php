@@ -23,7 +23,7 @@ function render_bs_cards_background_entries($authors, $isActionable)
     $actionClasses = 'u-pointer';
     $components = new ComponentService();
     while ($authors->have_posts()) : $authors->the_post();
-        $normalizePost = new PostService(200);
+        $normalizePost = new PostService(null, 200);
         $temporal = '
               <picture class="a-image a-image--background l-position--absolute a-pad-0 ">
                  <img  class="a-image l-column--1-1 a-image--cover a-border--smooth" 

@@ -20,7 +20,7 @@ function render_bs_slider_article_post($articles, $isActionable)
     $actionClasses = 'a-text--underline ';
     $components = new ComponentService();
     while ($articles->have_posts()) : $articles->the_post();
-        $normalizePost = new PostService(200);
+        $normalizePost = new PostService(null,200);
         $html .= '<h3 class="ml-block-articles-minimalist__element a-pad--x-20">
                    ' . $components->get_actionable_url($linkClasses, $normalizePost->url, $normalizePost->title, $isActionable, true, $actionClasses) . '
 				  </h3>';

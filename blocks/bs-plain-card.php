@@ -21,7 +21,7 @@ function render_bs_plain_card_entries($authors, $isActionable)
     $actionClasses = '';
     $components = new ComponentService();
     while ($authors->have_posts()) : $authors->the_post();
-        $normalizePost = new PostService(200);
+        $normalizePost = new PostService(null,200);
         $temporal = '<h3 class="a-text  a-text--secondary a-text--center a-pad--y">
 						' . $normalizePost->title . '
 					</h3>';

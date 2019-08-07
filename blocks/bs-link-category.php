@@ -19,7 +19,7 @@ function render_bs_link_category_elements($posts)
 {
     $html = '';
     while ($posts->have_posts()) : $posts->the_post();
-        $normalizePost = new PostService(200);
+        $normalizePost = new PostService(null,200);
 
         $html .= '<a href="' . $normalizePost->url . '" class="a-pad u-pointer">
 					<picture class="a-pad ">

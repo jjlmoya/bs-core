@@ -50,7 +50,7 @@ function render_bs_banner_posts($posts, $cta, $words, $isActionable)
     $html = '';
     $index = 0;
     while ($posts->have_posts()) : $posts->the_post();
-        $normalizePost = new PostService($words);
+        $normalizePost = new PostService(null, $words);
         $html .= render_bs_last_articles_zig_zag_element($index % 2 == 0,
             $cta,
             $normalizePost->title,

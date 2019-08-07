@@ -19,7 +19,7 @@ function render_bs_list_vertical_entries($posts, $isActionable)
     $components = new ComponentService();
     $linkClasses = 'ml-article-rectangle a-text l-flex l-flex--align-center a-pad';
     while ($posts->have_posts()) : $posts->the_post();
-        $normalizePost = new PostService(40);
+        $normalizePost = new PostService(null,40);
         $temporal = '<picture class=" a-pad-0">
 					   <img class="a-image a-image--m a-image--rounded a-image--cover u-shadow--bottom lazy" 
 					        data-src="' . $normalizePost->image . '">
