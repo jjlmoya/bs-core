@@ -3,7 +3,7 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-
+$cta = '';
 $block = 'block-bs-slider-simple';
 $registers = new RegisterService(
     array('cta', 'max_entries', 'type', 'category', 'brand', 'className', 'anchor', 'isActionable')
@@ -29,13 +29,10 @@ function render_bs_slider_simple_render_navigation($length)
 
 function render_bs_slider_simple_render_elements($posts, $cta)
 {
-    $html = '';
-    $index = 0;
-    while ($posts->have_posts()) : $posts->the_post();
-        $index++;
-        $normalizePost = new PostService(200);
-        $html .= '
-		  <div id="' . $index . '" class="og-slider--simple__slide l-column--1-1 l-flex l-flex--justify-space-evenly l-flex--align-center l-flex--direction-column l-position bs_slide is-active">
+    return join(array_map(function ($post) use ($cta) {
+        $normalizePost = new PostService($post, 200);
+        return '
+		  <div class="og-slider--simple__slide l-column--1-1 l-flex l-flex--justify-space-evenly l-flex--align-center l-flex--direction-column l-position bs_slide is-active">
 			 <picture class="a-image a-image--background l-position--absolute a-pad-0 ">
 				<img class="a-image l-column--1-1 a-image--cover" src="' . $normalizePost->image . '">
 			 </picture>
@@ -47,10 +44,7 @@ function render_bs_slider_simple_render_elements($posts, $cta)
 			 </a>
 		  </div>
 		';
-
-        unset($post);
-    endwhile;
-    return $html;
+    }, $posts));
 }
 
 function render_bs_slider_simple($attributes)
@@ -77,7 +71,7 @@ function render_bs_slider_simple($attributes)
 		  &lt;
 	   </div>
 	   <div class="og-slider--simple__content bs_slider_content">
-	   	  ' . render_bs_slider_simple_render_elements($posts, $block->cta) . '
+	   	  ' . render_bs_slider_simple_render_elements($posts->posts, $block->cta) . '
 	   </div>
 	   <div class="ml-slider-buttons l-flex l-position--absolute l-position--absolute--bottom og-slider--simple__buttons a-pad">
 	   	  ' . render_bs_slider_simple_render_navigation($block->max_entries) . '
