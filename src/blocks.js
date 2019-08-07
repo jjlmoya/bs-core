@@ -33,6 +33,7 @@ import './block/product-float';
 import './block/slider-article';
 import './block/slim-articles';
 import './block/slider-simple';
+//import './block/slider-movie';
 
 import './block/title-brand';
 
