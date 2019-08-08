@@ -3,11 +3,17 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-$cta = '';
+
 $block = 'block-bs-slider-simple';
 $registers = new RegisterService(
-    array('cta', 'max_entries', 'type', 'category', 'brand', 'className', 'anchor', 'isActionable')
+    array_merge(
+        ComponentSettings::SLIDER_PARAMETERS,
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::QUERY_PARAMETERS,
+        array('cta')
+    )
 );
+
 register_block_type('bonseo/' . $block,
     array(
         'attributes' => $registers->register,
@@ -29,7 +35,6 @@ function render_bs_slider_simple_render_elements($posts, $cta)
     return join(array_map(function ($post) use ($cta) {
         $normalizePost = new PostService($post, 200);
         return '
-
         <div class="a-pad-40 l-position og-slider--simple__slide bs_slide">
             <picture class="a-image a-image--background l-position--absolute a-pad-0 ">
                 <img class="a-image l-column--1-1 a-image--cover" src="' . $normalizePost->image . '">
@@ -95,7 +100,5 @@ function render_bs_slider_simple($attributes)
             </g>
          </svg>
        </div>
-	</section>
-	';
-
+	</section>';
 }
