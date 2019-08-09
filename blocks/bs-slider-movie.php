@@ -6,7 +6,12 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-slider-movie';
 $registers = new RegisterService(
-    array('cta', 'max_entries', 'type', 'category', 'brand', 'className', 'anchor', 'isActionable')
+    array_merge(
+        ComponentSettings::SLIDER_PARAMETERS,
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::QUERY_PARAMETERS,
+        array('cta')
+    )
 );
 register_block_type('bonseo/' . $block,
     array(
@@ -18,8 +23,8 @@ register_block_type('bonseo/' . $block,
 function render_bs_slider_movie($attributes)
 {
     $block = new AttributesService($attributes);
-    $posts = new WP_Query($block->getCategoryTypeQuery());
-    if (empty($posts)) {
+    $queryResult = new WP_Query($block->getCategoryTypeQuery());
+    if (empty($queryResult)) {
         return '';
     }
     return '';
