@@ -9,7 +9,7 @@ $registers = new RegisterService(
     array_merge(
         ComponentSettings::COMMONS_PARAMETERS,
         ComponentSettings::SEO_PARAMETERS,
-        ComponentSettings::QUERY_PARAMETERS,
+        ComponentSettings::QUERY_PARAMETERS
     )
 );
 register_block_type('bonseo/' . $block,
