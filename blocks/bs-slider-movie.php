@@ -13,6 +13,7 @@ $registers = new RegisterService(
         array('cta')
     )
 );
+
 register_block_type('bonseo/' . $block,
     array(
         'attributes' => $registers->register,

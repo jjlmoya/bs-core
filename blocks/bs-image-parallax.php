@@ -6,7 +6,10 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-parallax';
 $registers = new RegisterService(
-    array('image', 'className', 'brand')
+    array_merge(
+        ComponentSettings::COMMONS_PARAMETERS,
+        array('image')
+    )
 );
 register_block_type('bonseo/' . $block,
     array(

@@ -6,7 +6,11 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-articles-image';
 $registers = new RegisterService(
-    array('title', 'description', 'max_entries', 'className', 'category', 'type', 'brand', 'anchor', 'isActionable')
+    array_merge(
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::SEO_PARAMETERS,
+        ComponentSettings::QUERY_PARAMETERS
+    )
 );
 register_block_type('bonseo/' . $block,
     array(
@@ -14,7 +18,6 @@ register_block_type('bonseo/' . $block,
         'render_callback' => 'render_bs_articles_image'
     )
 );
-
 
 function render_bs_articles_image_render($posts, $isActionable)
 {

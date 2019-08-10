@@ -6,10 +6,12 @@ if (!defined('ABSPATH')) {
 $block = 'block-bs-banner-basic';
 
 $registers = new RegisterService(
-    array('title', 'content', 'cta', 'url', 'className', 'anchor', 'brand', 'isActionable')
+    array_merge(
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::SEO_PARAMETERS,
+        ComponentSettings::BANNER_PARAMETERS
+    )
 );
-
-
 register_block_type('bonseo/' . $block,
     array(
         'attributes' => $registers->register,
@@ -31,7 +33,7 @@ function render_bs_basic_banner($attributes)
 					' . $block->title . '
 				</h2>
 				<p class="a-text a-text--secondary">
-					' . $block->content . '
+					' . $block->description . '
 				</p>
 			</div>
 			 ' . $components->get_actionable_url(

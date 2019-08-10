@@ -5,8 +5,13 @@ if (!defined('ABSPATH')) {
 }
 $block = 'block-bs-link-category';
 $registers = new RegisterService(
-    array('title', 'subtitle', 'image', 'words', 'className',
-        'brand', 'type', 'anchor', 'category', 'max_entries', 'isActionable')
+    array_merge(
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::QUERY_PARAMETERS,
+        ComponentSettings::ACTIONABLE_PARAMETERS,
+        array('title', 'subtitle', 'image', 'words')
+    )
+
 );
 register_block_type('bonseo/' . $block,
     array(
@@ -19,7 +24,7 @@ function render_bs_link_category_elements($posts)
 {
     $html = '';
     while ($posts->have_posts()) : $posts->the_post();
-        $normalizePost = new PostService(null,200);
+        $normalizePost = new PostService(null, 200);
 
         $html .= '<a href="' . $normalizePost->url . '" class="a-pad u-pointer">
 					<picture class="a-pad ">

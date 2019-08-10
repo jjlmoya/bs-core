@@ -5,7 +5,13 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-last-articles-zig-zag';
 $registers = new RegisterService(
-    array('title', 'max_entries', 'cta', 'words', 'className', 'brand', 'type', 'anchor', 'category', 'isActionable')
+    array_merge(
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::ACTIONABLE_PARAMETERS,
+        ComponentSettings::QUERY_PARAMETERS,
+        ComponentSettings::SEO_PARAMETERS,
+        array('cta', 'words')
+    )
 );
 register_block_type('bonseo/' . $block,
     array(

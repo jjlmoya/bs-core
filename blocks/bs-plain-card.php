@@ -5,7 +5,12 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-plain-card';
 $registers = new RegisterService(
-    array('title', 'className', 'brand', 'type', 'anchor', 'category', 'max_entries', 'isActionable')
+    array_merge(
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::ACTIONABLE_PARAMETERS,
+        ComponentSettings::QUERY_PARAMETERS,
+        array('title')
+    )
 );
 register_block_type('bonseo/' . $block,
     array(
@@ -21,7 +26,7 @@ function render_bs_plain_card_entries($authors, $isActionable)
     $actionClasses = '';
     $components = new ComponentService();
     while ($authors->have_posts()) : $authors->the_post();
-        $normalizePost = new PostService(null,200);
+        $normalizePost = new PostService(null, 200);
         $temporal = '<h3 class="a-text  a-text--secondary a-text--center a-pad--y">
 						' . $normalizePost->title . '
 					</h3>';

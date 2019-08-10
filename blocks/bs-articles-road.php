@@ -6,7 +6,12 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-articles-road';
 $registers = new RegisterService(
-    array('title', 'max_entries', 'className', 'category', 'type', 'brand', 'anchor', 'isActionable')
+    array_merge(
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::SEO_PARAMETERS,
+        ComponentSettings::QUERY_PARAMETERS,
+        ComponentSettings::ACTIONABLE_PARAMETERS
+    )
 );
 register_block_type('bonseo/' . $block,
     array(

@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-anchor-links';
 $registers = new RegisterService(
-    array('title', 'brand', 'className')
+    ComponentSettings::COMMONS_PARAMETERS
 );
 register_block_type('bonseo/' . $block,
     array(

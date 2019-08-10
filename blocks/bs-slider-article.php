@@ -4,7 +4,12 @@ if (!defined('ABSPATH')) {
 }
 $block = 'block-bs-slider-article';
 $registers = new RegisterService(
-    array('title', 'max_entries', 'type', 'category', 'image', 'brand', 'className', 'anchor', 'isActionable')
+    array_merge(
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::ACTIONABLE_PARAMETERS,
+        ComponentSettings::QUERY_PARAMETERS,
+        array('title', 'image')
+    )
 );
 register_block_type('bonseo/' . $block,
     array(
@@ -20,7 +25,7 @@ function render_bs_slider_article_post($articles, $isActionable)
     $actionClasses = 'a-text--underline ';
     $components = new ComponentService();
     while ($articles->have_posts()) : $articles->the_post();
-        $normalizePost = new PostService(null,200);
+        $normalizePost = new PostService(null, 200);
         $html .= '<h3 class="ml-block-articles-minimalist__element a-pad--x-20">
                    ' . $components->get_actionable_url($linkClasses, $normalizePost->url, $normalizePost->title, $isActionable, true, $actionClasses) . '
 				  </h3>';

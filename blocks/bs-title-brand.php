@@ -4,7 +4,11 @@ if (!defined('ABSPATH')) {
 }
 $block = 'block-bs-title-brand';
 $registers = new RegisterService(
-    array('title', 'claim', 'content', 'image', 'brand', 'className', 'anchor')
+    array_merge(
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::ACTIONABLE_PARAMETERS,
+        array('title', 'claim', 'content', 'image')
+    )
 );
 register_block_type('bonseo/' . $block,
     array(

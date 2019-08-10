@@ -6,7 +6,12 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-articles-condensed';
 $registers = new RegisterService(
-    array('title', 'description', 'max_entries', 'className', 'category', 'type', 'brand', 'anchor', 'isActionable')
+    array_merge(
+        ComponentSettings::SEO_PARAMETERS,
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::ACTIONABLE_PARAMETERS,
+        ComponentSettings::QUERY_PARAMETERS
+    )
 );
 register_block_type('bonseo/' . $block,
     array(

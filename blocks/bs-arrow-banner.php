@@ -5,7 +5,12 @@ if (!defined('ABSPATH')) {
 }
 $block = 'block-bs-arrow-banner';
 $registers = new RegisterService(
-    array('title', 'content', 'cta', 'url', 'className', 'brand', 'anchor', 'isActionable')
+    array_merge(
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::ACTIONABLE_PARAMETERS,
+        ComponentSettings::SEO_PARAMETERS,
+        ComponentSettings::BANNER_PARAMETERS
+    )
 );
 register_block_type('bonseo/' . $block,
     array(
@@ -36,9 +41,9 @@ function render_bs_arrow_banner($attributes)
 			<div class="og-banner-arrow__edge  l-flex l-flex--justify-center a-pad">
 			      ' . $components->get_actionable_url(
             'a-bg a-button a-button--rounded a-button--s a-button--secondary',
-                    $block->url,
-                    $block->cta,
-                    $block->isActionable, false, '') . '
+            $block->url,
+            $block->cta,
+            $block->isActionable, false, '') . '
             </div>
 		</section>';
 }

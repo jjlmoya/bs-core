@@ -5,7 +5,11 @@ if (!defined('ABSPATH')) {
 
 $block = 'block-bs-product-curved';
 $registers = new RegisterService(
-    array('title', 'claim', 'cta', 'url', 'image', 'brand', 'className', 'anchor', 'isActionable')
+    array_merge(
+        ComponentSettings::COMMONS_PARAMETERS,
+        ComponentSettings::ACTIONABLE_PARAMETERS,
+        array('title', 'claim', 'cta', 'url', 'image')
+    )
 );
 register_block_type('bonseo/' . $block,
     array(
