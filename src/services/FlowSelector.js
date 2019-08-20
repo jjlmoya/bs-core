@@ -1,4 +1,4 @@
-const {Button} = wp.components;
+const {Button, ButtonGroup} = wp.components;
 
 export class FlowSelector {
     constructor(types) {
@@ -15,9 +15,9 @@ export class FlowSelector {
 
     getTemplate() {
         return (
-            <div>
+            <ButtonGroup>
                 {this.renderButtons()}
-            </div>
+            </ButtonGroup>
         )
     }
 }
