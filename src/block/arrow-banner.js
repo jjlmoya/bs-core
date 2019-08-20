@@ -3,12 +3,16 @@ const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Banner Flecha');
 const BlockUrl = __('banner-flecha');
 
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
+import {Icons} from "../assets/icons";
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
 import {
-    BasicTitle, BasicCta, BasicUrl,
-    TitleComponent, DescriptionComponent, CommonsElements,
-    BasicPlainContent
-
+    BasicCta,
+    BasicPlainContent,
+    BasicTitle,
+    BasicUrl,
+    CommonsElements,
+    DescriptionComponent,
+    TitleComponent
 } from "../services/basic";
 
 registerBlockType('bonseo/block-bs-arrow-banner', {

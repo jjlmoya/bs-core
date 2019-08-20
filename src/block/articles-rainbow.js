@@ -1,19 +1,23 @@
+import {Icons} from "../assets/icons";
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {LoadingComponent} from '../models/loading.model';
+import {
+    BasicCta,
+    BasicSeoDescription,
+    BasicTitle,
+    CommonsElements,
+    DescriptionComponent,
+    GroupPostComponent,
+    TitleComponent
+} from "../services/basic";
+import {Categories, PostTypes} from "../api/core";
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
 const BlockTitle = __('Artículos rainbow');
 const BlockUrl = __('articulos-rainbow');
 
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {LoadingComponent} from '../services/ux';
-import {
-    BasicTitle,
-    TitleComponent,
-    DescriptionComponent,
-    CommonsElements,
-    GroupPostComponent, BasicCta, BasicSeoDescription
-} from "../services/basic";
-import {PostTypes, Categories} from "../api/core";
 
 registerBlockType('bonseo/block-bs-articles-rainbow', {
     title: BlockTitle,

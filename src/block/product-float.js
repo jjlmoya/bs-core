@@ -1,14 +1,17 @@
+import {CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {PostSelection} from '../services/selects';
+import {PostByType} from "../api/core";
+import {LoadingComponent} from '../models/loading.model';
+import {Icons} from "../assets/icons";
+
 const {withSelect} = wp.data;
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Producto Flotante');
 const BlockUrl = __('producto-flotante');
 
-import {CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {PostSelection} from '../services/selects';
-import {PostByType} from "../api/core";
-import {LoadingComponent} from "../services/ux";
+
 
 registerBlockType('bonseo/block-bs-product-float', {
     title: BlockTitle,

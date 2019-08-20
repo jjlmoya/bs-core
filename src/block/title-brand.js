@@ -1,13 +1,21 @@
+import {Icons} from "../assets/icons";
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {
+    BasicClaim,
+    BasicContent,
+    BasicImage,
+    BasicTitle,
+    CommonsElements,
+    DescriptionComponent,
+    TitleComponent
+} from '../services/basic';
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Título Temático');
 const BlockUrl = __('titulo-tematico');
 
-import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
-import {
-    BasicTitle, BasicContent, BasicImage, BasicClaim, TitleComponent, DescriptionComponent,
-    CommonsElements
-} from '../services/basic';
+
 
 registerBlockType('bonseo/block-bs-title-brand', {
     title: BlockTitle,

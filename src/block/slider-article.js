@@ -1,16 +1,21 @@
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {
+    BasicImage,
+    BasicTitle,
+    CommonsElements,
+    DescriptionComponent,
+    GroupPostComponent,
+    TitleComponent
+} from '../services/basic';
+import {Categories, PostTypes} from '../api/core';
+import {LoadingComponent} from '../models/loading.model';
+import {Icons} from "../assets/icons";
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
 const BlockTitle = __('Cabecera con Artículos');
 const BlockUrl = __('cabecera-articulos');
-
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {
-    BasicTitle, BasicImage, TitleComponent, DescriptionComponent, CommonsElements,
-    GroupPostComponent
-} from '../services/basic';
-import {Categories, PostTypes} from '../api/core';
-import {LoadingComponent} from '../services/ux';
 
 registerBlockType('bonseo/block-bs-slider-article', {
     title: BlockTitle,

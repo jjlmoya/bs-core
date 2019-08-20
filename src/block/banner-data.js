@@ -1,10 +1,13 @@
+import {CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
+import {CategoryGroup, CoreKeywords, EditorClass, FieldClass} from '../settings';
+import {Icons} from "../assets/icons";
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {TextControl} = wp.components;
 const BlockTitle = __('Banner de Datos');
 const BlockUrl = __('banner-datos');
-import {CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
-import {CoreKeywords, Icons, CategoryGroup, EditorClass, FieldClass} from '../settings';
+
 
 registerBlockType('bonseo/block-bs-banner-data', {
 	title: BlockTitle,

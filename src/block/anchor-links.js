@@ -1,10 +1,12 @@
+import {Icons} from "../assets/icons";
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {BasicTitle, CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Navegación de Contenido');
 const BlockUrl = __('navegacion-contenido');
 
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {BasicTitle, CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
 
 registerBlockType('bonseo/block-bs-anchor-links', {
 	title: BlockTitle,

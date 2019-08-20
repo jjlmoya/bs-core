@@ -1,4 +1,16 @@
-import {LoadingComponent} from "../services/ux";
+import {LoadingComponent} from '../models/loading.model';
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {
+	BasicImage,
+	BasicSubtitle,
+	BasicTitle,
+	CommonsElements,
+	DescriptionComponent,
+	GroupPostComponent,
+	TitleComponent
+} from '../services/basic';
+import {Categories, PostTypes} from "../api/core";
+import {Icons} from "../assets/icons";
 
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
@@ -6,12 +18,6 @@ const {withSelect} = wp.data;
 const BlockTitle = __('Lista de Categoría');
 const BlockUrl = __('lista-categoria');
 
-import {CoreKeywords, Icons, EditorClass, CategoryGroup} from '../settings';
-import {
-    BasicTitle, BasicImage, BasicSubtitle, TitleComponent, DescriptionComponent,
-    CommonsElements, GroupPostComponent
-} from '../services/basic';
-import {PostTypes, Categories} from "../api/core";
 
 
 registerBlockType('bonseo/block-bs-link-category', {

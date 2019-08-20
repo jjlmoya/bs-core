@@ -1,13 +1,20 @@
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {
+	BasicClaim,
+	BasicImage,
+	BasicSubtitle,
+	BasicTitle,
+	CommonsElements,
+	DescriptionComponent,
+	TitleComponent
+} from "../services/basic";
+import {Icons} from "../assets/icons";
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Cabecera Circular (H1)');
 const BlockUrl = __('cabecera-circulo');
 
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {
-    BasicTitle, BasicClaim, BasicSubtitle, BasicImage, TitleComponent,
-    DescriptionComponent, CommonsElements
-} from "../services/basic";
 
 registerBlockType('bonseo/block-bs-head-circle', {
 	title: BlockTitle,

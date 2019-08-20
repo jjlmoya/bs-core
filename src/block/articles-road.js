@@ -1,19 +1,15 @@
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {LoadingComponent} from '../models/loading.model';
+import {BasicTitle, CommonsElements, DescriptionComponent, GroupPostComponent, TitleComponent} from "../services/basic";
+import {Categories, PostTypes} from "../api/core";
+import {Icons} from "../assets/icons";
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
 const BlockTitle = __('Artículos Road');
 const BlockUrl = __('articulos-road');
 
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {LoadingComponent} from '../services/ux';
-import {
-    BasicTitle,
-    TitleComponent,
-    DescriptionComponent,
-    CommonsElements,
-    GroupPostComponent
-} from "../services/basic";
-import {PostTypes, Categories} from "../api/core";
 
 registerBlockType('bonseo/block-bs-articles-road', {
     title: BlockTitle,

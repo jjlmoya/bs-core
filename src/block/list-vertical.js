@@ -1,16 +1,14 @@
+import {Icons} from "../assets/icons";
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {LoadingComponent} from '../models/loading.model';
+import {BasicTitle, CommonsElements, DescriptionComponent, GroupPostComponent, TitleComponent} from '../services/basic';
+import {Categories, PostTypes} from '../api/core';
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
 const BlockTitle = __('Lista Vertical');
 const BlockUrl = __('lista-vertical');
-
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {LoadingComponent} from '../services/ux';
-import {
-    BasicTitle, TitleComponent, DescriptionComponent, CommonsElements,
-    GroupPostComponent
-} from '../services/basic';
-import {Categories, PostTypes} from '../api/core';
 
 registerBlockType('bonseo/block-bs-list-vertical', {
 	title: BlockTitle,

@@ -1,16 +1,18 @@
+import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
+import {LoadingComponent} from '../models/loading.model';
+import {
+    BasicCta, TitleComponent, DescriptionComponent, CommonsElements,
+    GroupPostComponent
+} from "../services/basic";
+import {Categories, PostTypes} from '../api/core';
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
 const BlockTitle = __('Slider Movie');
 const BlockUrl = __('slider-movie');
 
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {LoadingComponent} from '../services/ux';
-import {
-    BasicCta, TitleComponent, DescriptionComponent, CommonsElements,
-    GroupPostComponent
-} from "../services/basic";
-import {Categories, PostTypes} from '../api/core';
+
 
 registerBlockType('bonseo/block-bs-slider-movie', {
     title: BlockTitle,

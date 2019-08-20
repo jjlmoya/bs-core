@@ -1,13 +1,13 @@
+import {Icons} from "../assets/icons";
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {BasicContent, BasicTitle, CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
+import {HeadingSelection} from '../services/selects';
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const BlockTitle = __('Contenido Simple');
 const BlockUrl = __('contenido-simple');
 
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {
-    BasicTitle, BasicContent, TitleComponent, DescriptionComponent, CommonsElements
-} from "../services/basic";
-import {HeadingSelection} from '../services/selects';
 
 registerBlockType('bonseo/block-bs-content-simple', {
     title: BlockTitle,

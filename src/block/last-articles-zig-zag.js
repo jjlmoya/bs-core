@@ -1,17 +1,22 @@
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {
+    BasicCta,
+    BasicTitle,
+    BasicWords,
+    CommonsElements,
+    DescriptionComponent,
+    GroupPostComponent,
+    TitleComponent
+} from "../services/basic";
+import {LoadingComponent} from '../models/loading.model';
+import {Categories, PostTypes} from "../api/core";
+import {Icons} from "../assets/icons";
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
 const BlockTitle = __('Artículos en Zig Zag');
 const BlockUrl = __('articulos-zig-zag');
-
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {
-    BasicTitle, BasicCta, TitleComponent, DescriptionComponent,
-    CommonsElements, GroupPostComponent, BasicWords
-} from "../services/basic";
-import {LoadingComponent} from "../services/ux";
-import {Categories, PostTypes} from "../api/core";
-
 
 registerBlockType('bonseo/block-bs-last-articles-zig-zag', {
     title: BlockTitle,

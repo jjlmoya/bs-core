@@ -1,16 +1,15 @@
+import {Icons} from "../assets/icons";
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {LoadingComponent} from '../models/loading.model';
+import {BasicCta, CommonsElements, DescriptionComponent, GroupPostComponent, TitleComponent} from "../services/basic";
+import {Categories, PostTypes} from '../api/core';
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
 const BlockTitle = __('Slider Básico');
 const BlockUrl = __('slider-basico');
 
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {LoadingComponent} from '../services/ux';
-import {
-	BasicCta, TitleComponent, DescriptionComponent, CommonsElements,
-    GroupPostComponent
-} from "../services/basic";
-import {Categories, PostTypes} from '../api/core';
 
 registerBlockType('bonseo/block-bs-slider-simple', {
 	title: BlockTitle,

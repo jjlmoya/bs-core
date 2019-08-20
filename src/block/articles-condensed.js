@@ -1,16 +1,23 @@
+import {Icons} from "../assets/icons";
+import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
+import {LoadingComponent} from '../models/loading.model';
+import {
+    BasicSeoDescription,
+    BasicTitle,
+    CommonsElements,
+    DescriptionComponent,
+    GroupPostComponent,
+    TitleComponent
+} from "../services/basic";
+import {Categories, PostTypes} from "../api/core";
+
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {withSelect} = wp.data;
 const BlockTitle = __('Artículos Condensados');
 const BlockUrl = __('articulos-condensados');
 
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {LoadingComponent} from '../services/ux';
-import {
-    BasicTitle, BasicSeoDescription, TitleComponent,
-    DescriptionComponent, CommonsElements, GroupPostComponent
-} from "../services/basic";
-import {Categories, PostTypes} from "../api/core";
+
 
 registerBlockType('bonseo/block-bs-articles-condensed', {
     title: BlockTitle,

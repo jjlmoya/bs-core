@@ -37,25 +37,7 @@ export const Brands = [
     {label: 'Spring Melody', value: 'spring-melody'},
     {label: 'Strawberry', value: 'strawberry'}
 ];
-export const Icons = {
-    quote: 'editor-quote',
-    world: 'admin-site',
-    writer: 'welcome-write-blog',
-    pile: 'images-alt',
-    down: 'arrow-down-alt2',
-    minus: 'minus',
-    circles: 'image-filter',
-    content: 'media-document',
-    pencil: 'edit',
-    list: 'editor-ol',
-    vertical: 'image-flip-vertical',
-    pages: 'admin-page',
-    slides: 'slides',
-    feed: 'feedback',
-    tag: 'nametag',
-    mark: 'pressthis',
-    articles: 'excerpt-view'
-};
+
 export const EditorClass = 'og-block-edit ' +
     'l-position u-shadow--bottom l-flex l-flex--wrap ' +
     'a-border a-border--primary a-border--smooth a-mar--y-40 a-pad--x';

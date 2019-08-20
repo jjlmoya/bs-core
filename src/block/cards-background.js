@@ -1,17 +1,19 @@
-const {__} = wp.i18n;
-const {registerBlockType} = wp.blocks;
-const {withSelect} = wp.data;
-const BlockTitle = __('Bloques de Fondo');
-const BlockUrl = __('bloque-fondo');
-
-import {CoreKeywords, Icons, CategoryGroup, EditorClass} from '../settings';
-import {LoadingComponent} from '../services/ux';
+import {CoreKeywords, CategoryGroup, EditorClass} from '../settings';
+import {LoadingComponent} from '../models/loading.model';
 import {
     BasicTitle,
     CommonsElements, DescriptionComponent, GroupPostComponent,
     TitleComponent
 } from '../services/basic';
 import {Categories, PostTypes} from '../api/core';
+import {Icons} from "../assets/icons";
+
+const {__} = wp.i18n;
+const {registerBlockType} = wp.blocks;
+const {withSelect} = wp.data;
+const BlockTitle = __('Bloques de Fondo');
+const BlockUrl = __('bloque-fondo');
+
 
 registerBlockType('bonseo/block-bs-cards-background', {
     title: BlockTitle,
