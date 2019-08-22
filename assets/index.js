@@ -1,3 +1,4 @@
+console.log(jsData);
 /******/ (function(modules) { // webpackBootstrap
         /******/ 	// The module cache
         /******/ 	var installedModules = {};

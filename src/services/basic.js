@@ -1,6 +1,7 @@
-import {CategorySelection, PostTypeSelection, BrandSelection} from "./selects";
-import {FieldClass, Bonseo} from '../settings';
+import {CategorySelection, PostTypeSelection, BrandSelection} from "../api/select";
+import {FieldClass} from '../settings';
 import {Icons} from "../assets/icons";
+import {LOGO, PATH} from "../settings/brand.settings";
 
 const {TextControl, ToggleControl} = wp.components;
 const {MediaUpload, RichText} = wp.editor;
@@ -43,7 +44,7 @@ export const BasicWords = function (className, attributes, setAttributes) {
 
 export const DescriptionComponent = function (url) {
     return (
-        <a className={`l-position--absolute l-position--absolute--top-right`} href={Bonseo.path + url}>
+        <a className={`l-position--absolute l-position--absolute--top-right`} href={PATH + url}>
             {Icons.infoIcon()}
         </a>
     )
@@ -52,7 +53,7 @@ export let TitleComponent = function (title) {
     return (
         <div className={`l-column--1-1 l-flex l-flex--wrap`}>
             <picture className={`l-column--1-1 a-mar-auto a-text--center a-mar--minus-20`}>
-                <img className={`a-image a-image--xs`} src={Bonseo.logo}/>
+                <img className={`a-image a-image--xs`} src={LOGO}/>
             </picture>
             <h2 className={`ml-block-edit-field__title a-text--brand a-mar-auto`}>{title}</h2>
         </div>);

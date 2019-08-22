@@ -36,8 +36,17 @@ if (!in_array('bs-core/plugin.php', apply_filters('active_plugins', get_option('
 function bs_core_scripts()
 {
     $bs_timestamp = '2019080718';
+
     wp_enqueue_style('bs-core-style', plugins_url('assets/style.css', __FILE__), array(), $bs_timestamp);
     wp_enqueue_script('bs-core-script', plugins_url('assets/index.js', __FILE__), array(), $bs_timestamp, true);
+    wp_localize_script(
+        'bs-core-script',
+        'jsData',
+        array(
+            'logo' => plugins_url('assets/bonseo.png', __FILE__)
+        )
+    );
+
 }
 
 add_filter('admin_body_class', 'bs_core_admin_body_class');
@@ -46,6 +55,7 @@ function bs_core_admin_body_class($classes)
 {
     return "$classes sky";
 }
+
 
 add_action('wp_enqueue_scripts', 'bs_core_scripts');
 

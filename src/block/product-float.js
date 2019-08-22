@@ -1,6 +1,6 @@
 import {CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
 import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
-import {PostSelection} from '../services/selects';
+import {PostSelection} from '../api/select';
 import {PostByType} from "../api/core";
 import {LoadingComponent} from '../models/loading.model';
 import {Icons} from "../assets/icons";

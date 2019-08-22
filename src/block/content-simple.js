@@ -1,7 +1,7 @@
 import {Icons} from "../assets/icons";
 import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
 import {BasicContent, BasicTitle, CommonsElements, DescriptionComponent, TitleComponent} from "../services/basic";
-import {HeadingSelection} from '../services/selects';
+import {HeadingSelection} from '../api/select';
 
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
