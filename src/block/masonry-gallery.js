@@ -1,5 +1,6 @@
 import {CategoryGroup, CoreKeywords, EditorClass} from '../settings';
-import {CommonsElements, DescriptionComponent, GalleryComponent} from '../services/basic';
+import {CommonsElements, DescriptionComponent} from '../services/basic';
+import {GalleryComponent} from "../models/images.model";
 import {Icons} from "../assets/icons";
 
 const {__} = wp.i18n;
